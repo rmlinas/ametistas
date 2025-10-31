@@ -10,11 +10,15 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1549484306-03a890a5015b?q=80&w=1974&auto=format&fit=crop">
   <meta property="og:url" content="https://ametistas.lt">
   <meta name="twitter:card" content="summary_large_image">
+  
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v18/co3bmC5gg_AWTcW6LsfNlGjvE71S70rM4Ugy_V14.woff2" as="font" type="font/woff2" crossorigin>
+  
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7Rsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
   <style>
-    /* GLOBALUS PATAISYMAS (BŪTINAS) */
+    /* GLOBALUS NUSTATYMAI */
     *, *::before, *::after {
         box-sizing: border-box; 
     }
@@ -29,6 +33,7 @@
       --max-width:1200px;
       --transition:.3s ease;
       
+      /* Šviesus režimas (pagrindinis) */
       --bg-color: var(--light);
       --text-color: #111;
       --card-bg: #fff;
@@ -44,12 +49,12 @@
     img{max-width:100%;display:block;height:auto;}
     h1,h2,h3,h4,h5,h6{margin:0;}
     button{cursor:pointer;border:none;outline:none;font-family:inherit; background:none;}
-
-    /* Animacijos */
+    
+    /* Animacijos - PRIDĖTA: animation-fill-mode: forwards; */
     @keyframes fadeIn {from{opacity:0} to{opacity:1}}
     @keyframes fadeUp {from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)}}
-    .animate-fade-in{animation:fadeIn 1.5s ease-out forwards; opacity:0;}
-    .animate-fade-up{animation:fadeUp 1.2s ease-out forwards; opacity:0;}
+    .animate-fade-in{animation:fadeIn 1.5s ease-out forwards; opacity:0; animation-fill-mode: forwards;}
+    .animate-fade-up{animation:fadeUp 1.2s ease-out forwards; opacity:0; animation-fill-mode: forwards;}
 
     /* Layout */
     .wrap{max-width:var(--max-width);margin:0 auto;padding:0 1rem;}
@@ -63,7 +68,7 @@
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus meniu - IŠTAISYTA KRITINĖ KLAIDA (pašalintos žvaigždutės) */
+    /* Mobilus meniu */
     .mobile-toggle { display: none; color: var(--heading-color); font-size: 1.2rem; }
     .mobile-menu {
         display: none;
@@ -87,22 +92,21 @@
     
     @media(max-width:768px){
         .nav-links{display:none;}
-        /* Mobile toggle dabar VISADA matomas */
         .mobile-toggle { display: block; } 
         #darkToggle { display: none; } 
 
-        /* HERO SECTIONS STILIAI (PAGAL JŪSŲ REKOMENDACIJĄ) */
+        /* HERO SECTIONS STILIAI (OPTIMIZUOTA) */
         .hero { 
           min-height: 50vh; 
-          padding: 2rem 0.5rem; /* SUMAŽINTAS PADDING */
+          padding: 2rem 0.5rem; 
         }
         .hero h1 { 
           font-size: 2rem; 
           letter-spacing: 0.1em; 
-          line-height: 1.2; /* Išvengti labai didelio tarpo tarp eilučių */
+          line-height: 1.2; 
         } 
         .hero p { 
-          font-size: 0.95rem; /* SUMAŽINTAS P Dydis */
+          font-size: 0.95rem; 
         }
         
         .hero .ctas { 
@@ -127,7 +131,6 @@
     }
     
     @media(max-width:400px){
-        /* H1 dydis mažiausiems ekranams */
         .hero h1 { font-size: 1.8rem; letter-spacing: 0.05em; } 
     }
 
@@ -214,7 +217,8 @@
 
     /* Facebook */
     .fb-section{padding:3.5rem 0;background:linear-gradient(180deg,#fbfbfc,#fff);}
-    .fb-wrap{max-width:520px;margin:0 auto;text-align:center;}
+    /* FB Wrap dabar kontroliuoja max ploti, kad būtų responsive */
+    .fb-wrap{max-width:520px;margin:0 auto;text-align:center;} 
     .fb-note{color:#444;margin-bottom:1rem;}
     .fb-page-responsive{max-width:100%;overflow:hidden;display:flex;justify-content:center;}
 
@@ -271,7 +275,7 @@
       </div>
       
       <div class="nav-controls">
-        <button id="darkToggle" aria-label="Toggle Dark Mode">
+        <button id="darkToggle" aria-label="Perjungti tamsos režimą">
           <i class="fas fa-moon"></i>
         </button>
         <button id="mobileToggle" class="mobile-toggle" aria-label="Atidaryti meniu">
@@ -295,7 +299,7 @@
         <h1 class="animate-fade-up" style="animation-delay:0.3s;">AMETISTAS<span class="dot">.</span>LT</h1>
         <p class="lead animate-fade-up" style="animation-delay:0.6s;font-family:'Cormorant Garamond',serif;font-style:italic;">Natūralūs Akmenys. Aura. Astromineralogija.</p>
         <div class="ctas animate-fade-up" style="animation-delay: 0.9s;">
-            <a class="btn-telegram" href="#kolekcijos-perziura">
+            <a class="btn-telegram" href="#kolekcijos-perziura" aria-label="Peržiūrėti naują kolekciją Telegram kanale">
                 <i class="fab fa-telegram-plane"></i> Peržiūrėti Kolekciją
             </a>
             <a class="btn-ghost" href="#astromineralogija">Gaukite konsultaciją</a>
@@ -330,7 +334,7 @@
             </div>
             
             <div style="text-align:center; margin-top:3.5rem;">
-                <a class="btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
+                <a class="btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Peržiūrėti kolekciją Telegram kanale">
                     <i class="fab fa-telegram-plane"></i> PERŽIŪRĖTI KOLEKCIJĄ TELEGRAME
                 </a>
             </div>
@@ -353,7 +357,7 @@
         </div>
         <aside class="about-card about-hero" aria-hidden="true" style="margin-top:1rem;height:350px;">
           <div style="padding:.75rem">
-            <img src="https://images.unsplash.com/photo-1549484306-03a890a5015b?q=80&w=1974&auto=format&fit=crop" alt="Ametisto kristalas">
+            <img src="https://images.unsplash.com/photo-1549484306-03a890a5015b?q=80&w=1974&auto=format&fit=crop" alt="Ametisto kristalas" loading="lazy">
           </div>
         </aside>
       </div>
@@ -458,14 +462,15 @@
       const darkIcon = 'fa-sun';
 
       function setMode(isDark) {
-        // Desktop
-        if(darkToggle) {
-          darkToggle.querySelector('i').classList.replace(isDark ? lightIcon : darkIcon, isDark ? darkIcon : lightIcon);
-        }
-        // Mobile
-        if(darkToggleMobile) {
-          darkToggleMobile.querySelector('i').classList.replace(isDark ? lightIcon : darkIcon, isDark ? darkIcon : lightIcon);
-        }
+        const toggleIcon = (el) => {
+          if (!el) return;
+          const icon = el.querySelector('i');
+          icon.classList.remove(lightIcon, darkIcon);
+          icon.classList.add(isDark ? darkIcon : lightIcon);
+        };
+
+        toggleIcon(darkToggle);
+        toggleIcon(darkToggleMobile);
         
         if (isDark) {
           body.classList.add('dark-mode');
@@ -497,7 +502,6 @@
       const mobileMenu = document.getElementById('mobileMenu');
       const mobileLinks = mobileMenu.querySelectorAll('a');
 
-      // Patikriname, ar mobileToggle egzistuoja (patikimesnis kodas)
       if(mobileToggle) {
           mobileToggle.addEventListener('click', () => {
               const isMenuOpen = mobileMenu.classList.toggle('open'); 
@@ -507,16 +511,14 @@
           });
       }
       
-      // Uždaryti meniu paspaudus nuorodą
+      // Uždaryti meniu paspaudus nuorodą (Pataisyta/Užbaigta logika)
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if(link.id !== 'darkToggleMobile') {
+            if(link.id !== 'darkToggleMobile' && mobileToggle) {
                 mobileMenu.classList.remove('open');
                 // Atstatome hamburgerio ikoną po uždarymo
-                if(mobileToggle) {
-                    mobileToggle.querySelector('i').classList.add('fa-bars');
-                    mobileToggle.querySelector('i').classList.remove('fa-times');
-                }
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
             }
         });
       });
