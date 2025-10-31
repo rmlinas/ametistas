@@ -59,7 +59,7 @@
     /* Layout */
     .wrap{max-width:var(--max-width);margin:0 auto;padding:0 1rem;}
 
-    /* Sticky navigacija - PATAISYTA SU GRADIENTU IR BLUR */
+    /* Sticky navigacija - SU GRADIENTU IR BLUR */
     nav{
         position:sticky;
         top:0;
@@ -88,16 +88,20 @@
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Hamburger mygtukas - VIOLETINĖ SPALVA */
+    /* Hamburger mygtukas - PATAISYTA: Kontrastas ir display */
     .mobile-toggle { 
         color: var(--amethyst-700) !important; /* Tamsiai violetinė */
         font-size: 1.4rem; 
-        display: none; /* Leidžiame media query rodyti/slėpti */
+        display: none; /* Pagal nutylėjimą paslėptas (Desktop) */
         padding: 0.5rem; 
+        background: rgba(255, 255, 255, 0.7); /* Lengvas fonas kontrastui */
+        border-radius: 4px;
+        line-height: 1;
     } 
 
     body.dark-mode .mobile-toggle {
         color: var(--gold) !important; /* Dark Mode režime ji auksinė */
+        background: rgba(255, 255, 255, 0.05);
     }
 
     /* RADIKALIAI PAKEISTAS MOBILE MENIU STILIUS */
@@ -140,7 +144,9 @@
 
     @media(max-width:768px){
         .nav-links{display:none;}
-        .mobile-toggle { display: block; } 
+        .mobile-toggle { 
+          display: block; /* Griežtas rodymas mobiliajame */
+        } 
         #darkToggle { display: none; } 
         
         /* Hero Sekcija: MAŽESNIS AUKŠTIS IR PADDING */
@@ -200,7 +206,7 @@
         font-size: clamp(0.8rem, 2.5vw, 1.2rem);
         margin-top:1rem;
         font-style:italic;
-        color:rgba(255,255,255,.92); /* Balta/subtiliai permatoma spalva, gerai matoma ant tamsinto fono */
+        color:rgba(255,255,255,.92); 
     }
     
     .section-title {
