@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7Rsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    /* GLOBALUS PATAISYMAS MOBILIAJAM (BŪTINAS) */
+    /* GLOBALUS PATAISYMAS (BŪTINAS) */
     *, *::before, *::after {
         box-sizing: border-box; 
     }
@@ -29,7 +29,6 @@
       --max-width:1200px;
       --transition:.3s ease;
       
-      /* Šviesus režimas (pagrindinis) */
       --bg-color: var(--light);
       --text-color: #111;
       --card-bg: #fff;
@@ -64,8 +63,8 @@
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus meniu */
-    .mobile-toggle { **display: none;** color: var(--heading-color); font-size: 1.2rem; }
+    /* Mobilus meniu - IŠTAISYTA KRITINĖ KLAIDA (pašalintos žvaigždutės) */
+    .mobile-toggle { display: none; color: var(--heading-color); font-size: 1.2rem; }
     .mobile-menu {
         display: none;
         background: var(--nav-bg);
@@ -88,16 +87,23 @@
     
     @media(max-width:768px){
         .nav-links{display:none;}
-        /* IŠTAISYMAS #1: Mobile toggle dabar VISADA matomas */
+        /* Mobile toggle dabar VISADA matomas */
         .mobile-toggle { display: block; } 
-        /* Mobile menu */
-        #darkToggle { display: none; } /* Darbo režimo mygtuką slepiame ant mobile, jis eina i mobile-menu */
+        #darkToggle { display: none; } 
 
-        /* Hero sekcijos stiliai */
-        .hero { min-height: 50vh; padding: 2.5rem 1rem; }
-        /* IŠTAISYMAS #2: Sumažiname Hero H1, kad tilptų */
-        .hero h1 { font-size: 2rem; letter-spacing: 0.1em; } 
-        .hero p { font-size: 1rem; }
+        /* HERO SECTIONS STILIAI (PAGAL JŪSŲ REKOMENDACIJĄ) */
+        .hero { 
+          min-height: 50vh; 
+          padding: 2rem 0.5rem; /* SUMAŽINTAS PADDING */
+        }
+        .hero h1 { 
+          font-size: 2rem; 
+          letter-spacing: 0.1em; 
+          line-height: 1.2; /* Išvengti labai didelio tarpo tarp eilučių */
+        } 
+        .hero p { 
+          font-size: 0.95rem; /* SUMAŽINTAS P Dydis */
+        }
         
         .hero .ctas { 
             flex-direction: column; 
@@ -121,8 +127,8 @@
     }
     
     @media(max-width:400px){
-        /* Hero H1 dar labiau sumažinamas mažiausiuose ekranuose, kad tikrai tilptų */
-        .hero h1 { font-size: 1.7rem; letter-spacing: 0.08em; } 
+        /* H1 dydis mažiausiems ekranams */
+        .hero h1 { font-size: 1.8rem; letter-spacing: 0.05em; } 
     }
 
     /* Hero */
@@ -491,20 +497,26 @@
       const mobileMenu = document.getElementById('mobileMenu');
       const mobileLinks = mobileMenu.querySelectorAll('a');
 
-      mobileToggle.addEventListener('click', () => {
-        const isMenuOpen = mobileMenu.classList.toggle('open'); 
-        // Hamburger keičiasi į 'X'
-        mobileToggle.querySelector('i').classList.toggle('fa-bars', !isMenuOpen);
-        mobileToggle.querySelector('i').classList.toggle('fa-times', isMenuOpen);
-      });
+      // Patikriname, ar mobileToggle egzistuoja (patikimesnis kodas)
+      if(mobileToggle) {
+          mobileToggle.addEventListener('click', () => {
+              const isMenuOpen = mobileMenu.classList.toggle('open'); 
+              // Hamburger keičiasi į 'X'
+              mobileToggle.querySelector('i').classList.toggle('fa-bars', !isMenuOpen);
+              mobileToggle.querySelector('i').classList.toggle('fa-times', isMenuOpen);
+          });
+      }
       
       // Uždaryti meniu paspaudus nuorodą
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             if(link.id !== 'darkToggleMobile') {
                 mobileMenu.classList.remove('open');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
+                // Atstatome hamburgerio ikoną po uždarymo
+                if(mobileToggle) {
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                }
             }
         });
       });
