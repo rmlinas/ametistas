@@ -15,6 +15,9 @@
   <!-- Facebook SDK -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
   
+  <!-- Instagram Embed Script -->
+  <script async src="//www.instagram.com/embed.js"></script>
+  
   <script>
     tailwind.config = {
       theme: {
@@ -60,6 +63,7 @@
       .mobile-grid { grid-template-columns: 1fr; }
       .mobile-text { font-size: 1.75rem !important; }
       .mobile-btn { width: 100%; margin-bottom: 1rem; }
+      .product-img { height: 250px !important; }
       .social-thumbs { height: 200px !important; }
     }
   </style>
@@ -76,8 +80,8 @@
         Kristalų oazė
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-12">
-        <a href="#kolekcija" class="mobile-btn border border-dark px-8 sm:px-12 py-4 text-sm font-medium tracking-widest hover:bg-dark hover:text-light transition-all duration-300">
-          PERŽIŪRĖTI KOLEKCIJĄ
+        <a href="#katalogas" class="mobile-btn border border-dark px-8 sm:px-12 py-4 text-sm font-medium tracking-widest hover:bg-dark hover:text-light transition-all duration-300">
+          PERŽIŪRĖTI KATALOGĄ
         </a>
         <a href="https://instagram.com/ametistaslt" class="mobile-btn text-gray hover-gold transition-all duration-300 tracking-widest text-sm">
           INSTAGRAM →
@@ -108,61 +112,142 @@
 
   <div class="section-divider mx-6 sm:mx-16"></div>
 
-  <!-- Collection -->
-  <section id="kolekcija" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-light">
+  <!-- Katalogas su 12 prekių + REALIOS NUOTRAUKOS -->
+  <section id="katalogas" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-light">
     <div class="container mx-auto">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">IŠSKIRTINĖ KOLEKCIJA</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">IŠSKIRTINIS KATALOGAS</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         
-        <!-- Product 1 -->
-        <article class="group">
-          <div class="overflow-hidden mb-8">
-            <div class="h-72 sm:h-96 bg-white border border-gray-100 flex items-center justify-center group-hover:border-gold transition-all duration-500">
-              <div class="w-48 h-48 sm:w-56 sm:h-56 bg-gray-50 border-2 border-dashed rounded-sm"></div>
-            </div>
+        <!-- 1 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Geodas" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
           </div>
-          <div class="text-center">
-            <h3 class="text-xl sm:text-2xl font-heading mb-2 tracking-wide">Ametisto Geodas</h3>
-            <p class="text-gray mb-4 text-sm tracking-wide">1.8 kg • Gilus violetinis</p>
-            <p class="text-3xl sm:text-4xl font-heading text-gold mb-6">€289</p>
-            <a href="https://t.me/ametistaslt" class="text-sm tracking-widest hover-gold transition-all duration-300">
-              UŽSISAKYTI TELEGRAM →
-            </a>
-          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Geodas</h3>
+          <p class="text-sm text-gray mb-2">1.8 kg • Gilus violetinis</p>
+          <p class="text-2xl font-heading text-gold mb-3">€289</p>
+          <a href="https://t.me/ametistaslt" class="text-xs tracking-widest hover-gold transition">UŽSISAKYTI</a>
         </article>
 
-        <!-- Product 2 -->
-        <article class="group">
-          <div class="overflow-hidden mb-8">
-            <div class="h-72 sm:h-96 bg-white border border-gray-100 flex items-center justify-center group-hover:border-gold transition-all duration-500">
-              <div class="w-40 h-40 sm:w-48 sm:h-48 bg-gray-50 border-2 border-dashed rounded-full"></div>
-            </div>
+        <!-- 2 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Apyrankė" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
           </div>
-          <div class="text-center">
-            <h3 class="text-xl sm:text-2xl font-heading mb-2 tracking-wide">Ametisto Apyrankė</h3>
-            <p class="text-gray mb-4 text-sm tracking-wide">8mm karoliukai</p>
-            <p class="text-3xl sm:text-4xl font-heading text-gold mb-6">€89</p>
-            <a href="https://instagram.com/ametistaslt" class="text-sm tracking-widest hover-gold transition-all duration-300">
-              INSTAGRAM DM →
-            </a>
-          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Apyrankė</h3>
+          <p class="text-sm text-gray mb-2">8mm karoliukai</p>
+          <p class="text-2xl font-heading text-gold mb-3">€89</p>
+          <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest hover-gold transition">INSTAGRAM</a>
         </article>
 
-        <!-- Product 3 -->
-        <article class="group">
-          <div class="overflow-hidden mb-8">
-            <div class="h-72 sm:h-96 bg-white border border-gray-100 flex items-center justify-center group-hover:border-gold transition-all duration-500">
-              <div class="w-44 h-44 sm:w-52 sm:h-52 bg-gray-50 border-2 border-dashed rounded-sm rotate-45"></div>
-            </div>
+        <!-- 3 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Piramidė" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
           </div>
-          <div class="text-center">
-            <h3 class="text-xl sm:text-2xl font-heading mb-2 tracking-wide">Ametisto Piramidė</h3>
-            <p class="text-gray mb-4 text-sm tracking-wide">Energijos stiprinimui</p>
-            <p class="text-3xl sm:text-4xl font-heading text-gold mb-6">€149</p>
-            <a href="https://facebook.com/ametistaslt" class="text-sm tracking-widest hover-gold transition-all duration-300">
-              FACEBOOK →
-            </a>
+          <h3 class="text-lg font-heading mb-1">Ametisto Piramidė</h3>
+          <p class="text-sm text-gray mb-2">Energijos stiprinimui</p>
+          <p class="text-2xl font-heading text-gold mb-3">€149</p>
+          <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest hover-gold transition">FACEBOOK</a>
+        </article>
+
+        <!-- 4 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Širdis" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
           </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Širdis</h3>
+          <p class="text-sm text-gray mb-2">Meilės talismanas</p>
+          <p class="text-2xl font-heading text-gold mb-3">€59</p>
+          <a href="https://t.me/ametistaslt" class="text-xs tracking-widest hover-gold transition">TELEGRAM</a>
+        </article>
+
+        <!-- 5 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1616594039963-ae4a4e6c2b46?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Vėrinys" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Vėrinys</h3>
+          <p class="text-sm text-gray mb-2">925 sidabras</p>
+          <p class="text-2xl font-heading text-gold mb-3">€129</p>
+          <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest hover-gold transition">INSTAGRAM</a>
+        </article>
+
+        <!-- 6 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1629224329150-2596a0e8d3c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Rutulys" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Rutulys</h3>
+          <p class="text-sm text-gray mb-2">8 cm skersmuo</p>
+          <p class="text-2xl font-heading text-gold mb-3">€199</p>
+          <a href="https://t.me/ametistaslt" class="text-xs tracking-widest hover-gold transition">TELEGRAM</a>
+        </article>
+
+        <!-- 7 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Lazdelė" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Lazdelė</h3>
+          <p class="text-sm text-gray mb-2">Meditacijai</p>
+          <p class="text-2xl font-heading text-gold mb-3">€69</p>
+          <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest hover-gold transition">FACEBOOK</a>
+        </article>
+
+        <!-- 8 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Auskarai" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Auskarai</h3>
+          <p class="text-sm text-gray mb-2">925 sidabras</p>
+          <p class="text-2xl font-heading text-gold mb-3">€79</p>
+          <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest hover-gold transition">INSTAGRAM</a>
+        </article>
+
+        <!-- 9 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Medis" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Medis</h3>
+          <p class="text-sm text-gray mb-2">Dekoratyvinis</p>
+          <p class="text-2xl font-heading text-gold mb-3">€159</p>
+          <a href="https://t.me/ametistaslt" class="text-xs tracking-widest hover-gold transition">TELEGRAM</a>
+        </article>
+
+        <!-- 10 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1616594039963-ae4a4e6c2b46?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Žiedas" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Žiedas</h3>
+          <p class="text-sm text-gray mb-2">925 sidabras</p>
+          <p class="text-2xl font-heading text-gold mb-3">€99</p>
+          <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest hover-gold transition">FACEBOOK</a>
+        </article>
+
+        <!-- 11 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Švytuoklė" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Švytuoklė</h3>
+          <p class="text-sm text-gray mb-2">Energijos matavimui</p>
+          <p class="text-2xl font-heading text-gold mb-3">€49</p>
+          <a href="https://t.me/ametistaslt" class="text-xs tracking-widest hover-gold transition">TELEGRAM</a>
+        </article>
+
+        <!-- 12 -->
+        <article class="group bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ametisto Plokštė" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 product-img">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Plokštė</h3>
+          <p class="text-sm text-gray mb-2">Stalo dekorui</p>
+          <p class="text-2xl font-heading text-gold mb-3">€119</p>
+          <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest hover-gold transition">INSTAGRAM</a>
         </article>
 
       </div>
@@ -171,41 +256,32 @@
 
   <div class="section-divider mx-6 sm:mx-16"></div>
 
-  <!-- Social Thumbnails Section -->
+  <!-- Social Thumbnails -->
   <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-white">
     <div class="container mx-auto">
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">MŪSŲ SOCIALINIAI KANALAI</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         
-        <!-- Instagram Thumbnails -->
-        <div class="text-center animate-fade-up" style="animation-delay: 0.2s">
+        <!-- Instagram -->
+        <div class="text-center">
           <h3 class="text-2xl font-heading mb-6 tracking-wide">Instagram</h3>
           <div class="max-w-md mx-auto">
-            <!-- Įklijuok čia savo Instagram embed kodą (žr. instrukciją žemiau) -->
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/ametistaslt/" data-instgrm-version="14" style="background: #F8F8F8; border-radius: 3px; position: relative; padding: 0; margin: 0;">
-              <!-- Čia bus Instagram thumbnails (3 paskutiniai postai) -->
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/ametistaslt/" data-instgrm-version="14" style="max-width: 400px; width: 100%; margin: 0 auto;">
+              <a href="https://www.instagram.com/ametistaslt/">@ametistaslt</a>
             </blockquote>
-            <script async src="//www.instagram.com/embed.js"></script>
           </div>
-          <a href="https://instagram.com/ametistaslt" class="text-sm tracking-widest hover-gold transition-all duration-300 mt-4 inline-block">
-            APLANKYK PROFILĮ →
-          </a>
         </div>
 
-        <!-- Facebook Thumbnails -->
-        <div class="text-center animate-fade-up" style="animation-delay: 0.4s">
+        <!-- Facebook -->
+        <div class="text-center">
           <h3 class="text-2xl font-heading mb-6 tracking-wide">Facebook</h3>
           <div class="max-w-md mx-auto social-thumbs">
-            <!-- Facebook Page Plugin – pakeisk 'your-page-id' į savo FB puslapio ID -->
-            <div class="fb-page" data-href="https://www.facebook.com/ametistaslt" data-tabs="timeline" data-width="300" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+            <div class="fb-page" data-href="https://www.facebook.com/ametistaslt" data-tabs="timeline" data-width="400" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
               <blockquote cite="https://www.facebook.com/ametistaslt" class="fb-xfbml-parse-ignore">
                 <a href="https://www.facebook.com/ametistaslt">Ametistas LT</a>
               </blockquote>
             </div>
           </div>
-          <a href="https://facebook.com/ametistaslt" class="text-sm tracking-widest hover-gold transition-all duration-300 mt-4 inline-block">
-            APLANKYK PUSLAPĮ →
-          </a>
         </div>
 
       </div>
