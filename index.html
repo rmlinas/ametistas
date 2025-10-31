@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7rSsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <style>
-    /* ... ĮKELKITE VISĄ NAUJĄ CSS BLOKĄ IŠ VIRŠAUS ČIA ... */
     /* GLOBALUS NUSTATYMAI */
     *, *::before, *::after {
         box-sizing: border-box; 
@@ -63,7 +62,7 @@
     /* Sticky navigacija */
     nav{position:sticky;top:0;z-index:999;background:var(--nav-bg);box-shadow:var(--nav-shadow); transition: background var(--transition);}
     .nav-wrap{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem;}
-    .nav-logo{font-family:'Cormorant Garamond', serif;font-weight:700;font-size:1.5rem;color:var(--heading-color);letter-spacing:.1em; transition: color var(--transition); display: none;} 
+    /* NAV LOGO dingo is HTML! */
     .nav-links a{margin-left:1.5rem;font-weight:600;color:var(--heading-color);transition:color var(--transition);}
     .nav-links a:hover{color:var(--gold);}
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
@@ -113,13 +112,12 @@
     @media(min-width:769px) { 
         /* Desktop: paslepiame mobile elementus */
         .mobile-toggle { display: none !important; } 
-        .nav-logo { display: none; }
     }
 
     @media(max-width:768px){
         /* Mobile: rodom elementus */
         .nav-links{display:none;}
-        .nav-logo{display: block;} 
+        /* NAV LOGO YRA PASALINTAS IS HTML - rodom tik mobile toggle */
         .mobile-toggle { display: block !important; } 
         #darkToggle { display: none; } 
         
@@ -129,7 +127,7 @@
           padding: 2rem 0.5rem; 
         }
         .hero h1 { 
-          font-size: 1.8rem; /* Mažesnis šriftas */
+          font-size: 1.6rem; /* MAŽESNIS ŠRIFTAS */
           letter-spacing: 0.1em; 
           line-height: 1.2; 
         } 
@@ -160,7 +158,7 @@
     
     @media(max-width:400px){
         /* EKSTRA MAŽI EKRANAI - dar agresyvesnis šrifto mažinimas */
-        .hero h1 { font-size: 1.5rem; letter-spacing: 0.05em; } 
+        .hero h1 { font-size: 1.4rem; letter-spacing: 0.05em; } /* MAŽIAUSIAS ŠRIFTAS */
     }
 
     /* Hero */
@@ -295,7 +293,6 @@
 
   <nav>
     <div class="nav-wrap">
-      <div class="nav-logo">AMETISTAS.LT</div> 
       <div class="nav-links">
         <a href="#apie-mus">Apie mus</a>
         <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
