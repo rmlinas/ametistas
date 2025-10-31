@@ -33,9 +33,9 @@
       --nav-bg: var(--light);
       --nav-shadow: 0 2px 10px rgba(0,0,0,.05);
       --toggle-icon: var(--amethyst-700);
-      --telegram-blue: #0088CC; /* Nauja spalva */
+      --telegram-blue: #0088CC; 
     }
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text-color);background:var(--bg-color);scroll-behavior:smooth; overflow-x:hidden;}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text-color);background:var(--bg-color);scroll-behavior:smooth; **overflow-x:hidden;**} /* UŽTIKRINA, KAD NETELPANTIS TEKSTAS NESUSUKTŲ EKRANO */
     a{color:inherit;text-decoration:none;}
     img{max-width:100%;display:block;height:auto;}
     h1,h2,h3,h4,h5,h6{margin:0;}
@@ -60,7 +60,7 @@
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus meniu */
+    /* Mobilus meniu (PATAISYTA) */
     .mobile-toggle { display: none; color: var(--heading-color); font-size: 1.2rem; }
     .mobile-menu {
         display: none;
@@ -84,8 +84,24 @@
     
     @media(max-width:768px){
         .nav-links{display:none;}
-        #darkToggle { display: none; } 
-        .mobile-toggle { display: block; } 
+        /* Mobile menu aktyvinimas: */
+        .mobile-toggle { display: block; }
+        /* Hero stilius mobiliesiems (šiek tiek mažesnis ir labiau kompaktiškas) */
+        .hero { min-height: 50vh; padding: 2.5rem 1rem; }
+        .hero h1 { font-size: 2.2rem; letter-spacing: 0.15em; }
+        .hero p { font-size: 1rem; }
+        .hero .ctas { flex-direction: column; gap: 0.75rem; }
+        .btn-primary, .btn-telegram, .btn-ghost { width: 100%; box-sizing: border-box; text-align: center; }
+        .section-title { font-size: 1.6rem; }
+        .lead { font-size: 1rem; padding: 0 0.5rem; }
+        .about-grid { grid-template-columns: 1fr; }
+        .about-hero { order: -1; margin-top: 0!important; }
+        /* Apsaugos nuo teksto išlipimo mažuose ekranuose */
+        .purchase-step p { word-wrap: break-word; }
+    }
+    
+    @media(max-width:400px){
+        .hero h1 { font-size: 1.8rem; letter-spacing: 0.1em; }
     }
 
     /* Hero */
@@ -222,7 +238,7 @@
       <div class="nav-logo">AMETISTAS.LT</div>
       <div class="nav-links">
         <a href="#apie-mus">Apie mus</a>
-        <a href="#pirkti-telegram">Pirkti akmenis</a>
+        <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
         <a href="#astromineralogija">Konsultacijos</a>
         <a href="#kontaktai">Kontaktai</a>
       </div>
@@ -239,7 +255,7 @@
 
     <div id="mobileMenu" class="mobile-menu">
       <a href="#apie-mus">Apie mus</a>
-      <a href="#pirkti-telegram">Pirkti akmenis</a>
+      <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
       <a href="#astromineralogija">Konsultacijos</a>
       <a href="#kontaktai">Kontaktai</a>
       <a href="#" id="darkToggleMobile">Perjungti temą <i class="fas fa-moon"></i></a>
@@ -252,43 +268,41 @@
         <h1 class="animate-fade-up" style="animation-delay:0.3s;">AMETISTAS<span class="dot">.</span>LT</h1>
         <p class="lead animate-fade-up" style="animation-delay:0.6s;font-family:'Cormorant Garamond',serif;font-style:italic;">Natūralūs Akmenys. Aura. Astromineralogija.</p>
         <div class="ctas animate-fade-up" style="animation-delay: 0.9s;">
-            <a class="btn-telegram" href="#pirkti-telegram">
-                <i class="fab fa-telegram-plane"></i> Pirkti per Telegram
+            <a class="btn-telegram" href="#kolekcijos-perziura">
+                <i class="fab fa-telegram-plane"></i> Peržiūrėti Kolekciją
             </a>
             <a class="btn-ghost" href="#astromineralogija">Gaukite konsultaciją</a>
         </div>
       </div>
     </section>
 
-    <section id="pirkti-telegram" class="animate-fade-up section-light-bg" style="animation-delay:0.5s;">
+    <section id="kolekcijos-perziura" class="animate-fade-up section-light-bg" style="animation-delay:0.5s;">
         <div class="wrap">
-            <h2 class="section-title">KAIP ĮSIGYTI AKMENIS?</h2>
-            <p class="lead" style="margin-bottom:3rem;">Akmenys parduodami per mūsų ekskliuzyvinį Telegram kanalą. Čia rasite ribotos kolekcijos pavyzdžius ir gausite asmeninę konsultaciją!</p>
+            <h2 class="section-title">IŠSKIRTINĖ KOLEKCIJA PER TELEGRAM</h2>
+            <p class="lead" style="margin-bottom:3rem;">Mūsų aukščiausios kokybės akmenys parduodami per privatų Telegram kanalą. Tai užtikrina asmeninę konsultaciją ir pirmenybę retų pavyzdžių įsigijimui.</p>
             
             <div class="purchase-steps-grid">
                 
                 <div class="purchase-step">
-                    <i class="fas fa-gem"></i>
-                    <h4>1. Atraskite akmenis</h4>
-                    <p style="color:var(--text-color)">Prisijunkite prie mūsų Telegram kanalo, kur talpinamos naujausios aukštos kokybės akmenų nuotraukos, kaina ir aprašymas.</p>
+                    <i class="fas fa-seedling"></i> <h4>1. Prisijunkite prie Bendruomenės</h4>
+                    <p style="color:var(--text-color)">Telegram kanale gausite vertingos edukacinės informacijos apie akmenų savybes, energiją bei naujų kolekcijų anonsus.</p>
                 </div>
 
                 <div class="purchase-step">
                     <i class="fab fa-telegram-plane"></i>
-                    <h4>2. Rezervuokite</h4>
-                    <p style="color:var(--text-color)">Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriams tiesiai Telegram platformoje. Viskas paprasta ir greita!</p>
+                    <h4>2. Atraskite Rinktinius Pavyzdžius</h4>
+                    <p style="color:var(--text-color)">Kanalas yra mūsų **Virtuali Vitrina**. Talpiname tik aukštos raiškos nuotraukas, detalius aprašymus ir kainas.</p>
                 </div>
 
                 <div class="purchase-step">
-                    <i class="fas fa-gift"></i>
-                    <h4>3. Gaukit siuntą</h4>
-                    <p style="color:var(--text-color)">Išsiųsime akmenį per 1-2 d.d. Visus akmenis energetiškai išvalome ir paruošiame Reiki pagalba, kad jie pasiektų Jus pilnai aktyvuoti.</p>
+                    <i class="fas fa-hand-holding-heart"></i> <h4>3. Užsisakykite Asmeniškai</h4>
+                    <p style="color:var(--text-color)">Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriui Telegram platformoje. Visi klausimai atsakomi **tiesiogiai**.</p>
                 </div>
             </div>
             
             <div style="text-align:center; margin-top:3.5rem;">
                 <a class="btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
-                    <i class="fab fa-telegram-plane"></i> PRISIJUNGTI PRIE KANALO IR PIRKTI
+                    <i class="fab fa-telegram-plane"></i> PERŽIŪRĖTI KOLEKCIJĄ TELEGRAME
                 </a>
             </div>
         </div>
@@ -382,7 +396,7 @@
       </h3>
       <div class="footer-nav-links">
         <a href="#apie-mus" class="small">Apie mus</a>
-        <a href="#pirkti-telegram" class="small">Pirkti akmenis</a>
+        <a href="#kolekcijos-perziura" class="small">Kolekcijos peržiūra</a>
         <a href="#astromineralogija" class="small">Konsultacijos</a>
         <a href="https://www.instagram.com/ametistaslt" target="_blank" class="small">Instagram</a>
       </div>
