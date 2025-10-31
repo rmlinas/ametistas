@@ -59,8 +59,21 @@
     /* Layout */
     .wrap{max-width:var(--max-width);margin:0 auto;padding:0 1rem;}
 
-    /* Sticky navigacija */
-    nav{position:sticky;top:0;z-index:999;background:var(--nav-bg);box-shadow:var(--nav-shadow); transition: background var(--transition);}
+    /* Sticky navigacija - PATAISYTA SU GRADIENTU IR BLUR */
+    nav{
+        position:sticky;
+        top:0;
+        z-index:999;
+        background: linear-gradient(to bottom, var(--light) 0%, rgba(255,255,255,0.95) 100%);
+        backdrop-filter: blur(4px);
+        box-shadow:var(--nav-shadow); 
+        transition: background var(--transition), backdrop-filter var(--transition);
+    }
+    body.dark-mode nav {
+        background: var(--nav-bg); 
+        backdrop-filter: blur(4px);
+    }
+
     .nav-wrap{
         max-width:var(--max-width);
         margin:0 auto;
@@ -75,17 +88,16 @@
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus toggle mygtukas - NUSTATYMAI SU DARK MODE PATAISYMU */
+    /* Hamburger mygtukas - VIOLETINĖ SPALVA */
     .mobile-toggle { 
-        color: #000 !important; /* JUODA SPALVA (light mode) */
-        font-size: 1.2rem; 
-        display: none !important;
+        color: var(--amethyst-700) !important; /* Tamsiai violetinė */
+        font-size: 1.4rem; 
+        display: none; /* Leidžiame media query rodyti/slėpti */
         padding: 0.5rem; 
     } 
 
-    /* Dark Mode taisymas */
     body.dark-mode .mobile-toggle {
-        color: var(--gold) !important; /* Dark Mode režime ji vėl taps auksinė */
+        color: var(--gold) !important; /* Dark Mode režime ji auksinė */
     }
 
     /* RADIKALIAI PAKEISTAS MOBILE MENIU STILIUS */
@@ -123,23 +135,22 @@
     
     /* MEDIA QUERIES (RESPONSIVE) */
     @media(min-width:769px) { 
-        /* Desktop: paslepiame mobile elementus */
-        .mobile-toggle { display: none !important; } 
+        .mobile-toggle { display: none; } 
     }
 
     @media(max-width:768px){
-        /* Mobile: rodom elementus */
         .nav-links{display:none;}
-        .mobile-toggle { display: block !important; } 
+        .mobile-toggle { display: block; } 
         #darkToggle { display: none; } 
         
-        /* HERO SECTIONS STILIAI */
+        /* Hero Sekcija: MAŽESNIS AUKŠTIS IR PADDING */
         .hero { 
-          min-height: 50vh; 
-          padding: 2rem 0.5rem; 
+          min-height: 35vh; /* Mažiau tuščios erdvės */
+          padding: 2rem 1rem; 
         }
         
         .hero .ctas { 
+            margin-top: 1.5rem; /* Sumažiname tarpus */
             flex-direction: column; 
             gap: 0.75rem; 
             width: 100%; 
@@ -159,32 +170,42 @@
         .purchase-step p { word-wrap: break-word; }
     }
     
+    /* Hero Sekcija - NUOTRAUKA + GRADIENTAS */
+    .hero{
+        min-height:70vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        color:var(--light);
+        padding:3.5rem 1rem;
+        
+        background: 
+            linear-gradient(135deg, rgba(15, 0, 24, 0.75), rgba(60, 36, 89, 0.65)), /* Užtemdantis sluoksnis */
+            url('https://images.unsplash.com/photo-1549484306-03a890a5015b?q=80&w=1974&auto=format&fit=crop') no-repeat center/cover;
+    }
+
     /* HERO ir ANTRAŠČIŲ STILIAI (NAUDOJANT CLAMP()) */
-    
-    /* Hero antraštė (kurios nebeturi, bet paliekame stilių, jei ateityje prireiks) */
     .hero h1 {
         font-family:'Cormorant Garamond',serif;
         font-weight:300;
-        /* CLAMP: min 1.3rem, ideal 5vw, max 3rem */
         font-size: clamp(1.3rem, 5vw, 3rem); 
         line-height: 1.1;
         letter-spacing: 0.05em;
     }
     
-    /* Pagrindinė pastraipa Hero sekcijoje (kad tilptų) */
+    .hero h1 .dot{color:var(--gold);}
+    
     .hero p.lead {
-        /* CLAMP: min 0.8rem, ideal 2.5vw, max 1.2rem */
         font-size: clamp(0.8rem, 2.5vw, 1.2rem);
         margin-top:1rem;
         font-style:italic;
-        color:rgba(255,255,255,.92);
+        color:rgba(255,255,255,.92); /* Balta/subtiliai permatoma spalva, gerai matoma ant tamsinto fono */
     }
     
-    /* Sekcijos antraštės (kad tilptų) */
     .section-title {
         font-family:'Cormorant Garamond',serif;
         font-weight:700;
-        /* CLAMP: min 1.6rem, ideal 4vw, max 2rem */
         font-size: clamp(1.6rem, 4vw, 2rem); 
         color:var(--heading-color);
         text-align:center;
@@ -193,8 +214,6 @@
         transition: color var(--transition);
     }
     
-    /* LIKĘ HERO STILIAI */
-    .hero h1 .dot{color:var(--gold);}
     .hero .ctas{margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
     .btn-primary{background:var(--gold);color:var(--dark);padding:.8rem 1.5rem;border-radius:3px;font-weight:700;box-shadow:0 8px 20px rgba(212,175,55,.3);transition:transform var(--transition),box-shadow var(--transition), background var(--transition);}
     .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(212,175,55,.45);background:#FFD700;}
@@ -272,7 +291,6 @@
 
     /* Facebook */
     .fb-section{padding:3.5rem 0;background:linear-gradient(180deg,#fbfbfc,#fff);}
-    /* FB Wrap dabar kontroliuoja max ploti, kad būtų responsive */
     .fb-wrap{max-width:520px;margin:0 auto;text-align:center;} 
     .fb-note{color:#444;margin-bottom:1rem;}
     .fb-page-responsive{max-width:100%;overflow:hidden;display:flex;justify-content:center;}
@@ -538,9 +556,8 @@
 
       darkToggle?.addEventListener('click', () => setMode(!body.classList.contains('dark-mode')));
       
-      // Papildomai patikriname, ar darkToggleMobile egzistuoja, kad išvengtume klaidų
       darkToggleMobile?.addEventListener('click', (e) => {
-        e.preventDefault(); // Išsaugome nuorodos elgesį
+        e.preventDefault(); 
         setMode(!body.classList.contains('dark-mode'));
       });
 
@@ -550,7 +567,6 @@
 
       mobileToggle?.addEventListener('click', () => {
           const isMenuOpen = mobileMenu.classList.toggle('open');
-          // Keičiame hamburgerio ikoną į "X" ir atgal
           mobileToggle.querySelector('i').classList.toggle('fa-bars', !isMenuOpen);
           mobileToggle.querySelector('i').classList.toggle('fa-times', isMenuOpen);
       });
@@ -560,7 +576,6 @@
         link.addEventListener('click', () => {
             if(link.id !== 'darkToggleMobile' && mobileToggle) {
                 mobileMenu.classList.remove('open');
-                // Atstatome hamburgerio ikoną po uždarymo
                 mobileToggle.querySelector('i').classList.remove('fa-times');
                 mobileToggle.querySelector('i').classList.add('fa-bars');
             }
