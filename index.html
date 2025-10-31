@@ -33,6 +33,7 @@
       --nav-bg: var(--light);
       --nav-shadow: 0 2px 10px rgba(0,0,0,.05);
       --toggle-icon: var(--amethyst-700);
+      --telegram-blue: #0088CC; /* Nauja spalva */
     }
     html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text-color);background:var(--bg-color);scroll-behavior:smooth; overflow-x:hidden;}
     a{color:inherit;text-decoration:none;}
@@ -97,6 +98,25 @@
     .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(212,175,55,.45);background:#FFD700;}
     .btn-ghost{border:1px solid rgba(212,175,55,.5);color:var(--gold);padding:.75rem 1.35rem;border-radius:3px;font-weight:600;transition:background var(--transition),color var(--transition);}
     .btn-ghost:hover{background:rgba(212,175,55,.1);color:#fff;border-color:var(--gold);}
+    
+    /* Naujas Telegram CTA stilius */
+    .btn-telegram {
+        background: var(--telegram-blue);
+        color: var(--light);
+        padding:.8rem 1.5rem;
+        border-radius:3px;
+        font-weight:700;
+        box-shadow:0 8px 20px rgba(0, 136, 204, 0.3);
+        transition:transform var(--transition),box-shadow var(--transition), background var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .btn-telegram:hover {
+        transform:translateY(-3px);
+        box-shadow:0 16px 36px rgba(0, 136, 204, 0.45);
+        background: #00A3FF;
+    }
 
     /* Sections */
     section{padding:5rem 0;background:var(--bg-color); transition: background var(--transition);}
@@ -125,54 +145,28 @@
     
     .section-light-bg{background-color: var(--section-bg-light); transition: background var(--transition);}
     
-    /* Produktų/Astro Tinklelis */
-    .grid-3 {
-        max-width:1100px;
-        margin:0 auto;
+    /* Telegram pirkimo tinklelis (PATAISYTA LOGIKA) */
+    .purchase-steps-grid {
+        max-width:1000px;
+        margin:3rem auto 0;
         display:grid;
         grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-        gap:1.5rem;
+        gap:2rem;
+        text-align:center;
     }
-
-    /* Produktų kortelės (NAUJAS STILIUS) */
-    .product-card {
-        background:var(--card-bg);
-        border-radius:6px;
-        box-shadow:0 8px 24px rgba(0,0,0,.05);
-        overflow:hidden;
-        transition:transform .3s ease;
+    .purchase-step i {
+        font-size:3rem;
+        color:var(--telegram-blue);
+        margin-bottom:1rem;
     }
-    .product-card:hover {
-        transform:translateY(-5px);
-        box-shadow:0 15px 40px rgba(0,0,0,.15);
-    }
-    .product-img {
-        height:250px;
-        background-color:var(--section-bg-light);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        overflow:hidden;
-    }
-    .product-img img {
-        width:100%;
-        height:100%;
-        object-fit:cover;
-    }
-    .product-content { padding:1.5rem; text-align:center;}
-    .product-content h4 {
+    .purchase-step h4 {
         font-family:'Cormorant Garamond',serif;
-        font-size:1.5rem;
+        font-size:1.4rem;
         color:var(--heading-color);
         margin-bottom:0.5rem;
     }
-    .product-content .price {
-        font-weight:700;
-        color:var(--gold);
-        font-size:1.2rem;
-        display:block;
-        margin-bottom:1rem;
-    }
+    .purchase-step:nth-child(1) i { color: var(--amethyst-700); }
+    .purchase-step:nth-child(3) i { color: var(--gold); }
 
 
     /* Facebook */
@@ -189,6 +183,14 @@
     .social-inline{display:flex;gap:.75rem;justify-content:center;margin-top:1rem;}
     .social-inline a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:rgba(212,175,55,.2);color:var(--light);border:1px solid var(--gold);font-size:1.3rem;transition:transform var(--transition);animation:slowGlow 4s ease-in-out infinite;}
     .social-inline a:hover{transform:translateY(-5px);background:rgba(212,175,55,.3);color:var(--gold);}
+    .social-inline .telegram-icon {
+        background: rgba(0, 136, 204, 0.2); 
+        border: 1px solid var(--telegram-blue);
+    }
+    .social-inline .telegram-icon:hover {
+        background: rgba(0, 136, 204, 0.3);
+        color: var(--telegram-blue);
+    }
 
     .contact-row{margin-top:1.5rem;text-align:center;color:rgba(255,255,255,.75);font-weight:600}
     .small{font-size:.85rem;opacity:.9}
@@ -208,6 +210,9 @@
     body.dark-mode .fb-note {color: #ccc;}
     body.dark-mode .mobile-menu { border-top-color: rgba(255,255,255,.05); }
     body.dark-mode .mobile-menu a { border-bottom-color: rgba(255,255,255,.05); }
+    body.dark-mode .social-inline .telegram-icon:hover {
+        color: var(--telegram-blue);
+    }
   </style>
 </head>
 <body class="animate-fade-in">
@@ -217,7 +222,7 @@
       <div class="nav-logo">AMETISTAS.LT</div>
       <div class="nav-links">
         <a href="#apie-mus">Apie mus</a>
-        <a href="#produktai">Parduotuvė</a>
+        <a href="#pirkti-telegram">Pirkti akmenis</a>
         <a href="#astromineralogija">Konsultacijos</a>
         <a href="#kontaktai">Kontaktai</a>
       </div>
@@ -234,7 +239,7 @@
 
     <div id="mobileMenu" class="mobile-menu">
       <a href="#apie-mus">Apie mus</a>
-      <a href="#produktai">Parduotuvė</a>
+      <a href="#pirkti-telegram">Pirkti akmenis</a>
       <a href="#astromineralogija">Konsultacijos</a>
       <a href="#kontaktai">Kontaktai</a>
       <a href="#" id="darkToggleMobile">Perjungti temą <i class="fas fa-moon"></i></a>
@@ -247,64 +252,49 @@
         <h1 class="animate-fade-up" style="animation-delay:0.3s;">AMETISTAS<span class="dot">.</span>LT</h1>
         <p class="lead animate-fade-up" style="animation-delay:0.6s;font-family:'Cormorant Garamond',serif;font-style:italic;">Natūralūs Akmenys. Aura. Astromineralogija.</p>
         <div class="ctas animate-fade-up" style="animation-delay: 0.9s;">
-            <a class="btn-primary" href="#produktai">Atraskite akmenis!</a>
+            <a class="btn-telegram" href="#pirkti-telegram">
+                <i class="fab fa-telegram-plane"></i> Pirkti per Telegram
+            </a>
             <a class="btn-ghost" href="#astromineralogija">Gaukite konsultaciją</a>
         </div>
       </div>
     </section>
 
-    <section id="produktai" class="animate-fade-up" style="animation-delay:0.5s;">
+    <section id="pirkti-telegram" class="animate-fade-up section-light-bg" style="animation-delay:0.5s;">
         <div class="wrap">
-            <h2 class="section-title">MŪSŲ AKMENYS</h2>
-            <p class="lead" style="margin-bottom:3rem;">Rinktinė kristalų kolekcija. Visi akmenys yra aukščiausios kokybės, energetiškai išvalyti ir paruošti tarnauti Jums.</p>
+            <h2 class="section-title">KAIP ĮSIGYTI AKMENIS?</h2>
+            <p class="lead" style="margin-bottom:3rem;">Akmenys parduodami per mūsų ekskliuzyvinį Telegram kanalą. Čia rasite ribotos kolekcijos pavyzdžius ir gausite asmeninę konsultaciją!</p>
             
-            <div class="grid-3">
+            <div class="purchase-steps-grid">
                 
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1547844280-5a3d463e2646?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Natūralus Ametisto drūza">
-                    </div>
-                    <div class="product-content">
-                        <h4>Ametisto Drūza Premium</h4>
-                        <p class="small" style="margin-bottom:1rem; opacity:.7;">Ramina, valo energiją, gerina miegą.</p>
-                        <span class="price">29.99 €</span>
-                        <a class="btn-primary" href="#" style="width:100%; display:block; padding:.6rem;">Į Krepšelį</a>
-                    </div>
+                <div class="purchase-step">
+                    <i class="fas fa-gem"></i>
+                    <h4>1. Atraskite akmenis</h4>
+                    <p style="color:var(--text-color)">Prisijunkite prie mūsų Telegram kanalo, kur talpinamos naujausios aukštos kokybės akmenų nuotraukos, kaina ir aprašymas.</p>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1596205739810-b997931f016d?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rožinio kvarco papuošalas">
-                    </div>
-                    <div class="product-content">
-                        <h4>Rožinis Kvarcas (Širdies)</h4>
-                        <p class="small" style="margin-bottom:1rem; opacity:.7;">Meilė, atleidimas, emocinis gijimas.</p>
-                        <span class="price">18.50 €</span>
-                        <a class="btn-primary" href="#" style="width:100%; display:block; padding:.6rem;">Į Krepšelį</a>
-                    </div>
+                <div class="purchase-step">
+                    <i class="fab fa-telegram-plane"></i>
+                    <h4>2. Rezervuokite</h4>
+                    <p style="color:var(--text-color)">Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriams tiesiai Telegram platformoje. Viskas paprasta ir greita!</p>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1627993074811-9e77ff39031c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Citrino pavyzdys">
-                    </div>
-                    <div class="product-content">
-                        <h4>Natūralus Citrinas</h4>
-                        <p class="small" style="margin-bottom:1rem; opacity:.7;">Pinigai, sėkmė, gausos pritraukimas.</p>
-                        <span class="price">35.00 €</span>
-                        <a class="btn-primary" href="#" style="width:100%; display:block; padding:.6rem;">Į Krepšelį</a>
-                    </div>
+                <div class="purchase-step">
+                    <i class="fas fa-gift"></i>
+                    <h4>3. Gaukit siuntą</h4>
+                    <p style="color:var(--text-color)">Išsiųsime akmenį per 1-2 d.d. Visus akmenis energetiškai išvalome ir paruošiame Reiki pagalba, kad jie pasiektų Jus pilnai aktyvuoti.</p>
                 </div>
-
             </div>
             
             <div style="text-align:center; margin-top:3.5rem;">
-                <a class="btn-ghost" href="#" style="color:var(--amethyst-700); border-color:var(--amethyst-700);">Peržiūrėti visą asortimentą</a>
+                <a class="btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
+                    <i class="fab fa-telegram-plane"></i> PRISIJUNGTI PRIE KANALO IR PIRKTI
+                </a>
             </div>
         </div>
     </section>
-
-    <section id="apie-mus" class="section-light-bg animate-fade-up" style="animation-delay:0.7s;">
+    
+    <section id="apie-mus" class="animate-fade-up" style="animation-delay:0.7s;">
       <div class="wrap about-grid">
         <div>
           <h2 class="section-title">APIE MUS IR MŪSŲ VIZIJA</h2>
@@ -326,12 +316,12 @@
       </div>
     </section>
 
-    <section id="astromineralogija" class="animate-fade-up" style="animation-delay:0.9s;">
+    <section id="astromineralogija" class="section-light-bg animate-fade-up" style="animation-delay:0.9s;">
       <div class="wrap">
         <h2 class="section-title">ASTROMINERALOGINĖS KONSULTACIJOS</h2>
         <p class="lead" style="margin-bottom:2rem;">Individuali konsultacija, padedanti atrasti Jūsų sielos akmenis. Tai ne tik parinkimas pagal horoskopą, bet ir gili energetinė diagnostika.</p>
         
-        <div class="grid-3">
+        <div class="purchase-steps-grid" style="margin-top:0;">
           <div class="feature-card">
             <h3 style="margin:0 0 .5rem;font-weight:700;color:var(--heading-color);font-family:'Cormorant Garamond',serif;font-size:1.4rem;">Individualus Akmenų Žemėlapis</h3>
             <p style="margin:0;color:var(--text-color)">Sudarysime Jums unikalų akmenų žemėlapį pagal <strong>gimimo datą ir laiką</strong>. Tiksliai sužinosite, kokie mineralai stiprina Jūsų silpnąsias vietas ir skatina sėkmę.</p>
@@ -353,7 +343,7 @@
       </div>
     </section>
     
-    <section id="pristatymas" class="section-light-bg animate-fade-up" style="animation-delay:1.1s; padding: 3rem 0;">
+    <section id="pristatymas" class="animate-fade-up" style="animation-delay:1.1s; padding: 3rem 0;">
       <div class="wrap">
         <h2 class="section-title">SAUGUS PRISTATYMAS</h2>
         <div class="feature-card" style="max-width:700px; margin:0 auto; border-left:3px solid var(--amethyst-700);">
@@ -392,7 +382,7 @@
       </h3>
       <div class="footer-nav-links">
         <a href="#apie-mus" class="small">Apie mus</a>
-        <a href="#produktai" class="small">Parduotuvė</a>
+        <a href="#pirkti-telegram" class="small">Pirkti akmenis</a>
         <a href="#astromineralogija" class="small">Konsultacijos</a>
         <a href="https://www.instagram.com/ametistaslt" target="_blank" class="small">Instagram</a>
       </div>
@@ -401,7 +391,7 @@
       </div>
       <div class="social-inline" aria-hidden="false">
         <a href="https://www.facebook.com/ametistaslt" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram" class="telegram-icon"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://www.instagram.com/ametistaslt" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
       <div class="contact-row" style="margin-top:1.5rem;">
@@ -459,22 +449,21 @@
         });
       }
 
-      // Mobile Menu (PATAISYTA LOGIKA)
+      // Mobile Menu 
       const mobileToggle = document.getElementById('mobileToggle');
       const mobileMenu = document.getElementById('mobileMenu');
       const mobileLinks = mobileMenu.querySelectorAll('a');
 
       mobileToggle.addEventListener('click', () => {
-        // Naudojame klasę, o ne tiesioginį 'display' keitimą
         mobileMenu.classList.toggle('open'); 
+        // Hamburger keičiasi į 'X'
         mobileToggle.querySelector('i').classList.toggle('fa-bars');
-        mobileToggle.querySelector('i').classList.toggle('fa-times'); // Galima naudoti X uždarymui
+        mobileToggle.querySelector('i').classList.toggle('fa-times');
       });
       
       // Uždaryti meniu paspaudus nuorodą
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Paliekam atidarytą, jei tai "dark mode" mygtukas
             if(link.id !== 'darkToggleMobile') {
                 mobileMenu.classList.remove('open');
                 mobileToggle.querySelector('i').classList.add('fa-bars');
