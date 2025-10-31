@@ -1,117 +1,137 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ametistas.lt – Kristalai ir Amuletai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset & base */
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-    body { line-height: 1.6; color: #333; background: #fafafa; }
-    a { color: inherit; text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ametistas.lt – Kristalai ir Amuletai</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background: #fafafa; }
+a { text-decoration: none; color: inherit; }
 
-    /* Container */
-    .container { width: 90%; max-width: 1200px; margin: auto; }
+/* Container */
+.container { width: 90%; max-width: 1200px; margin: auto; }
 
-    /* Header */
-    header { background: #6b3fa0; color: #fff; padding: 2rem 0; text-align: center; }
-    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.2rem; }
+/* Header */
+header { background: linear-gradient(135deg, #7b4fc7, #a37fdc); color: #fff; padding: 2rem 0; text-align: center; }
+header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+header p { font-size: 1.2rem; }
+nav { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+nav a { background: #fff; color: #7b4fc7; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; transition: 0.3s; }
+nav a:hover { background: #f1e0ff; transform: translateY(-2px); }
 
-    /* Navigation (Social links) */
-    nav { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; }
-    nav a { background: #fff; color: #6b3fa0; padding: 0.5rem 1rem; border-radius: 5px; font-weight: 600; transition: 0.3s; }
-    nav a:hover { background: #f1e0ff; }
+/* Hero */
+.hero { display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: center; padding: 4rem 0; }
+.hero img { width: 100%; max-width: 500px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); cursor: pointer; transition: 0.3s; }
+.hero img:hover { transform: scale(1.05); }
 
-    /* Hero Section */
-    .hero { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; padding: 4rem 0; text-align: center; }
-    .hero img { width: 100%; max-width: 500px; border-radius: 10px; margin: auto; }
-    .hero h2 { font-size: 2rem; margin-bottom: 1rem; color: #6b3fa0; }
+/* Products Grid */
+.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 4rem 0; }
+.product { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+.product:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.15); }
+.product img { width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: 0.3s; }
+.product img:hover { transform: scale(1.05); }
+.product .info { padding: 1rem; text-align: center; }
+.product .info h3 { margin-bottom: 0.5rem; color: #7b4fc7; font-size: 1.2rem; }
+.product .info a { display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(135deg, #7b4fc7, #a37fdc); color: #fff; border-radius: 8px; font-weight: 600; transition: 0.3s; }
+.product .info a:hover { background: linear-gradient(135deg, #a37fdc, #7b4fc7); transform: translateY(-2px); }
 
-    /* Products Grid */
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 4rem 0; }
-    .product { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
-    .product:hover { transform: translateY(-5px); }
-    .product img { width: 100%; height: 250px; object-fit: cover; }
-    .product .info { padding: 1rem; text-align: center; }
-    .product .info h3 { margin-bottom: 0.5rem; color: #6b3fa0; }
-    .product .info a { display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: #6b3fa0; color: #fff; border-radius: 5px; transition: 0.3s; }
-    .product .info a:hover { background: #5a3580; }
+/* Lightbox */
+#lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000; }
+#lightbox img { max-width:90%; max-height:90%; border-radius:15px; }
 
-    /* Social Feed Section */
-    .social-feed { margin: 4rem 0; text-align: center; }
-    .social-feed h2 { color: #6b3fa0; margin-bottom: 2rem; }
+/* Social Feed */
+.social-feed { text-align: center; margin: 4rem 0; }
+.social-feed h2 { color: #7b4fc7; margin-bottom: 2rem; }
+.feeds { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; justify-items: center; }
 
-    .feeds { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; justify-items: center; }
+/* Footer */
+footer { background: linear-gradient(135deg, #7b4fc7, #a37fdc); color: #fff; padding: 2rem 0; text-align: center; }
+footer p { margin-bottom: 0.5rem; }
+footer a { color: #fff; text-decoration: underline; transition: 0.3s; }
+footer a:hover { color: #f1e0ff; }
 
-    /* Footer */
-    footer { background: #6b3fa0; color: #fff; padding: 2rem 0; text-align: center; }
-    footer p { margin-bottom: 0.5rem; }
-    footer a { color: #fff; text-decoration: underline; }
+/* Responsive */
+@media(max-width:768px){ .hero { padding: 2rem 0; } }
 
-    /* Responsive tweaks */
-    @media(max-width:768px){ .hero { padding: 2rem 0; } }
-  </style>
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <h1>Ametistas.lt</h1>
-      <p>Kristalai, amuletai ir unikalūs ametisto akcentai jūsų namams ir sau.</p>
-      <nav>
-        <a href="https://www.instagram.com/ametistaslt" target="_blank">Instagram</a>
-        <a href="https://www.facebook.com/ametistaslt" target="_blank">Facebook</a>
-        <a href="https://t.me/ametistaslt" target="_blank">Telegram</a>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="container">
+    <h1>Ametistas.lt</h1>
+    <p>Kristalai, amuletai ir unikalūs ametisto akcentai jūsų namams ir sau.</p>
+    <nav>
+      <a href="https://www.instagram.com/ametistaslt" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/ametistaslt" target="_blank">Facebook</a>
+      <a href="https://t.me/ametistaslt" target="_blank">Telegram</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="hero container">
-    <h2>Unikalūs Ametisto Kristalai ir Amuletai</h2>
-    <img src="https://images.pexels.com/photos/772679/pexels-photo-772679.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto kristalas">
-  </section>
+<section class="hero container">
+  <h2>Unikalūs Ametisto Kristalai ir Amuletai</h2>
+  <img src="https://images.pexels.com/photos/772679/pexels-photo-772679.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto kristalas" onclick="openLightbox(this.src)">
+</section>
 
-  <section class="products container">
-    <div class="product">
-      <img src="https://images.pexels.com/photos/259172/pexels-photo-259172.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto akmuo">
-      <div class="info">
-        <h3>Natūralus Ametistas</h3>
-        <a href="https://www.instagram.com/ametistaslt" target="_blank">Pirkti per Instagram</a>
-      </div>
+<section class="products container">
+  <div class="product">
+    <img src="https://images.pexels.com/photos/259172/pexels-photo-259172.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto akmuo" onclick="openLightbox(this.src)">
+    <div class="info">
+      <h3>Natūralus Ametistas</h3>
+      <a href="https://www.instagram.com/ametistaslt" target="_blank">Pirkti per Instagram</a>
     </div>
-    <div class="product">
-      <img src="https://images.pexels.com/photos/1867426/pexels-photo-1867426.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto papuošalas">
-      <div class="info">
-        <h3>Ametisto Amuletas</h3>
-        <a href="https://www.instagram.com/ametistaslt" target="_blank">Pirkti per Instagram</a>
-      </div>
+  </div>
+  <div class="product">
+    <img src="https://images.pexels.com/photos/1867426/pexels-photo-1867426.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto papuošalas" onclick="openLightbox(this.src)">
+    <div class="info">
+      <h3>Ametisto Amuletas</h3>
+      <a href="https://www.instagram.com/ametistaslt" target="_blank">Pirkti per Instagram</a>
     </div>
-    <div class="product">
-      <img src="https://images.pexels.com/photos/1244207/pexels-photo-1244207.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto dekoracija">
-      <div class="info">
-        <h3>Interjero Kristalas</h3>
-        <a href="https://www.instagram.com/ametistaslt" target="_blank">Pirkti per Instagram</a>
-      </div>
+  </div>
+  <div class="product">
+    <img src="https://images.pexels.com/photos/1244207/pexels-photo-1244207.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Ametisto dekoracija" onclick="openLightbox(this.src)">
+    <div class="info">
+      <h3>Interjero Kristalas</h3>
+      <a href="https://www.instagram.com/ametistaslt" target="_blank">Pirkti per Instagram</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="social-feed container">
-    <h2>Mūsų Instagram Feed</h2>
-    <div class="feeds">
-      <iframe src="https://www.instagram.com/p/Cy1XxH3oXh1/embed" width="320" height="440" style="border:none;overflow:hidden;" allowfullscreen></iframe>
-      <iframe src="https://www.instagram.com/p/Cy1ZzL2oXh2/embed" width="320" height="440" style="border:none;overflow:hidden;" allowfullscreen></iframe>
-      <iframe src="https://www.instagram.com/p/Cy1YyJ1oXh3/embed" width="320" height="440" style="border:none;overflow:hidden;" allowfullscreen></iframe>
-    </div>
-  </section>
+<section class="social-feed container">
+  <h2>Mūsų Instagram Feed</h2>
+  <div class="feeds">
+    <iframe src="https://www.instagram.com/p/Cy1XxH3oXh1/embed" width="320" height="440" style="border:none;overflow:hidden;" allowfullscreen></iframe>
+    <iframe src="https://www.instagram.com/p/Cy1ZzL2oXh2/embed" width="320" height="440" style="border:none;overflow:hidden;" allowfullscreen></iframe>
+    <iframe src="https://www.instagram.com/p/Cy1YyJ1oXh3/embed" width="320" height="440" style="border:none;overflow:hidden;" allowfullscreen></iframe>
+  </div>
+</section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Ametistas.lt</p>
-      <p>Visos teisės saugomos. <a href="https://www.instagram.com/ametistaslt" target="_blank">Sekite mus Instagram</a></p>
-    </div>
-  </footer>
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img src="" alt="Lightbox">
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Ametistas.lt</p>
+    <p>Visos teisės saugomos. <a href="https://www.instagram.com/ametistaslt" target="_blank">Sekite mus Instagram</a></p>
+  </div>
+</footer>
+
+<script>
+function openLightbox(src){
+  const lightbox = document.getElementById('lightbox');
+  lightbox.style.display = 'flex';
+  lightbox.querySelector('img').src = src;
+}
+function closeLightbox(){
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
 
 </body>
 </html>
