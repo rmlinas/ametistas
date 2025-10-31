@@ -14,6 +14,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7Rsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    /* GLOBALUS PATAISYMAS MOBILIAJAM (BŪTINAS) */
+    *, *::before, *::after {
+        box-sizing: border-box; 
+    }
+    
     :root {
       --amethyst-900:#0F0018;
       --amethyst-700:#3C2459;
@@ -35,7 +40,7 @@
       --toggle-icon: var(--amethyst-700);
       --telegram-blue: #0088CC; 
     }
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text-color);background:var(--bg-color);scroll-behavior:smooth; **overflow-x:hidden;**} /* UŽTIKRINA, KAD NETELPANTIS TEKSTAS NESUSUKTŲ EKRANO */
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text-color);background:var(--bg-color);scroll-behavior:smooth; overflow-x:hidden;}
     a{color:inherit;text-decoration:none;}
     img{max-width:100%;display:block;height:auto;}
     h1,h2,h3,h4,h5,h6{margin:0;}
@@ -60,7 +65,7 @@
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus meniu (PATAISYTA) */
+    /* Mobilus meniu */
     .mobile-toggle { display: none; color: var(--heading-color); font-size: 1.2rem; }
     .mobile-menu {
         display: none;
@@ -68,7 +73,7 @@
         border-top: 1px solid rgba(0,0,0,.05);
         padding: 0 1rem 1rem 1rem;
         position: absolute;
-        width: calc(100% - 2rem);
+        width: 100%; /* IŠTAISYMAS: Visas plotis be skaičiavimo */
         left: 0;
         top: 100%;
         box-shadow: 0 5px 10px rgba(0,0,0,.05);
@@ -84,19 +89,33 @@
     
     @media(max-width:768px){
         .nav-links{display:none;}
-        /* Mobile menu aktyvinimas: */
         .mobile-toggle { display: block; }
-        /* Hero stilius mobiliesiems (šiek tiek mažesnis ir labiau kompaktiškas) */
+        
+        /* IŠTAISYMAS: CTA mygtukai mobiliajame (kad netiestų ekrano) */
         .hero { min-height: 50vh; padding: 2.5rem 1rem; }
         .hero h1 { font-size: 2.2rem; letter-spacing: 0.15em; }
         .hero p { font-size: 1rem; }
-        .hero .ctas { flex-direction: column; gap: 0.75rem; }
-        .btn-primary, .btn-telegram, .btn-ghost { width: 100%; box-sizing: border-box; text-align: center; }
+        
+        .hero .ctas { 
+            flex-direction: column; 
+            gap: 0.75rem; 
+            width: 100%; 
+            max-width: 350px; /* Apribojame, kad nebūtų per platūs */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Pataisome mygtukų stilių, kad jie neperžengtų ribų */
+        .btn-primary, .btn-telegram, .btn-ghost { 
+            width: 100%; 
+            /* box-sizing: border-box; - jau globaliai nustatyta */
+            text-align: center; 
+        }
+
         .section-title { font-size: 1.6rem; }
         .lead { font-size: 1rem; padding: 0 0.5rem; }
         .about-grid { grid-template-columns: 1fr; }
         .about-hero { order: -1; margin-top: 0!important; }
-        /* Apsaugos nuo teksto išlipimo mažuose ekranuose */
         .purchase-step p { word-wrap: break-word; }
     }
     
@@ -284,7 +303,8 @@
             <div class="purchase-steps-grid">
                 
                 <div class="purchase-step">
-                    <i class="fas fa-seedling"></i> <h4>1. Prisijunkite prie Bendruomenės</h4>
+                    <i class="fas fa-seedling"></i> 
+                    <h4>1. Prisijunkite prie Bendruomenės</h4>
                     <p style="color:var(--text-color)">Telegram kanale gausite vertingos edukacinės informacijos apie akmenų savybes, energiją bei naujų kolekcijų anonsus.</p>
                 </div>
 
@@ -295,7 +315,8 @@
                 </div>
 
                 <div class="purchase-step">
-                    <i class="fas fa-hand-holding-heart"></i> <h4>3. Užsisakykite Asmeniškai</h4>
+                    <i class="fas fa-hand-holding-heart"></i> 
+                    <h4>3. Užsisakykite Asmeniškai</h4>
                     <p style="color:var(--text-color)">Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriui Telegram platformoje. Visi klausimai atsakomi **tiesiogiai**.</p>
                 </div>
             </div>
@@ -469,10 +490,10 @@
       const mobileLinks = mobileMenu.querySelectorAll('a');
 
       mobileToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open'); 
-        // Hamburger keičiasi į 'X'
-        mobileToggle.querySelector('i').classList.toggle('fa-bars');
-        mobileToggle.querySelector('i').classList.toggle('fa-times');
+        // IŠTAISYMAS: Keičiamas mygtuko ikona
+        const isMenuOpen = mobileMenu.classList.toggle('open'); 
+        mobileToggle.querySelector('i').classList.toggle('fa-bars', !isMenuOpen);
+        mobileToggle.querySelector('i').classList.toggle('fa-times', isMenuOpen);
       });
       
       // Uždaryti meniu paspaudus nuorodą
