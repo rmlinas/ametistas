@@ -24,18 +24,17 @@
                         body: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        // Patobulinta aukso spalva ir tamsus fonas prabangesniam tonui
-                        gold: '#A58B5C', // Prislopintas, elegantiškas auksas
+                        gold: '#A58B5C',
                         dark: '#1A1A1A',
                         light: '#F5F5F5',
                         gray: '#555555',
                     },
                     letterSpacing: {
                         wide: '.15em',
-                        widest: '.3em', // Ryškesnis
+                        widest: '.3em',
                     },
                     animation: {
-                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
                     },
                 }
             }
@@ -46,7 +45,6 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .border-gold { border-color: #A58B5C; }
         .text-gold { color: #A58B5C; }
         .hover-gold:hover { color: #A58B5C; }
         .bg-dark { background-color: #1A1A1A; }
@@ -54,42 +52,62 @@
         .section-divider {
             height: 1px;
             background: linear-gradient(to right, transparent, #A58B5C, transparent);
-            margin: 5rem 0; /* Padidinta tarpas */
+            margin: 5rem 0;
         }
         .product-img {
             transition: transform 0.5s ease-in-out;
-            height: 300px; /* Šiek tiek didesnis aukštis */
+            height: 280px; /* Standartinis aukštis */
         }
         .product-img:hover {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
+        /* Mobile Adjustments */
         @media (max-width: 640px) {
-            .mobile-text-lg { font-size: 2.25rem !important; }
-            .mobile-btn { width: 100%; margin-bottom: 1rem; }
             .product-img { height: 200px !important; }
+            .mobile-text-h1 { font-size: 3rem !important; }
+        }
+        
+        /* Mobile Navigation Toggle (Hamburger Menu) */
+        #mobile-menu.hidden {
+            display: none;
         }
     </style>
 </head>
 <body class="bg-light text-dark font-body leading-relaxed">
 
-    <header class="sticky top-0 bg-light/95 backdrop-blur-sm z-50 shadow-sm px-6 py-4">
+    <header class="sticky top-0 bg-light/95 backdrop-blur-sm z-50 shadow-md px-4 sm:px-6 py-4">
         <nav class="container mx-auto flex justify-between items-center max-w-7xl">
-            <a href="#" class="text-xl font-heading font-bold tracking-widest text-dark hover-gold transition-colors">
+            <a href="#" class="text-2xl font-heading font-bold tracking-widest text-dark hover-gold transition-colors">
                 AMETISTAS<span class="text-gold">.</span>LT
             </a>
-            <ul class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+            
+            <ul class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
                 <li><a href="#apie-mus" class="hover-gold transition-colors">Apie mus</a></li>
                 <li><a href="#katalogas" class="hover-gold transition-colors">Katalogas</a></li>
                 <li><a href="#astromineralogija" class="hover-gold transition-colors">Konsultacijos</a></li>
+                <li><a href="#instagram-feed" class="hover-gold transition-colors">Galerija</a></li>
                 <li><a href="#pristatymas" class="hover-gold transition-colors">Pristatymas</a></li>
-                <li><a href="#kontaktai" class="hover-gold transition-colors">Kontaktai</a></li>
             </ul>
+
+            <button id="mobile-menu-button" class="md:hidden text-dark focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <ul class="flex flex-col space-y-3 text-sm font-medium tracking-wide uppercase">
+                <li><a href="#apie-mus" class="block py-2 hover:bg-light/80 hover-gold transition-colors">Apie mus</a></li>
+                <li><a href="#katalogas" class="block py-2 hover:bg-light/80 hover-gold transition-colors">Katalogas</a></li>
+                <li><a href="#astromineralogija" class="block py-2 hover:bg-light/80 hover-gold transition-colors">Konsultacijos</a></li>
+                <li><a href="#instagram-feed" class="block py-2 hover:bg-light/80 hover-gold transition-colors">Galerija</a></li>
+                <li><a href="#pristatymas" class="block py-2 hover:bg-light/80 hover-gold transition-colors">Pristatymas</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="min-h-[85vh] flex items-center justify-center px-6 sm:px-8 md:px-16 py-20 bg-light">
+    <section class="min-h-[85vh] flex items-center justify-center px-6 py-20 bg-light">
         <div class="text-center max-w-6xl mx-auto animate-[fade-in_1.5s_ease-out_forwards]">
-            <h1 class="text-6xl sm:text-7xl md:text-[6rem] font-heading font-light tracking-[.5em] mb-4 mobile-text-lg uppercase opacity-0 animate-[fade-in_1.5s_0.2s_ease-out_forwards]">
+            <h1 class="text-5xl sm:text-7xl md:text-[6rem] font-heading font-light tracking-[.5em] mb-4 mobile-text-h1 uppercase opacity-0 animate-[fade-in_1.5s_0.2s_ease-out_forwards]">
                 <span class="text-gold">A</span>METISTAS<span class="text-gold">.</span>LT
             </h1>
             <p class="text-lg sm:text-xl md:text-3xl font-heading italic text-gray mb-10 max-w-4xl mx-auto leading-normal opacity-0 animate-[fade-in_1.5s_0.7s_ease-out_forwards]">
@@ -99,10 +117,10 @@
                 Atraskite unikalų mineralų, kristalų ir juvelyrinių dirbinių asortimentą. Tik **aukščiausia kokybė** ir **patikrinta kilmė** Jūsų ramybei ir energijai.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-6 sm:gap-10 opacity-0 animate-[fade-in_1.5s_1.3s_ease-out_forwards]">
-                <a href="#katalogas" class="mobile-btn bg-dark text-light border border-dark px-10 sm:px-14 py-4 text-sm font-medium tracking-widest hover:bg-gold hover:text-dark hover:border-gold transition-all duration-300">
+                <a href="#katalogas" class="w-full sm:w-auto bg-dark text-light border border-dark px-10 py-4 text-sm font-medium tracking-widest hover:bg-gold hover:text-dark hover:border-gold transition-all duration-300">
                     PERŽIŪRĖTI ASORTIMENTĄ
                 </a>
-                <a href="#astromineralogija" class="mobile-btn border border-gold text-gold px-10 sm:px-14 py-4 text-sm font-medium tracking-widest hover:bg-gold hover:text-dark transition-all duration-300">
+                <a href="#astromineralogija" class="w-full sm:w-auto border border-gold text-gold px-10 py-4 text-sm font-medium tracking-widest hover:bg-gold hover:text-dark transition-all duration-300">
                     ASTRO KONSULTACIJOS
                 </a>
             </div>
@@ -111,35 +129,27 @@
 
     <div class="section-divider mx-6 sm:mx-16"></div>
 
-    <section id="apie-mus" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-white">
+    <section id="apie-mus" class="py-20 sm:py-28 px-6 bg-white">
         <div class="container mx-auto max-w-7xl">
             <h2 class="text-4xl sm:text-5xl font-heading text-center mb-16 tracking-widest">MŪSŲ VERTYBĖS</h2>
-            
             <p class="text-lg leading-loose text-gray text-center max-w-4xl mx-auto mb-16">
                 Ametistas.lt – tai aistros natūraliems akmenims ir mineralams išraiška. Mūsų misija – tapti Jūsų patikimu ir lojaliu kristalų oazės šaltiniu Baltijos šalyse, siūlant tik kruopščiai atrinktą kokybę.
             </p>
-
             <div class="grid md:grid-cols-3 gap-12 text-center">
                 <div class="p-6 bg-light rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <span class="text-5xl text-gold mb-4 inline-block">✨</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">TIK AUKŠČIAUSIA KOKYBĖ</h3>
-                    <p class="text-sm text-gray leading-relaxed">
-                        Bendradarbiaujame tik su **patikimais Vakarų Europos tiekėjais**, turinčiais ilgametę patirtį. Atsisakome neaiškios kilmės Azijos pardavėjų, garantuodami Jums originalumą.
-                    </p>
+                    <p class="text-sm text-gray leading-relaxed">Bendradarbiaujame tik su **patikimais Vakarų Europos tiekėjais**. Garantuojame Jums originalumą ir autentiškumą.</p>
                 </div>
                 <div class="p-6 bg-light rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <span class="text-5xl text-gold mb-4 inline-block">🔮</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">ASORTIMENTO ĮVAIROVĖ</h3>
-                    <p class="text-sm text-gray leading-relaxed">
-                        Platus mineralų, drūzų, kristalų ir papuošalų asortimentas. Kiekvienas akmuo – unikalus, atitinkantis aukščiausius estetikos ir energetikos standartus.
-                    </p>
+                    <p class="text-sm text-gray leading-relaxed">Platus mineralų, drūzų, kristalų ir papuošalų asortimentas. Kiekvienas akmuo – unikalus.</p>
                 </div>
                 <div class="p-6 bg-light rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <span class="text-5xl text-gold mb-4 inline-block">🤝</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">KLIENTAS – PIRMAS</h3>
-                    <p class="text-sm text-gray leading-relaxed">
-                        Parduodame prekes tokias, kokias norėtume patys gauti. Mums svarbu ne kiekybė, o **kokybė** ir Jūsų pasitenkinimas pirkiniu bei teikiama nauda.
-                    </p>
+                    <p class="text-sm text-gray leading-relaxed">Mums svarbu ne kiekybė, o **kokybė** ir Jūsų pasitenkinimas pirkiniu bei teikiama akmenų nauda.</p>
                 </div>
             </div>
         </div>
@@ -147,7 +157,7 @@
 
     <div class="section-divider mx-6 sm:mx-16"></div>
 
-    <section id="astromineralogija" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-light">
+    <section id="astromineralogija" class="py-20 sm:py-28 px-6 bg-light">
         <div class="container mx-auto max-w-5xl text-center">
             <h2 class="text-4xl sm:text-5xl font-heading mb-16 tracking-widest">ASTROMINERALOGINĖS KONSULTACIJOS</h2>
             
@@ -155,21 +165,19 @@
                 <div class="p-6 bg-white rounded-xl shadow-xl">
                     <h3 class="text-2xl font-heading text-gold mb-4">Atraskite Savo Akmenį</h3>
                     <p class="text-base text-gray mb-6 leading-loose">
-                        Akmuo, suderintas su Jūsų asmenine astrologine žvaigždė. Mūsų asmeninės astromineraloginės konsultacijos padeda rasti kristalą, kuris geriausiai atspindi ir stiprina Jūsų unikalų potencialą.
+                        Akmuo, suderintas su Jūsų asmenine astrologine žvaigždė. Raskite kristalą, kuris geriausiai stiprina Jūsų unikalų potencialą.
                     </p>
                     <ul class="list-none space-y-3 text-dark font-medium">
                         <li><span class="text-gold mr-2">✓</span> **Asmeninis Žemėlapis:** Parengsime Jums unikalų akmenų žemėlapį pagal gimimo datą ir laiką.</li>
-                        <li><span class="text-gold mr-2">✓</span> **Individualios Rekomendacijos:** Patarsime, kokie akmenys geriausiai atliepia Jūsų poreikius ir siekius.</li>
-                        <li><span class="text-gold mr-2">✓</span> **Naudojimo Gairės:** Išmoksite taisyklingai naudoti ir prižiūrėti savo akmenis, kad jie atskleistų visas savo galias.</li>
+                        <li><span class="text-gold mr-2">✓</span> **Individualios Rekomendacijos:** Patarsime, kokie akmenys geriausiai atliepia Jūsų poreikius.</li>
+                        <li><span class="text-gold mr-2">✓</span> **Naudojimo Gairės:** Išmoksite taisyklingai naudoti ir prižiūrėti savo akmenis.</li>
                     </ul>
                 </div>
-                <div>
-                    
-                    <div class="text-center mt-8">
-                        <a href="https://t.me/ametistaslt" class="border border-gold text-gold px-10 py-4 text-sm font-medium tracking-widest hover:bg-gold hover:text-dark transition-all duration-300 inline-block">
-                            UŽSISAKYTI KONSULTACIJĄ <span class="ml-2">→</span>
-                        </a>
-                    </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1547844111-c9179d67d710?fit=crop&w=600&q=80" alt="Astromineralogijos konsultacija" class="rounded-xl shadow-xl w-full h-auto object-cover md:h-96" loading="lazy">
+                    <a href="https://t.me/ametistaslt" class="mt-8 border border-gold text-gold px-10 py-4 text-sm font-medium tracking-widest hover:bg-gold hover:text-dark transition-all duration-300 inline-block">
+                        UŽSISAKYTI KONSULTACIJĄ <span class="ml-2">→</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -177,131 +185,364 @@
 
     <div class="section-divider mx-6 sm:mx-16"></div>
 
-    <section id="katalogas" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-white">
+    <section id="katalogas" class="py-20 sm:py-28 px-6 bg-white">
         <div class="container mx-auto max-w-7xl">
             <h2 class="text-4xl sm:text-5xl font-heading text-center mb-16 tracking-widest">MŪSŲ ASORTIMENTAS</h2>
-            <div class="text-center mb-12">
-                <p class="text-lg text-gray italic">Rekomenduojame: Ametisto drūzos ir geodai (rasti gausos akmenys).</p>
-            </div>
             
-            <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-                
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+
                 <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
                     <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1549487532-6019313a2168?fit=crop&w=600&q=80" alt="Ametisto Geodas" class="w-full product-img object-cover">
+                        <img src="https://images.unsplash.com/photo-1549487532-6019313a2168?fit=crop&w=600&q=80&h=280" alt="Ametisto Geodas" class="w-full product-img object-cover" loading="lazy">
                     </div>
                     <h3 class="text-lg font-heading mb-1 font-semibold">Ametisto Geodas "Aura"</h3>
                     <p class="text-sm text-gray mb-2">~1.5 kg • Sertifikuota kokybė</p>
                     <p class="text-3xl font-heading text-gold mb-3">€299</p>
-                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">UŽSISAKYTI <span class="ml-1">→</span></a>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">UŽSISAKYTI →</a>
                 </article>
 
                 <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
                     <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1596765796695-177b212f451b?fit=crop&w=600&q=80" alt="Rožinio Kvarco Apyrankė" class="w-full product-img object-cover">
+                        <img src="https://images.unsplash.com/photo-1596765796695-177b212f451b?fit=crop&w=600&q=80&h=280" alt="Rožinio Kvarco Apyrankė" class="w-full product-img object-cover" loading="lazy">
                     </div>
                     <h3 class="text-lg font-heading mb-1 font-semibold">Rožinio Kvarco Apyrankė</h3>
                     <p class="text-sm text-gray mb-2">8mm karoliukai • Meilė ir ramybė</p>
                     <p class="text-3xl font-heading text-gold mb-3">€75</p>
-                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM <span class="ml-1">→</span></a>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
                 </article>
 
                 <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
                     <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?fit=crop&w=600&q=80" alt="Citerino Piramidė" class="w-full product-img object-cover">
+                        <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?fit=crop&w=600&q=80&h=280" alt="Citrinino Piramidė" class="w-full product-img object-cover" loading="lazy">
                     </div>
                     <h3 class="text-lg font-heading mb-1 font-semibold">Citrinino Piramidė</h3>
                     <p class="text-sm text-gray mb-2">5 cm • Finansinė sėkmė</p>
                     <p class="text-3xl font-heading text-gold mb-3">€119</p>
-                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK <span class="ml-1">→</span></a>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
                 </article>
 
                 <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
                     <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80" alt="Kalnų Krištolo Drūza" class="w-full product-img object-cover">
+                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80&h=280" alt="Kalnų Krištolo Drūza" class="w-full product-img object-cover" loading="lazy">
                     </div>
                     <h3 class="text-lg font-heading mb-1 font-semibold">Kalnų Krištolo Drūza</h3>
-                    <p class="text-sm text-gray mb-2">500 g • Visų akmenų valymui</p>
+                    <p class="text-sm text-gray mb-2">500 g • Akmenų valymui</p>
                     <p class="text-3xl font-heading text-gold mb-3">€89</p>
-                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">UŽSISAKYTI <span class="ml-1">→</span></a>
-                </article>
-
-                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
-                    <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1596765796695-177b212f451b?fit=crop&w=600&q=80" alt="Selenito Lazdelė" class="w-full product-img object-cover">
-                    </div>
-                    <h3 class="text-lg font-heading mb-1 font-semibold">Selenito Lazdelė</h3>
-                    <p class="text-sm text-gray mb-2">20 cm • Energetinis valymas</p>
-                    <p class="text-3xl font-heading text-gold mb-3">€29</p>
-                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM <span class="ml-1">→</span></a>
-                </article>
-
-                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
-                    <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1616594039963-ae4a4e6c2b46?fit=crop&w=600&q=80" alt="Ametisto Pakabukas" class="w-full product-img object-cover">
-                    </div>
-                    <h3 class="text-lg font-heading mb-1 font-semibold">Ametisto Pakabukas</h3>
-                    <p class="text-sm text-gray mb-2">925 sidabras • Trečioji akis</p>
-                    <p class="text-3xl font-heading text-gold mb-3">€149</p>
-                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM <span class="ml-1">→</span></a>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">UŽSISAKYTI →</a>
                 </article>
                 
                 <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
                     <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80" alt="Tigro Akies Apyrankė" class="w-full product-img object-cover">
+                        <img src="https://images.unsplash.com/photo-1621215438883-7c157f123d57?fit=crop&w=600&q=80&h=280" alt="Selenito Lazdelė" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Selenito Lazdelė</h3>
+                    <p class="text-sm text-gray mb-2">20 cm • Energetinis valymas</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€29</p>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1616594039963-ae4a4e6c2b46?fit=crop&w=600&q=80&h=280" alt="Ametisto Pakabukas" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Ametisto Pakabukas</h3>
+                    <p class="text-sm text-gray mb-2">925 sidabras • Trečioji akis</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€149</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80&h=280" alt="Tigro Akies Apyrankė" class="w-full product-img object-cover" loading="lazy">
                     </div>
                     <h3 class="text-lg font-heading mb-1 font-semibold">Tigro Akies Apyrankė</h3>
                     <p class="text-sm text-gray mb-2">10mm karoliukai • Apsauga ir drąsa</p>
                     <p class="text-3xl font-heading text-gold mb-3">€55</p>
-                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK <span class="ml-1">→</span></a>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
                 </article>
-
+                
                 <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
                     <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?fit=crop&w=600&q=80" alt="Mėnulio Akmens Auskarai" class="w-full product-img object-cover">
+                        <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?fit=crop&w=600&q=80&h=280" alt="Mėnulio Akmens Auskarai" class="w-full product-img object-cover" loading="lazy">
                     </div>
                     <h3 class="text-lg font-heading mb-1 font-semibold">Mėnulio Akmens Auskarai</h3>
                     <p class="text-sm text-gray mb-2">925 sidabras • Moteriška energija</p>
                     <p class="text-3xl font-heading text-gold mb-3">€99</p>
-                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM <span class="ml-1">→</span></a>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?fit=crop&w=600&q=80&h=280" alt="Žaliasis Fluoritas" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Žaliasis Fluoritas</h3>
+                    <p class="text-sm text-gray mb-2">200 g • Mokymuisi ir koncentracijai</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€45</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
                 </article>
 
                 <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
                     <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?fit=crop&w=600&q=80" alt="Pradedančiojo Akmenų Rinkinys" class="w-full product-img object-cover">
+                        <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?fit=crop&w=600&q=80&h=280" alt="Hematito Akmenukai" class="w-full product-img object-cover" loading="lazy">
                     </div>
-                    <h3 class="text-lg font-heading mb-1 font-semibold">Rinkinys "Pradžia"</h3>
-                    <p class="text-sm text-gray mb-2">4 vnt. (Ametistas, Rožinis Kvarcas, Tigro Akis, Kalnų Krištolas)</p>
-                    <p class="text-3xl font-heading text-gold mb-3">€69</p>
-                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK <span class="ml-1">→</span></a>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Hematito Akmenukai</h3>
+                    <p class="text-sm text-gray mb-2">100 g • Įžeminimui ir stiprybei</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€19</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1629224329150-2596a0e8d3c6?fit=crop&w=600&q=80&h=280" alt="Ametisto Rutulys" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Ametisto Rutulys</h3>
+                    <p class="text-sm text-gray mb-2">8 cm skersmuo • Harmonija</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€199</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
                 </article>
 
-            </div>
-            <div class="text-center mt-16">
-                <a href="#katalogas" class="mobile-btn border border-dark px-10 sm:px-14 py-4 text-sm font-medium tracking-widest hover:bg-dark hover:text-light transition-all duration-300 inline-block">
-                    VISAS ASORTIMENTAS ČIA
-                </a>
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80&h=280" alt="Raudonosios Jaspio Lazdelė" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Raudonosios Jaspio Lazdelė</h3>
+                    <p class="text-sm text-gray mb-2">15 cm • Energinė apsauga</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€69</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1547844111-c9179d67d710?fit=crop&w=600&q=80&h=280" alt="Gintaro Pakabukas" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Gintaro Pakabukas</h3>
+                    <p class="text-sm text-gray mb-2">Natūralus Baltijos gintaras</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€159</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">UŽSISAKYTI →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?fit=crop&w=600&q=80&h=280" alt="Angelito Akmuo" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Angelito Akmuo</h3>
+                    <p class="text-sm text-gray mb-2">50 g • Ryšys su angelais</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€39</p>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1596765796695-177b212f451b?fit=crop&w=600&q=80&h=280" alt="Lazurito Vėrinys" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Lazurito Vėrinys</h3>
+                    <p class="text-sm text-gray mb-2">925 sidabras • Išmintis</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€179</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1629224329150-2596a0e8d3c6?fit=crop&w=600&q=80&h=280" alt="Juodojo Turmalino Drūza" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Juodojo Turmalino Drūza</h3>
+                    <p class="text-sm text-gray mb-2">400 g • Apsauga nuo neigiamos energijos</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€79</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80&h=280" alt="Avanturino Delno Akmuo" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Avanturino Delno Akmuo</h3>
+                    <p class="text-sm text-gray mb-2">80 g • Laimė ir optimizmas</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€25</p>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1549487532-6019313a2168?fit=crop&w=600&q=80&h=280" alt="Serpentino Statulėlė" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Serpentino Statulėlė</h3>
+                    <p class="text-sm text-gray mb-2">15 cm aukščio • Meditacija</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€129</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?fit=crop&w=600&q=80&h=280" alt="Ametisto Žiedas" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Ametisto Žiedas</h3>
+                    <p class="text-sm text-gray mb-2">925 sidabras • Dydis reguliuojamas</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€89</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1616594039963-ae4a4e6c2b46?fit=crop&w=600&q=80&h=280" alt="Rodonito Apyrankė" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Rodonito Apyrankė</h3>
+                    <p class="text-sm text-gray mb-2">12mm karoliukai • Emocinė pusiausvyra</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€65</p>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?fit=crop&w=600&q=80&h=280" alt="Karneolio Kristalas" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Karneolio Kristalas</h3>
+                    <p class="text-sm text-gray mb-2">120 g • Kreatyvumas ir drąsa</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€35</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1629224329150-2596a0e8d3c6?fit=crop&w=600&q=80&h=280" alt="Fluorito Apyrankė" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Fluorito Apyrankė</h3>
+                    <p class="text-sm text-gray mb-2">6mm karoliukai • Koncentracija</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€45</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80&h=280" alt="Obsidiano Akmuo" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Obsidiano Akmuo</h3>
+                    <p class="text-sm text-gray mb-2">100 g • Giliausia apsauga</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€29</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1549487532-6019313a2168?fit=crop&w=600&q=80&h=280" alt="Saulės Akmens Karoliai" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Saulės Akmens Karoliai</h3>
+                    <p class="text-sm text-gray mb-2">Natūralus akmuo • Pozityvumas</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€139</p>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1616594039963-ae4a4e6c2b46?fit=crop&w=600&q=80&h=280" alt="Akvamarino Auskarai" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Akvamarino Auskarai</h3>
+                    <p class="text-sm text-gray mb-2">925 sidabras • Ramus protas</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€95</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?fit=crop&w=600&q=80&h=280" alt="Agato Geodas" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Agato Geodas</h3>
+                    <p class="text-sm text-gray mb-2">~300 g • Balansas ir stabilumas</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€69</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?fit=crop&w=600&q=80&h=280" alt="Lepidolito Plokštė" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Lepidolito Plokštė</h3>
+                    <p class="text-sm text-gray mb-2">200 g • Nerimo malšinimas</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€55</p>
+                    <a href="https://instagram.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">INSTAGRAM →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1549487532-6019313a2168?fit=crop&w=600&q=80&h=280" alt="Labradorito Akmuo" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Labradorito Akmuo</h3>
+                    <p class="text-sm text-gray mb-2">150 g • Magija ir intuicija</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€49</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+                
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?fit=crop&w=600&q=80&h=280" alt="Upės Akmenų Rinkinys" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Upės Akmenų Rinkinys</h3>
+                    <p class="text-sm text-gray mb-2">10 vnt. • Raminantis poveikis</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€39</p>
+                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">TELEGRAM →</a>
+                </article>
+
+                <article class="group bg-light p-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?fit=crop&w=600&q=80&h=280" alt="Jodo Žiedas" class="w-full product-img object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-lg font-heading mb-1 font-semibold">Jodo Žiedas</h3>
+                    <p class="text-sm text-gray mb-2">925 sidabras • Elegancija</p>
+                    <p class="text-3xl font-heading text-gold mb-3">€115</p>
+                    <a href="https://facebook.com/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold transition-colors block mt-2">FACEBOOK →</a>
+                </article>
+                
             </div>
         </div>
     </section>
 
     <div class="section-divider mx-6 sm:mx-16"></div>
 
-    <section id="pristatymas" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-light">
+    <section id="instagram-feed" class="py-20 sm:py-28 px-6 bg-light">
+        <div class="container mx-auto max-w-7xl text-center">
+            <h2 class="text-4xl sm:text-5xl font-heading mb-8 tracking-widest">INSTAGRAM GALERIJA</h2>
+            <p class="text-lg text-gray italic mb-12">Iš arčiau susipažinkite su mūsų brangakmeniais!</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                <a href="https://instagram.com/ametistaslt" target="_blank" class="block overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1606936484282-9f59d3a8c4a5?w=300&h=300&fit=crop" alt="Instagram Post 1" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                </a>
+                <a href="https://instagram.com/ametistaslt" target="_blank" class="block overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1549487532-6019313a2168?w=300&h=300&fit=crop" alt="Instagram Post 2" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                </a>
+                <a href="https://instagram.com/ametistaslt" target="_blank" class="block overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1620640131942-67e3e0a1a2b2?w=300&h=300&fit=crop" alt="Instagram Post 3" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                </a>
+                <a href="https://instagram.com/ametistaslt" target="_blank" class="hidden lg:block overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1616594039963-ae4a4e6c2b46?w=300&h=300&fit=crop" alt="Instagram Post 4" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                </a>
+                <a href="https://instagram.com/ametistaslt" target="_blank" class="hidden md:block overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1588444837493-1f0b3d5b7e6f?w=300&h=300&fit=crop" alt="Instagram Post 5" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                </a>
+                <a href="https://instagram.com/ametistaslt" target="_blank" class="hidden lg:block overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1629224329150-2596a0e8d3c6?w=300&h=300&fit=crop" alt="Instagram Post 6" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                </a>
+            </div>
+
+            <a href="https://instagram.com/ametistaslt" class="mt-12 border border-dark px-10 py-4 text-sm font-medium tracking-widest hover:bg-dark hover:text-light transition-all duration-300 inline-block">
+                PERŽIŪRĖTI INSTAGRAM PASKYRĄ →
+            </a>
+        </div>
+    </section>
+
+    <div class="section-divider mx-6 sm:mx-16"></div>
+
+    <section id="pristatymas" class="py-20 sm:py-28 px-6 bg-light">
         <div class="container mx-auto max-w-5xl">
             <h2 class="text-4xl sm:text-5xl font-heading text-center mb-16 tracking-widest">PATOGUS PRISTATYMAS</h2>
-            <p class="text-lg leading-loose text-gray text-center mb-12">
-                Jūsų brangūs akmenys keliauja pas Jus greitai ir saugiai visose Baltijos šalyse (Lietuva, Latvija, Estija). Pasirinkite Jums patogiausią būdą:
-            </p>
             <div class="grid md:grid-cols-2 gap-10 mb-12">
                 <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-gold">
                     <h3 class="text-2xl font-heading mb-4 font-semibold flex items-center">
                         <span class="text-gold mr-3 text-3xl">📦</span> Pristatymas į Paštomatą
                     </h3>
                     <ul class="list-none space-y-3 text-gray text-sm">
-                        <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Lankstumas:** Atidenkite bet kuriuo paros metu iš artimiausio LP EXPRESS, Omniva ar DPD paštomato.</li>
                         <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Greitis:** Siunta Jus pasieks per **1-2 darbo dienas** Lietuvoje.</li>
-                        <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Ekonomiškumas:** Dažnai pats geriausias kainos ir greičio santykis.</li>
+                        <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Lankstumas:** Galite atsiimti bet kuriuo paros metu.</li>
+                        <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Tinklai:** LP EXPRESS, Omniva, DPD.</li>
                     </ul>
                 </div>
                 
@@ -311,64 +552,41 @@
                     </h3>
                     <ul class="list-none space-y-3 text-gray text-sm">
                         <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Patogumas:** Pristatymas tiesiai į namus ar darbovietę.</li>
-                        <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Sekimas:** Galimybė realiu laiku stebėti siuntos kelią internete.</li>
+                        <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Sekimas:** Galimybė realiu laiku stebėti siuntos kelią.</li>
                         <li class="flex items-start"><span class="mr-2 text-gold">✓</span> **Saugumas:** Užtikrintas siuntos saugumas ir pristatymas "į rankas".</li>
                     </ul>
                 </div>
             </div>
             <p class="text-center text-gray italic mt-8 text-sm">
-                Tikslus pristatymo mokestis ir data bus matomi atsiskaitymo metu.
+                Siunčiame visoje Baltijos šalių teritorijoje (Lietuva, Latvija, Estija).
             </p>
         </div>
     </section>
-
-    <div class="section-divider mx-6 sm:mx-16"></div>
-
-    <section id="kontaktai" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-dark text-light text-center">
-        <div class="container mx-auto max-w-5xl">
-            <h2 class="text-4xl sm:text-5xl font-heading mb-8 tracking-widest text-gold">SUSISIEKITE IR SEKITE MUS</h2>
-            <p class="text-base sm:text-lg font-light mb-12 leading-loose max-w-3xl mx-auto text-light/80">
-                Turite klausimų apie akmenų savybes ar Jums tinkamiausią pasirinkimą? Nedvejokite! Atsakome per 5 minutes darbo valandomis.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6 text-sm tracking-widest font-semibold">
-                <a href="https://instagram.com/ametistaslt" class="border border-gold text-gold px-8 py-3 hover:bg-gold hover:text-dark transition-all duration-300">INSTAGRAM</a>
-                <a href="https://t.me/ametistaslt" class="border border-gold text-gold px-8 py-3 hover:bg-gold hover:text-dark transition-all duration-300">TELEGRAM</a>
-                <a href="mailto:info@ametistas.lt" class="border border-gold text-gold px-8 py-3 hover:bg-gold hover:text-dark transition-all duration-300">EL. PAŠTAS</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 px-6 sm:px-8 bg-white">
-        <div class="container mx-auto max-w-7xl">
-            <h3 class="text-3xl font-heading text-center mb-10 tracking-widest">MŪSŲ BENDRAVIMO ERDVĖ</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="text-center">
-                    <h4 class="text-xl font-heading mb-4 text-dark">Instagram Naujienos</h4>
-                    <div class="max-w-md mx-auto">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/ametistaslt/" data-instgrm-version="14" style="max-width: 400px; width: 100%; margin: 0 auto;">
-                            <a href="https://www.instagram.com/ametistaslt/">@ametistaslt</a>
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <h4 class="text-xl font-heading mb-4 text-dark">Facebook Bendruomenė</h4>
-                    <div class="max-w-md mx-auto">
-                        <div class="fb-page" data-href="https://www.facebook.com/ametistaslt" data-tabs="timeline" data-width="400" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-                            <blockquote cite="https://www.facebook.com/ametistaslt" class="fb-xfbml-parse-ignore">
-                                <a href="https://www.facebook.com/ametistaslt">Ametistas LT</a>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <footer class="bg-dark text-light py-10 px-6 text-center text-xs tracking-widest">
-        <p>&copy; 2025 AMETISTAS.LT | INFO@AMETISTAS.LT</p>
-        <p class="mt-2 text-light/70">Visos teisės saugomos. Prekių kilmės ir kokybės garantas.</p>
+        <div class="container mx-auto max-w-5xl">
+            <h3 class="text-xl font-heading mb-4 tracking-widest text-gold">SUSISIEKITE</h3>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 text-sm tracking-widest font-semibold mb-6">
+                <a href="https://instagram.com/ametistaslt" class="hover-gold transition-all duration-300">INSTAGRAM</a>
+                <a href="https://t.me/ametistaslt" class="hover-gold transition-all duration-300">TELEGRAM</a>
+                <a href="mailto:info@ametistas.lt" class="hover-gold transition-all duration-300">INFO@AMETISTAS.LT</a>
+            </div>
+            <p class="mt-4">&copy; 2025 AMETISTAS.LT | Visos teisės saugomos.</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').onclick = function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        };
+        // Uždaryti meniu, paspaudus ant nuorodos
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
 
 </body>
 </html>
