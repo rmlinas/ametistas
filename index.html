@@ -38,16 +38,19 @@
     /* Layout container */
     .wrap{max-width:var(--max-width);margin:0 auto;padding:0 1rem;}
 
-    /* Hero (sumažintas aukštis mobiliems) */
-    .hero{min-height:60vh; /* Pataisytas aukštis */
+    /* Hero */
+    .hero{min-height:60vh;
           display:flex;align-items:center;justify-content:center;
           background:linear-gradient(135deg,var(--amethyst-900) 0%, var(--amethyst-700) 100%);
           color:var(--light);text-align:center;padding:3.5rem 1rem;}
-    @media(min-width:1024px){.hero{min-height:70vh;}} /* Dideliems ekranams šiek tiek daugiau aukščio */
+    @media(min-width:1024px){.hero{min-height:70vh;}}
     
-    .hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;margin:0;font-size:2.8rem;letter-spacing:.25em}
+    /* HERO: Antraštės dydžio korekcija mobiliesiems (esmminis pakeitimas) */
+    .hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;margin:0;font-size:2rem;letter-spacing:.2em; /* Sumažinta mobiliesiems */ }
+    @media(min-width:400px){ .hero h1{font-size:2.5rem} }
     @media(min-width:640px){ .hero h1{font-size:3.8rem} }
     @media(min-width:1024px){ .hero h1{font-size:5.5rem;letter-spacing:.4em;} }
+    
     .hero .dot{color:var(--gold)}
     .hero p{margin-top:1rem;max-width:60ch;color:rgba(255,255,255,0.92);font-size:1.05rem}
     .hero .ctas{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
@@ -99,8 +102,8 @@
     
     /* Pataisytas Facebook konteineris mobiliesiems */
     .fb-page-responsive{
-        max-width:100%; /* Užtikrina, kad neperžengs tėvinio elemento ribų */
-        width: 100% !important; /* Perrašo Facebook SDK plotį */
+        max-width:100%;
+        width: 100% !important;
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -108,9 +111,9 @@
 
     /* Footer */
     footer{
-      background:var(--amethyst-900); /* Labai tamsi violetinė */
+      background:var(--amethyst-900);
       color:var(--light);padding:3rem 0;
-      box-shadow:inset 0 10px 30px rgba(0,0,0,0.5); /* Gilus šešėlis viduje */
+      box-shadow:inset 0 10px 30px rgba(0,0,0,0.5);
     }
     
     /* Navigacijos mygtukai footeryje */
@@ -118,14 +121,14 @@
     .footer-nav-links a{color:rgba(255,255,255,0.8); transition:color .15s ease; font-weight:600;}
     .footer-nav-links a:hover{color:var(--gold);}
     
-    /* Social ikonos su glow efektu (PATAISYTA MATOMUMUI) */
+    /* Social ikonos (PAGRINDINIS PATAISYMAS) */
     .social-inline{display:flex;gap:.75rem;align-items:center;justify-content:center;margin-top:1rem}
     .social-inline a{
         display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;
-        background:rgba(212, 175, 55, 0.2); /* Subtilus aukso fonas */
-        color:var(--light); /* Baltas šriftas, kad matytųsi */
-        border:1px solid var(--gold); /* Aukso rėmelis */
-        font-size:1.1rem; 
+        background:rgba(212, 175, 55, 0.2); 
+        color:var(--light); /* Pakeista: Ikonų spalva į baltą (šviesesnę) */
+        border:1px solid var(--gold); 
+        font-size:1.3rem; /* Padidintas dydis */
         transition:transform .2s ease;
         animation: slowGlow 4s ease-in-out infinite;
     }
@@ -149,11 +152,8 @@
         <p class="lead animate-fade-up" style="animation-delay: 0.6s; font-family:'Cormorant Garamond', serif; font-style:italic;">
           Natūralūs Akmenys. Aura. Astromineralogija.
         </p>
-
-        <div class="ctas animate-fade-up" style="margin-top:2.5rem; animation-delay: 0.9s;">
-          <a class="btn-primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Susisiekti Telegram">PRADĖTI</a>
+        
         </div>
-      </div>
     </section>
 
     <section id="apie-mus" class="animate-fade-up" style="animation-delay: 0.5s;">
@@ -172,7 +172,7 @@
 
         <aside class="about-card about-hero" aria-hidden="true" style="margin-top:1rem; height:350px;">
           <div style="padding:.75rem">
-            <img src="https://images.pexels.com/photos/7406556/pexels-photo-7406556.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&q=80" alt="Kalnų Krištolas" style="border-radius:4px;display:block">
+            <img src="https://images.unsplash.com/photo-1549484306-03a890a5015b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ametisto kristalas" style="border-radius:4px;display:block">
           </div>
         </aside>
       </div>
@@ -195,7 +195,7 @@
         </div>
 
         <div style="text-align:center;margin-top:2.5rem">
-          <a class="btn-primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener">Užsisakyti asmeninę konsultaciją</a>
+          <a class="btn-primary" href="mailto:info@ametistas.lt" aria-label="Užsisakyti asmeninę konsultaciją el. paštu">Užsisakyti asmeninę konsultaciją</a>
         </div>
       </div>
     </section>
