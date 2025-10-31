@@ -170,7 +170,12 @@
             text-align: center; 
         }
 
-        .lead { font-size: 1rem; padding: 0 0.5rem; }
+        /* PATAISYTI TEKSTO DYDŽIAI */
+        .lead { font-size: 0.95rem; padding: 0 0.75rem; }
+        .purchase-step p { font-size: 0.9rem; }
+        .purchase-step h4 { font-size: 1.2rem; }
+        .btn-telegram, .btn-ghost { font-size: 0.95rem; }
+        
         .about-grid { grid-template-columns: 1fr; }
         .about-hero { order: -1; margin-top: 0!important; }
         .purchase-step p { word-wrap: break-word; }
@@ -367,7 +372,7 @@
       <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
       <a href="#astromineralogija">Konsultacijos</a>
       <a href="#kontaktai">Kontaktai</a>
-      <a href="#" id="darkToggleMobile">Perjungti temą <i class="fas fa-moon"></i></a>
+      <a href="#" id="darkToggleMobile" style="border-bottom: none;">Perjungti temą <i class="fas fa-moon"></i></a>
     </div>
   </nav>
 
@@ -530,11 +535,12 @@
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
   
   <script>
-    (function() {
-      // Dark Mode
+    document.addEventListener('DOMContentLoaded', function() {
+      const body = document.body;
+
+      // DARK MODE
       const darkToggle = document.getElementById('darkToggle');
       const darkToggleMobile = document.getElementById('darkToggleMobile');
-      const body = document.body;
       const lightIcon = 'fa-moon';
       const darkIcon = 'fa-sun';
 
@@ -542,53 +548,62 @@
         const toggleIcon = (el) => {
           if (!el) return;
           const icon = el.querySelector('i');
-          icon.classList.remove(lightIcon, darkIcon);
-          icon.classList.add(isDark ? darkIcon : lightIcon);
+          // Išvengiame klaidų, jei ikona dar neegzistuoja (pvz. darkToggleMobile pradžioje)
+          if(icon) {
+            icon.classList.remove(lightIcon, darkIcon);
+            icon.classList.add(isDark ? darkIcon : lightIcon);
+          }
         };
-
+        
+        // Atnaujiname ikonas (jei elementai egzistuoja)
         toggleIcon(darkToggle);
         toggleIcon(darkToggleMobile);
         
-        if (isDark) {
-          body.classList.add('dark-mode');
-          localStorage.setItem('darkMode', 'enabled');
-        } else {
-          body.classList.remove('dark-mode');
-          localStorage.setItem('darkMode', 'disabled');
-        }
+        // Nustatome tamsų režimą
+        body.classList.toggle('dark-mode', isDark);
+        localStorage.setItem('darkMode', isDark);
       }
 
-      if (localStorage.getItem('darkMode') === 'enabled') setMode(true);
+      // Inicializuojame pagal localStorage
+      // Naudojame 'true', nes localStorage grąžina string'ą
+      setMode(localStorage.getItem('darkMode') === 'true');
 
+      // Event listeners
       darkToggle?.addEventListener('click', () => setMode(!body.classList.contains('dark-mode')));
-      
       darkToggleMobile?.addEventListener('click', (e) => {
-        e.preventDefault(); 
-        setMode(!body.classList.contains('dark-mode'));
+          e.preventDefault(); 
+          setMode(!body.classList.contains('dark-mode'));
       });
 
-      // Mobile Menu 
+      // MOBILE MENU
       const mobileToggle = document.getElementById('mobileToggle');
       const mobileMenu = document.getElementById('mobileMenu');
-
-      mobileToggle?.addEventListener('click', () => {
-          const isMenuOpen = mobileMenu.classList.toggle('open');
-          mobileToggle.querySelector('i').classList.toggle('fa-bars', !isMenuOpen);
-          mobileToggle.querySelector('i').classList.toggle('fa-times', isMenuOpen);
-      });
       
+      if(mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.toggle('open');
+          
+          // Keičiame hamburgerio ikoną į X (cross) ir atgal
+          mobileToggle.querySelector('i').classList.toggle('fa-bars', !isOpen);
+          mobileToggle.querySelector('i').classList.toggle('fa-times', isOpen);
+        });
+      }
+
       // Uždaryti meniu paspaudus nuorodą
-      mobileMenu.querySelectorAll('a').forEach(link => {
+      mobileMenu?.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            if(link.id !== 'darkToggleMobile' && mobileToggle) {
-                mobileMenu.classList.remove('open');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
+          // Išskyrus Dark Mode mygtuką
+          if(link.id !== 'darkToggleMobile') {
+            mobileMenu.classList.remove('open');
+            // Grąžiname hamburgerio ikoną
+            if(mobileToggle) {
+              mobileToggle.querySelector('i').classList.remove('fa-times');
+              mobileToggle.querySelector('i').classList.add('fa-bars');
             }
+          }
         });
       });
-
-    })();
+    });
   </script>
 
 </body>
