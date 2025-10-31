@@ -11,6 +11,10 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Facebook SDK -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
+  
   <script>
     tailwind.config = {
       theme: {
@@ -52,11 +56,11 @@
       background: linear-gradient(to right, transparent, #C9A96E, transparent);
       margin: 4rem 0;
     }
-    /* Mobile fixes */
     @media (max-width: 640px) {
       .mobile-grid { grid-template-columns: 1fr; }
       .mobile-text { font-size: 1.75rem !important; }
       .mobile-btn { width: 100%; margin-bottom: 1rem; }
+      .social-thumbs { height: 200px !important; }
     }
   </style>
 </head>
@@ -160,6 +164,49 @@
             </a>
           </div>
         </article>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider mx-6 sm:mx-16"></div>
+
+  <!-- Social Thumbnails Section -->
+  <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">MŪSŲ SOCIALINIAI KANALAI</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <!-- Instagram Thumbnails -->
+        <div class="text-center animate-fade-up" style="animation-delay: 0.2s">
+          <h3 class="text-2xl font-heading mb-6 tracking-wide">Instagram</h3>
+          <div class="max-w-md mx-auto">
+            <!-- Įklijuok čia savo Instagram embed kodą (žr. instrukciją žemiau) -->
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/ametistaslt/" data-instgrm-version="14" style="background: #F8F8F8; border-radius: 3px; position: relative; padding: 0; margin: 0;">
+              <!-- Čia bus Instagram thumbnails (3 paskutiniai postai) -->
+            </blockquote>
+            <script async src="//www.instagram.com/embed.js"></script>
+          </div>
+          <a href="https://instagram.com/ametistaslt" class="text-sm tracking-widest hover-gold transition-all duration-300 mt-4 inline-block">
+            APLANKYK PROFILĮ →
+          </a>
+        </div>
+
+        <!-- Facebook Thumbnails -->
+        <div class="text-center animate-fade-up" style="animation-delay: 0.4s">
+          <h3 class="text-2xl font-heading mb-6 tracking-wide">Facebook</h3>
+          <div class="max-w-md mx-auto social-thumbs">
+            <!-- Facebook Page Plugin – pakeisk 'your-page-id' į savo FB puslapio ID -->
+            <div class="fb-page" data-href="https://www.facebook.com/ametistaslt" data-tabs="timeline" data-width="300" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+              <blockquote cite="https://www.facebook.com/ametistaslt" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/ametistaslt">Ametistas LT</a>
+              </blockquote>
+            </div>
+          </div>
+          <a href="https://facebook.com/ametistaslt" class="text-sm tracking-widest hover-gold transition-all duration-300 mt-4 inline-block">
+            APLANKYK PUSLAPĮ →
+          </a>
+        </div>
 
       </div>
     </div>
