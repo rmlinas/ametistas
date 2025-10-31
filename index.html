@@ -69,7 +69,11 @@
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
     /* Mobilus meniu */
-    .mobile-toggle { display: none; color: var(--heading-color); font-size: 1.2rem; }
+    /* PATAISYMAS: mobile-toggle stilius be display:none; */
+    .mobile-toggle { 
+        color: var(--heading-color); 
+        font-size: 1.2rem; 
+    } 
     .mobile-menu {
         display: none;
         background: var(--nav-bg);
@@ -90,15 +94,20 @@
         font-weight: 600;
     }
     
+    @media(min-width:769px) { /* Papildoma taisyklė, slepianti mobile toggle desktop'e */
+        .mobile-toggle { display: none; }
+    }
+
     @media(max-width:768px){
         .nav-links{display:none;}
-        .mobile-toggle { display: block; } 
+        /* mobile-toggle dabar rodomas pagal default'ą, bet užtikriname, kad jį matysime */
+        /* #darkToggle paslepiame, nes turime mobile dark mode mygtuką */
         #darkToggle { display: none; } 
 
-        /* HERO SECTIONS STILIAI (OPTIMIZUOTA) */
+        /* HERO SECTIONS STILIAI (OPTIMIZUOTA - TURI TILPTI) */
         .hero { 
           min-height: 50vh; 
-          padding: 2rem 0.5rem; 
+          padding: 2rem 0.5rem; /* Leidžia daugiau vietos šonuose */
         }
         .hero h1 { 
           font-size: 2rem; 
