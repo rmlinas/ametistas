@@ -3,53 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Ametistas – kristalai energijai, ramybei ir sveikatai. Užsisakyk per Instagram, Facebook, Telegram." />
-  <title>Ametistas.lt – Kristalai Jūsų Energijai</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter&display=swap" rel="stylesheet">
+  <meta name="description" content="Ametistas.lt – prabangūs ametisto kristalai. Rankų darbo papuošalai, namų dekoras. Tikri kristalai iš Brazilijos." />
+  <title>Ametistas.lt – Prabanga iš Gamtos</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Cormorant Garamond"', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            gold: '#D4AF37',
+            dark: '#111111',
+            light: '#FAFAFA',
+          },
+          animation: {
+            'fade-in': 'fadeIn 1.5s ease-out forwards',
+          }
+        }
+      }
+    }
+  </script>
+  
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    h1, h2 { font-family: 'Playfair Display', serif; }
-    .crystal { animation: float 6s ease-in-out infinite; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .border-gold { border-color: #D4AF37; }
+    .text-gold { color: #D4AF37; }
+    .hover-gold:hover { color: #D4AF37; }
+    .bg-dark { background-color: #111111; }
+    .bg-light { background-color: #FAFAFA; }
   </style>
 </head>
-<body class="bg-gradient-to-br from-purple-50 to-indigo-100 text-gray-800">
+<body class="bg-light text-dark font-body">
 
-  <div class="container mx-auto px-6 py-12 text-center">
-    
-    <h1 class="text-5xl md:text-6xl font-bold text-purple-900 mb-4 crystal">✨ Ametistas.lt</h1>
-    <p class="text-xl md:text-2xl text-purple-700 mb-8">Kristalai energijai, ramybei ir sveikatai</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
-      <div class="bg-white p-6 rounded-xl shadow-lg">
-        <h3 class="text-2xl font-bold text-purple-800">🌿 Natūralūs</h3>
-        <p class="mt-2">Tikri ametistai iš Brazilijos ir Urugvajaus</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg">
-        <h3 class="text-2xl font-bold text-purple-800">⚡ Energetiniai</h3>
-        <p class="mt-2">Valo aurą, mažina stresą, gerina miegą</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg">
-        <h3 class="text-2xl font-bold text-purple-800">🚚 Pristatymas</h3>
-        <p class="mt-2">Omniva, LP Express – visoje Lietuvoje</p>
-      </div>
-    </div>
-
-    <div class="my-12">
-      <h2 class="text-3xl font-bold text-purple-900 mb-6">Užsisakyk dabar:</h2>
-      <div class="flex justify-center gap-6 flex-wrap">
-        <a href="https://instagram.com/ametistaslt" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:scale-105 transition">📸 Instagram</a>
-        <a href="https://facebook.com/ametistaslt" class="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:scale-105 transition">📘 Facebook</a>
-        <a href="https://t.me/ametistaslt" class="bg-cyan-500 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:scale-105 transition">✈️ Telegram</a>
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center justify-center px-6 py-20 bg-light">
+    <div class="text-center max-w-4xl mx-auto animate-fade-in">
+      <h1 class="text-6xl md:text-8xl font-heading font-bold mb-6 tracking-wider">
+        AMETISTAS<span class="text-gold">.</span>LT
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed">
+        Prabangūs ametisto kristalai. Kiekvienas – unikalus meno kūrinys iš gamtos.
+      </p>
+      <div class="flex justify-center gap-8">
+        <a href="#kolekcija" class="border border-dark px-10 py-4 text-lg font-medium hover:bg-dark hover:text-light transition">
+          Kolekcija
+        </a>
+        <a href="https://instagram.com/ametistaslt" class="text-dark hover-gold transition">
+          Instagram →
+        </a>
       </div>
     </div>
+  </section>
 
-    <footer class="mt-16 text-sm text-gray-600">
-      <p>&copy; 2025 Ametistas.lt | Visi užsakymai per soc. tinklus</p>
-      <p class="mt-2">El. paštas: info@ametistas.lt</p>
-    </footer>
-  </div>
+  <!-- Features -->
+  <section class="py-20 px-6 bg-white border-t border-b border-gray-200">
+    <div class="container mx-auto grid md:grid-cols-3 gap-12 text-center">
+      <div>
+        <h3 class="text-2xl font-heading mb-3">Tikri Kristalai</h3>
+        <p class="text-gray-600">Rankomis atrinkti iš Brazilijos ir Urugvajaus</p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-heading mb-3">Energetinė Galia</h3>
+        <p class="text-gray-600">Valo aurą, stiprina intuiciją, ramina protą</p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-heading mb-3">Pristatymas</h3>
+        <p class="text-gray-600">Omniva, LP Express – 1–2 dienos Lietuvoje</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collection -->
+  <section id="kolekcija" class="py-24 px-6 bg-light">
+    <div class="container mx-auto">
+      <h2 class="text-4xl md:text-5xl font-heading text-center mb-16">Išskirtinė Kolekcija</h2>
+      <div class="grid md:grid-cols-3 gap-12">
+        
+        <!-- Product 1 -->
+        <div class="group cursor-pointer">
+          <div class="bg-white overflow-hidden">
+            <div class="h-80 bg-gray-50 border border-gray-200 flex items-center justify-center">
+              <div class="w-48 h-48 bg-gray-200 border-2 border-dashed rounded-xl"></div>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="text-2xl font-heading mb-1">Ametisto Geodas</h3>
+            <p class="text-gray-600 mb-3">1.2 kg, gilus violetinis</p>
+            <p class="text-3xl font-heading text-gold">€189</p>
+            <a href="https://t.me/ametistaslt" class="inline-block mt-4 text-sm hover-gold transition">
+              Užsisakyti →
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="group cursor-pointer">
+          <div class="bg-white overflow-hidden">
+            <div class="h-80 bg-gray-50 border border-gray-200 flex items-center justify-center">
+              <div class="w-40 h-40 bg-gray-200 border-2 border-dashed rounded-full"></div>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="text-2xl font-heading mb-1">Ametisto Apyrankė</h3>
+            <p class="text-gray-600 mb-3">8mm karoliukai, reguliuojama</p>
+            <p class="text-3xl font-heading text-gold">€49</p>
+            <a href="https://instagram.com/ametistaslt" class="inline-block mt-4 text-sm hover-gold transition">
+              Instagram DM →
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="group cursor-pointer">
+          <div class="bg-white overflow-hidden">
+            <div class="h-80 bg-gray-50 border border-gray-200 flex items-center justify-center">
+              <div class="w-44 h-44 bg-gray-200 border-2 border-dashed rounded-lg rotate-45"></div>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="text-2xl font-heading mb-1">Ametisto Piramidė</h3>
+            <p class="text-gray-600 mb-3">Energijos stiprinimui, 6 cm</p>
+            <p class="text-3xl font-heading text-gold">€79</p>
+            <a href="https://facebook.com/ametistaslt" class="inline-block mt-4 text-sm hover-gold transition">
+              Facebook →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-dark text-light text-center">
+    <div class="container mx-auto max-w-3xl">
+      <h2 class="text-4xl md:text-5xl font-heading mb-6">Užsisakyk Privatumoje</h2>
+      <p class="text-lg mb-10 leading-relaxed">
+        Rašyk mums tiesiogiai – atsakome per 5 minutes. Visi užsakymai konfidencialūs.
+      </p>
+      <div class="flex justify-center gap-8">
+        <a href="https://instagram.com/ametistaslt" class="text-light border-b border-light pb-1 hover-gold transition">
+          Instagram
+        </a>
+        <a href="https://t.me/ametistaslt" class="text-light border-b border-light pb-1 hover-gold transition">
+          Telegram
+        </a>
+        <a href="https://facebook.com/ametistaslt" class="text-light border-b border-light pb-1 hover-gold transition">
+          Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-8 px-6 text-center text-sm">
+    <p>&copy; 2025 Ametistas.lt</p>
+    <p class="mt-2">info@ametistas.lt</p>
+  </footer>
 
 </body>
 </html>
