@@ -75,34 +75,39 @@
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus toggle mygtukas - JUODA SPALVA */
+    /* Mobilus toggle mygtukas - NUSTATYMAI SU DARK MODE PATAISYMU */
     .mobile-toggle { 
-        color: #000 !important; /* JUODA SPALVA REIKALAVIMU */
+        color: #000 !important; /* JUODA SPALVA (light mode) */
         font-size: 1.2rem; 
         display: none !important;
         padding: 0.5rem; 
     } 
+
+    /* Dark Mode taisymas */
+    body.dark-mode .mobile-toggle {
+        color: var(--gold) !important; /* Dark Mode režime ji vėl taps auksinė */
+    }
 
     /* RADIKALIAI PAKEISTAS MOBILE MENIU STILIUS */
     .mobile-menu {
         position: fixed; 
         top: 0;
         right: 0;
-        width: 80%; /* Meniu užims 80% ekrano pločio */
+        width: 80%; 
         height: 100vh;
         z-index: 9999; 
         background: var(--nav-bg);
         padding: 4rem 1.5rem 1.5rem; 
         box-shadow: -5px 0 20px rgba(0,0,0,.15);
         
-        /* SLEPIMAS: Meniu paslėptas už ekrano */
+        /* SLEPIMAS */
         transform: translateX(100%);
         transition: transform 0.4s ease-out;
         overflow-y: auto;
     }
     
     .mobile-menu.open { 
-        /* ATIDARYMAS: Grąžinimas į vietą */
+        /* ATIDARYMAS */
         transform: translateX(0);
     }
 
@@ -128,18 +133,10 @@
         .mobile-toggle { display: block !important; } 
         #darkToggle { display: none; } 
         
-        /* HERO SECTIONS STILIAI (EKSTRA MAŽI EKRANAI) */
+        /* HERO SECTIONS STILIAI */
         .hero { 
           min-height: 50vh; 
           padding: 2rem 0.5rem; 
-        }
-        .hero h1 { 
-          font-size: 1.6rem; 
-          letter-spacing: 0.05em; 
-          line-height: 1.2; 
-        } 
-        .hero p { 
-          font-size: 0.9rem; 
         }
         
         .hero .ctas { 
@@ -156,34 +153,48 @@
             text-align: center; 
         }
 
-        .section-title { font-size: 1.6rem; }
         .lead { font-size: 1rem; padding: 0 0.5rem; }
         .about-grid { grid-template-columns: 1fr; }
         .about-hero { order: -1; margin-top: 0!important; }
         .purchase-step p { word-wrap: break-word; }
     }
     
-    @media(max-width:400px){
-        /* EKSTRA MAŽI EKRANAI - dar agresyvesnis šrifto mažinimas */
-        .hero h1 { 
-            font-size: 1.3rem; 
-            letter-spacing: normal; 
-        } 
-        /* Hero sekcija šrifto dydis */
-        .hero p.lead { 
-            font-size: 0.8rem; /* Dar labiau sumažiname hero pastraipą */
-        } 
-        /* Astromineralogijos Lead pastraipa - KOREKCIJA DĖL NETILPIMO */
-        #astromineralogija p.lead { 
-            font-size: 0.9rem; 
-        }
+    /* HERO ir ANTRAŠČIŲ STILIAI (NAUDOJANT CLAMP()) */
+    
+    /* Hero antraštė (kurios nebeturi, bet paliekame stilių, jei ateityje prireiks) */
+    .hero h1 {
+        font-family:'Cormorant Garamond',serif;
+        font-weight:300;
+        /* CLAMP: min 1.3rem, ideal 5vw, max 3rem */
+        font-size: clamp(1.3rem, 5vw, 3rem); 
+        line-height: 1.1;
+        letter-spacing: 0.05em;
     }
-
-    /* Hero */
-    .hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,var(--amethyst-900),var(--amethyst-700));color:var(--light);padding:3.5rem 1rem;}
-    .hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:3rem;letter-spacing:.3em;}
+    
+    /* Pagrindinė pastraipa Hero sekcijoje (kad tilptų) */
+    .hero p.lead {
+        /* CLAMP: min 0.8rem, ideal 2.5vw, max 1.2rem */
+        font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+        margin-top:1rem;
+        font-style:italic;
+        color:rgba(255,255,255,.92);
+    }
+    
+    /* Sekcijos antraštės (kad tilptų) */
+    .section-title {
+        font-family:'Cormorant Garamond',serif;
+        font-weight:700;
+        /* CLAMP: min 1.6rem, ideal 4vw, max 2rem */
+        font-size: clamp(1.6rem, 4vw, 2rem); 
+        color:var(--heading-color);
+        text-align:center;
+        margin-bottom:1rem;
+        letter-spacing:.1em; 
+        transition: color var(--transition);
+    }
+    
+    /* LIKĘ HERO STILIAI */
     .hero h1 .dot{color:var(--gold);}
-    .hero p{margin-top:1rem;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.92);}
     .hero .ctas{margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
     .btn-primary{background:var(--gold);color:var(--dark);padding:.8rem 1.5rem;border-radius:3px;font-weight:700;box-shadow:0 8px 20px rgba(212,175,55,.3);transition:transform var(--transition),box-shadow var(--transition), background var(--transition);}
     .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(212,175,55,.45);background:#FFD700;}
@@ -211,7 +222,6 @@
 
     /* Sections */
     section{padding:5rem 0;background:var(--bg-color); transition: background var(--transition);}
-    .section-title{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--heading-color);text-align:center;margin-bottom:1rem;font-weight:700;letter-spacing:.1em; transition: color var(--transition);}
     .lead{text-align:center;color:var(--text-color);max-width:70ch;margin:0 auto;font-size:1.1rem; transition: color var(--transition);}
 
     /* About */
@@ -297,9 +307,6 @@
       --nav-bg: #111;
       --nav-shadow: 0 2px 10px rgba(255,255,255,.05);
       --toggle-icon: var(--gold);
-    }
-    body.dark-mode .mobile-toggle {
-        color: var(--gold) !important; /* Dark Mode režime ji vėl taps auksinė */
     }
     body.dark-mode .fb-section {background: #181818;}
     body.dark-mode .fb-note {color: #ccc;}
@@ -527,38 +534,29 @@
         }
       }
 
-      if (localStorage.getItem('darkMode') === 'enabled') {
-        setMode(true);
-      }
+      if (localStorage.getItem('darkMode') === 'enabled') setMode(true);
 
-      if(darkToggle) {
-        darkToggle.addEventListener('click', () => {
-          setMode(!body.classList.contains('dark-mode'));
-        });
-      }
-      if(darkToggleMobile) {
-        darkToggleMobile.addEventListener('click', (e) => {
-          e.preventDefault();
-          setMode(!body.classList.contains('dark-mode'));
-        });
-      }
+      darkToggle?.addEventListener('click', () => setMode(!body.classList.contains('dark-mode')));
+      
+      // Papildomai patikriname, ar darkToggleMobile egzistuoja, kad išvengtume klaidų
+      darkToggleMobile?.addEventListener('click', (e) => {
+        e.preventDefault(); // Išsaugome nuorodos elgesį
+        setMode(!body.classList.contains('dark-mode'));
+      });
 
       // Mobile Menu 
       const mobileToggle = document.getElementById('mobileToggle');
       const mobileMenu = document.getElementById('mobileMenu');
-      const mobileLinks = mobileMenu.querySelectorAll('a');
 
-      if(mobileToggle) {
-          mobileToggle.addEventListener('click', () => {
-              const isMenuOpen = mobileMenu.classList.toggle('open'); 
-              // Hamburger keičiasi į 'X'
-              mobileToggle.querySelector('i').classList.toggle('fa-bars', !isMenuOpen);
-              mobileToggle.querySelector('i').classList.toggle('fa-times', isMenuOpen);
-          });
-      }
+      mobileToggle?.addEventListener('click', () => {
+          const isMenuOpen = mobileMenu.classList.toggle('open');
+          // Keičiame hamburgerio ikoną į "X" ir atgal
+          mobileToggle.querySelector('i').classList.toggle('fa-bars', !isMenuOpen);
+          mobileToggle.querySelector('i').classList.toggle('fa-times', isMenuOpen);
+      });
       
       // Uždaryti meniu paspaudus nuorodą
-      mobileLinks.forEach(link => {
+      mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             if(link.id !== 'darkToggleMobile' && mobileToggle) {
                 mobileMenu.classList.remove('open');
