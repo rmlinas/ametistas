@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- CRITICAL + FULL CSS (no Tailwind) -->
+    <!-- Pilnas CSS (no Tailwind, viskas inline + validu) -->
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
@@ -39,35 +39,43 @@
         /* Šriftai */
         .font-heading { font-family: 'Cormorant Garamond', serif; }
 
-        /* Layout */
+        /* Header & Nav */
         .sticky { position: sticky; top: 0; z-index: 50; }
         .backdrop-blur-md { backdrop-filter: blur(12px); }
         .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,.1); }
-        .section-divider { height: 1px; background: linear-gradient(to right, transparent, #A58B5C, transparent); margin: 4rem 0; }
-
-        /* Produktai */
-        .product-img { height: 280px; object-fit: cover; width: 100%; border-radius: 1rem; transition: transform .4s ease; }
-        .product-img:hover { transform: scale(1.03); }
-        @media (max-width: 640px) {
-            .product-img { height: 200px; }
-            .mobile-text-h1 { font-size: 2.5rem; letter-spacing: .15em; }
-            .mobile-text-h2 { font-size: 1.875rem; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .nav-list { display: none; list-style: none; padding: 0; margin: 0; }
+        .nav-list.show { display: flex; flex-direction: column; text-align: center; border-top: 1px solid rgba(0,0,0,.1); padding-top: 1rem; }
+        .nav-list li { margin: 0.5rem 0; }
+        .nav-list a { color: #1A1A1A; text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.1em; }
+        .nav-list a:hover { color: #A58B5C; }
+        @media (min-width: 768px) {
+            .nav-list { display: flex; flex-direction: row; gap: 2rem; }
+            .mobile-menu-btn { display: none; }
         }
 
-        /* Footer */
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center; }
-        .footer-link { font-size: .75rem; letter-spacing: .125rem; color: #F5F5F5; text-decoration: none; display: block; padding: .25rem 0; transition: color .3s; }
-        .footer-link:hover { color: #A58B5C; }
-        .footer-social { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 9999px; background: rgba(165,139,92,.2); transition: background .3s; }
-        .footer-social:hover { background: #A58B5C; }
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 5rem 1rem; }
+        .hero-bg { position: absolute; inset: 0; z-index: -1; opacity: 0.3; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Animacijos */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes pulseGold { 0%, 100% { box-shadow: 0 0 0 0 rgba(165,139,92,.4); } 50% { box-shadow: 0 0 0 10px rgba(165,139,92,0); } }
-        .animate-fade-up { animation: fadeUp .8s ease-out forwards; }
+        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
         .animate-slide-in { animation: slideIn 1s ease-out forwards; }
         .animate-pulse-gold { animation: pulseGold 2s infinite; }
+
+        /* Produktai */
+        .product-img { height: 280px; object-fit: cover; width: 100%; border-radius: 1rem; transition: transform .4s ease; }
+        .product-img:hover { transform: scale(1.03); }
+        @media (max-width: 640px) { .product-img { height: 200px; } }
+
+        /* Footer */
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center; }
+        .footer-link { font-size: 0.75rem; letter-spacing: 0.125rem; color: #F5F5F5; text-decoration: none; display: block; padding: 0.25rem 0; transition: color .3s; }
+        .footer-link:hover { color: #A58B5C; }
 
         /* Accessibility */
         a:focus-visible, button:focus-visible { outline: 2px solid #A58B5C; outline-offset: 2px; }
@@ -75,43 +83,38 @@
 </head>
 <body>
 
-    <!-- FB ROOT (teisingai <body> pradžioje) -->
+    <!-- FB ROOT -->
     <div id="fb-root"></div>
 
     <!-- HEADER -->
-    <header class="sticky bg-light-95 backdrop-blur-md shadow-sm px-4 sm:px-6 py-3">
-        <nav class="container flex justify-between items-center">
-            <a href="#" class="text-xl sm:text-2xl font-heading font-bold tracking-widest text-dark hover-gold transition-colors">
-                AMETISTAS<span class="text-gold">.</span>LT
-            </a>
-            <ul class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
-                <li><a href="#apie-mus" class="hover-gold">Apie</a></li>
-                <li><a href="#katalogas" class="hover-gold">Katalogas</a></li>
-                <li><a href="#konsultacijos" class="hover-gold">Konsultacijos</a></li>
-            </ul>
-            <button id="mobile-menu-button" class="md:hidden text-dark p-2" aria-label="Meniu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden mt-3 pb-3 border-t border-gray/20">
-            <ul class="flex flex-col space-y-2 text-sm font-medium tracking-wide uppercase text-center">
-                <li><a href="#apie-mus" class="block py-2 hover:bg-light/80 hover-gold">Apie</a></li>
-                <li><a href="#katalogas" class="block py-2 hover:bg-light/80 hover-gold">Katalogas</a></li>
-                <li><a href="#konsultacijos" class="block py-2 hover:bg-light/80 hover-gold">Konsultacijos</a></li>
-            </ul>
+    <header class="sticky bg-light-95 backdrop-blur-md shadow-sm">
+        <div class="container">
+            <nav>
+                <a href="#" class="text-xl sm:text-2xl font-heading font-bold tracking-widest text-dark hover-gold transition-colors">
+                    AMETISTAS<span class="text-gold">.</span>LT
+                </a>
+                <ul id="nav-list" class="nav-list">
+                    <li><a href="#apie-mus">Apie</a></li>
+                    <li><a href="#katalogas">Katalogas</a></li>
+                    <li><a href="#konsultacijos">Konsultacijos</a></li>
+                </ul>
+                <button id="mobile-menu-btn" class="mobile-menu-btn text-dark p-2" aria-label="Meniu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </nav>
         </div>
     </header>
 
     <!-- HERO -->
-    <section class="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 bg-light relative overflow-hidden">
-        <div class="absolute inset-0 -z-10 opacity-30">
-            <img src="https://images.pexels.com/photos/6598511/pexels-photo-6598511.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Ametisto energija" class="w-full h-full object-cover" loading="lazy">
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/6598511/pexels-photo-6598511.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Ametisto energija" loading="lazy">
         </div>
         <div class="text-center max-w-5xl mx-auto">
-            <h1 class="text-5xl sm:text-7xl md:text-[6rem] font-heading font-light tracking-[.3em] mb-4 mobile-text-h1 uppercase opacity-0 animate-fade-up">
+            <h1 class="text-5xl sm:text-7xl md:text-[6rem] font-heading font-light tracking-[.3em] mb-4 uppercase opacity-0 animate-fade-up">
                 <span class="text-gold">A</span>METISTAS<span class="text-gold">.</span>LT
             </h1>
-            <p class="text-lg sm:text-xl md:text-3xl font-heading italic text-gray mb-6 max-w-4xl mx-auto opacity-0 animate-fade-up" style="animation-delay:0.3s">
+            <p class="text-lg sm:text-xl md:text-3xl font-heading italic text-gray mb-6 opacity-0 animate-fade-up" style="animation-delay:0.3s">
                 Kristalų oazė
             </p>
             <p class="text-base sm:text-lg text-dark mb-10 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-up" style="animation-delay:0.6s">
@@ -128,12 +131,10 @@
         </div>
     </section>
 
-    <div class="section-divider container"></div>
-
     <!-- APIE MUS -->
     <section id="apie-mus" class="py-20 sm:py-28 px-4 sm:px-6 bg-white">
         <div class="container text-center">
-            <h2 class="text-3xl mobile-text-h2 sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
+            <h2 class="text-3xl sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
                 MŪSŲ ISTORIJA
             </h2>
             <p class="text-base leading-loose text-gray max-w-4xl mx-auto mb-16 opacity-0 animate-fade-up" style="animation-delay:0.3s">
@@ -141,17 +142,14 @@
             </p>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:0.5s">
-                    <span class="text-5xl text-gold mb-4 inline-block">Naturalūs akmenys</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">100 % NATŪRALŪS</h3>
                     <p class="text-sm text-gray">Nėra dažymo, kaitinimo ar sintetikos.</p>
                 </div>
                 <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:0.7s">
-                    <span class="text-5xl text-gold mb-4 inline-block">Rankų darbas</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">RANKŲ DARBO PAPUOŠALAI</h3>
                     <p class="text-sm text-gray">925 sidabras, natūralus akmuo.</p>
                 </div>
                 <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:0.9s">
-                    <span class="text-5xl text-gold mb-4 inline-block">Garantija</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">14 DIENŲ GRĄŽINIMAS</h3>
                     <p class="text-sm text-gray">Neįtiko? Grąžiname be klausimų.</p>
                 </div>
@@ -159,12 +157,10 @@
         </div>
     </section>
 
-    <div class="section-divider container"></div>
-
     <!-- KONSULTACIJOS -->
     <section id="konsultacijos" class="py-20 sm:py-28 px-4 sm:px-6 bg-light">
         <div class="container text-center">
-            <h2 class="text-3xl mobile-text-h2 sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
+            <h2 class="text-3xl sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
                 ASTROMINERALOGINĖS KONSULTACIJOS
             </h2>
             <p class="text-base text-gray mb-10 max-w-3xl mx-auto opacity-0 animate-fade-up" style="animation-delay:0.3s">
@@ -176,16 +172,13 @@
         </div>
     </section>
 
-    <div class="section-divider container"></div>
-
     <!-- KATALOGAS -->
     <section id="katalogas" class="py-20 sm:py-28 px-4 sm:px-6 bg-white">
         <div class="container">
-            <h2 class="text-3xl mobile-text-h2 sm:text-5xl font-heading text-center mb-16 tracking-widest opacity-0 animate-slide-in">
+            <h2 class="text-3xl sm:text-5xl font-heading text-center mb-16 tracking-widest opacity-0 animate-slide-in">
                 POPULIARIAUSI KRISTALAI
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                <!-- 1 -->
                 <article class="group bg-light p-3 sm:p-4 rounded-xl shadow-md hover:shadow-xl transition-all opacity-0 animate-fade-up" style="animation-delay:0.3s">
                     <div class="overflow-hidden rounded-lg mb-3">
                         <img src="https://images.pexels.com/photos/6598511/pexels-photo-6598511.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ametisto geodas" class="w-full product-img" loading="lazy">
@@ -194,38 +187,19 @@
                     <p class="text-xs sm:text-sm text-gray mb-3">Ramybė • Apsauga</p>
                     <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold block">SUŽINOTI</a>
                 </article>
-                <!-- 2, 3, 4 – panašiai -->
-            </div>
-            <div class="text-center mt-12">
-                <a href="https://t.me/ametistaslt" class="inline-block border border-dark px-8 py-3 text-xs font-medium tracking-widest hover:bg-dark hover:text-light transition-all">
-                    VISAS KATALOGAS TELEGRAM
-                </a>
+                <!-- Kiti 3 produktai panašiai -->
             </div>
         </div>
     </section>
 
-    <div class="section-divider container"></div>
-
     <!-- GALERIJA -->
     <section class="py-20 sm:py-28 px-4 sm:px-6 bg-light">
         <div class="container text-center">
-            <h2 class="text-3xl mobile-text-h2 sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
+            <h2 class="text-3xl sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
                 MŪSŲ FACEBOOK
             </h2>
-            <p class="text-base text-gray mb-12 max-w-2xl mx-auto opacity-0 animate-fade-up" style="animation-delay:0.3s">
-                Sekite naujienas, ritualus ir klientų atsiliepimus:
-            </p>
-            <div class="max-w-md mx-auto opacity-0 animate-fade-up" style="animation-delay:0.6s">
-                <div class="fb-page" 
-                     data-href="https://www.facebook.com/ametistaslt/" 
-                     data-tabs="timeline" 
-                     data-width="500" 
-                     data-height="600" 
-                     data-small-header="true" 
-                     data-adapt-container-width="true" 
-                     data-hide-cover="false" 
-                     data-show-facepile="true">
-                </div>
+            <div class="max-w-md mx-auto opacity-0 animate-fade-up" style="animation-delay:0.3s">
+                <div class="fb-page" data-href="https://www.facebook.com/ametistaslt/" data-tabs="timeline" data-width="500" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
             </div>
         </div>
     </section>
@@ -245,11 +219,7 @@
                 </div>
                 <div>
                     <h3 class="text-sm font-heading tracking-widest text-gold mb-4">SEKITE</h3>
-                    <div class="flex justify-center md:justify-start space-x-3 mt-2">
-                        <a href="https://facebook.com/ametistaslt" class="footer-social text-dark">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.596 0 0 .596 0 1.326v21.348C0 23.404.596 24 1.326 24h11.494v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.326C24 .596 23.407 0 22.675 0z"/></svg>
-                        </a>
-                    </div>
+                    <a href="https://facebook.com/ametistaslt" class="footer-link">Facebook</a>
                 </div>
             </div>
             <div class="text-center text-xs border-t border-gray/30 pt-6">
@@ -258,16 +228,18 @@
         </div>
     </footer>
 
-    <!-- Facebook SDK (async) -->
+    <!-- Facebook SDK -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
 
-    <!-- JS (DOMContentLoaded) -->
+    <!-- JS: Meniu toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('mobile-menu-button');
-            const menu = document.getElementById('mobile-menu');
-            if (btn && menu) {
-                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            const btn = document.getElementById('mobile-menu-btn');
+            const nav = document.getElementById('nav-list');
+            if (btn && nav) {
+                btn.addEventListener('click', () => {
+                    nav.classList.toggle('show');
+                });
             }
         });
     </script>
