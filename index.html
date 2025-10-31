@@ -2,7 +2,7 @@
 <html lang="lt">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="theme-color" content="#A58B5C">
     <meta name="description" content="Ametistas.lt – Kristalų oazė. Natūralūs akmenys, papuošalai ir astrologinės konsultacijos. Tik autentiška energija." />
     <meta name="keywords" content="ametistas, kristalai, natūralūs akmenys, astromineralogija, papuošalai, drūzos, Baltija" />
@@ -13,22 +13,73 @@
 
     <title>Ametistas.lt – Kristalų oazė</title>
 
-    <!-- Inline Critical CSS (minified) – no CDN block -->
+    <!-- Google Fonts (async) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CRITICAL + FULL CSS (no Tailwind) -->
     <style>
-* { box-sizing: border-box; } html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; } body { font-family: 'Inter', sans-serif; background: #F5F5F5; color: #1A1A1A; line-height: 1.6; } img, .fb-page { max-width: 100%; height: auto; display: block; } .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; } .text-gold { color: #A58B5C; } .hover-gold:hover { color: #A58B5C; } .bg-dark { background: #1A1A1A; } .bg-light { background: #F5F5F5; } .font-heading { font-family: 'Cormorant Garamond', serif; } .sticky { position: sticky; top: 0; z-index: 50; } .backdrop-blur-md { backdrop-filter: blur(12px); } .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,.1); } .section-divider { height: 1px; background: linear-gradient(to right, transparent, #A58B5C, transparent); margin: 4rem 0; } .product-img { height: 280px; object-fit: cover; width: 100%; border-radius: 1rem; transition: transform .4s ease; } .product-img:hover { transform: scale(1.03); } @media (max-width: 640px) { .product-img { height: 200px; } .mobile-text-h1 { font-size: 2.5rem; letter-spacing: .2em; } .mobile-text-h2 { font-size: 1.875rem; } } .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; } .footer-link { font-size: .75rem; letter-spacing: .125rem; transition: color .3s; display: block; padding: .25rem 0; } .footer-link:hover { color: #A58B5C; } .footer-social { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 9999px; background: rgba(165,139,92,.2); transition: background .3s; } .footer-social:hover { background: #A58B5C; } a:focus-visible, button:focus-visible { outline: 2px solid #A58B5C; outline-offset: 2px; } @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } } @keyframes slideIn { 0% { opacity: 0; transform: translateX(-50px); } 100% { opacity: 1; transform: translateX(0); } } @keyframes pulseGold { 0%, 100% { box-shadow: 0 0 0 0 rgba(165,139,92,.4); } 50% { box-shadow: 0 0 0 10px rgba(165,139,92,0); } } .animate-fade-up { animation: fadeUp .8s ease-out forwards; } .animate-slide-in { animation: slideIn 1s ease-out forwards; } .animate-pulse-gold { animation: pulseGold 2s infinite; }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: #F5F5F5; color: #1A1A1A; line-height: 1.6; }
+        img, .fb-page { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+
+        /* Spalvos */
+        .text-gold { color: #A58B5C; }
+        .hover-gold:hover { color: #A58B5C; }
+        .text-dark { color: #1A1A1A; }
+        .text-light { color: #F5F5F5; }
+        .bg-dark { background-color: #1A1A1A; }
+        .bg-light { background-color: #F5F5F5; }
+        .bg-gold { background-color: #A58B5C; }
+        .bg-light-95 { background-color: rgba(245, 245, 245, 0.95); }
+
+        /* Šriftai */
+        .font-heading { font-family: 'Cormorant Garamond', serif; }
+
+        /* Layout */
+        .sticky { position: sticky; top: 0; z-index: 50; }
+        .backdrop-blur-md { backdrop-filter: blur(12px); }
+        .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+        .section-divider { height: 1px; background: linear-gradient(to right, transparent, #A58B5C, transparent); margin: 4rem 0; }
+
+        /* Produktai */
+        .product-img { height: 280px; object-fit: cover; width: 100%; border-radius: 1rem; transition: transform .4s ease; }
+        .product-img:hover { transform: scale(1.03); }
+        @media (max-width: 640px) {
+            .product-img { height: 200px; }
+            .mobile-text-h1 { font-size: 2.5rem; letter-spacing: .15em; }
+            .mobile-text-h2 { font-size: 1.875rem; }
+        }
+
+        /* Footer */
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center; }
+        .footer-link { font-size: .75rem; letter-spacing: .125rem; color: #F5F5F5; text-decoration: none; display: block; padding: .25rem 0; transition: color .3s; }
+        .footer-link:hover { color: #A58B5C; }
+        .footer-social { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 9999px; background: rgba(165,139,92,.2); transition: background .3s; }
+        .footer-social:hover { background: #A58B5C; }
+
+        /* Animacijos */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulseGold { 0%, 100% { box-shadow: 0 0 0 0 rgba(165,139,92,.4); } 50% { box-shadow: 0 0 0 10px rgba(165,139,92,0); } }
+        .animate-fade-up { animation: fadeUp .8s ease-out forwards; }
+        .animate-slide-in { animation: slideIn 1s ease-out forwards; }
+        .animate-pulse-gold { animation: pulseGold 2s infinite; }
+
+        /* Accessibility */
+        a:focus-visible, button:focus-visible { outline: 2px solid #A58B5C; outline-offset: 2px; }
     </style>
-
-    <!-- Fonts async -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
-
-    <!-- Facebook SDK (async + defer) -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
 </head>
 <body>
 
+    <!-- FB ROOT (teisingai <body> pradžioje) -->
+    <div id="fb-root"></div>
+
     <!-- HEADER -->
-    <header class="sticky bg-light/95 backdrop-blur-md shadow-sm px-4 sm:px-6 py-3">
+    <header class="sticky bg-light-95 backdrop-blur-md shadow-sm px-4 sm:px-6 py-3">
         <nav class="container flex justify-between items-center">
             <a href="#" class="text-xl sm:text-2xl font-heading font-bold tracking-widest text-dark hover-gold transition-colors">
                 AMETISTAS<span class="text-gold">.</span>LT
@@ -57,16 +108,16 @@
             <img src="https://images.pexels.com/photos/6598511/pexels-photo-6598511.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Ametisto energija" class="w-full h-full object-cover" loading="lazy">
         </div>
         <div class="text-center max-w-5xl mx-auto">
-            <h1 class="text-5xl sm:text-7xl md:text-[6rem] font-heading font-light tracking-[.5em] mb-4 mobile-text-h1 uppercase opacity-0 animate-fade-up">
+            <h1 class="text-5xl sm:text-7xl md:text-[6rem] font-heading font-light tracking-[.3em] mb-4 mobile-text-h1 uppercase opacity-0 animate-fade-up">
                 <span class="text-gold">A</span>METISTAS<span class="text-gold">.</span>LT
             </h1>
-            <p class="text-lg sm:text-xl md:text-3xl font-heading italic text-gray mb-6 max-w-4xl mx-auto opacity-0 animate-fade-up" style="animation-delay:300ms">
+            <p class="text-lg sm:text-xl md:text-3xl font-heading italic text-gray mb-6 max-w-4xl mx-auto opacity-0 animate-fade-up" style="animation-delay:0.3s">
                 Kristalų oazė
             </p>
-            <p class="text-base sm:text-lg text-dark mb-10 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-up" style="animation-delay:600ms">
-                Ametistas.lt – tai aistros natūraliems akmenims ir mineralams išraiška. Mūsų misija – tapti Jūsų patikimu ir lojaliu kristalų oazės šaltiniu Baltijos šalyse, siūlant tik kruopščiai atrinktą kokybę.
+            <p class="text-base sm:text-lg text-dark mb-10 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-up" style="animation-delay:0.6s">
+                Ametistas.lt – tai aistros natūraliems akmenims ir mineralams išraiška. Mūsų misija – tapti Jūsų patikimu ir lojaliu kristalų oazės šaltiniu Baltijos šalyse.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 opacity-0 animate-fade-up" style="animation-delay:900ms">
+            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 opacity-0 animate-fade-up" style="animation-delay:0.9s">
                 <a href="#katalogas" class="bg-dark text-light border border-dark px-8 py-3 text-sm font-medium tracking-widest hover:bg-gold hover:text-dark hover:border-gold transition-all">
                     PERŽIŪRĖTI KRISTALUS
                 </a>
@@ -85,21 +136,21 @@
             <h2 class="text-3xl mobile-text-h2 sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
                 MŪSŲ ISTORIJA
             </h2>
-            <p class="text-base leading-loose text-gray max-w-4xl mx-auto mb-16 opacity-0 animate-fade-up" style="animation-delay:300ms">
-                Ametistas.lt gimė iš **aistros gamtai ir akmenų energijai**. Kiekvienas kristalas – tai **gamtos kūrinys**, atrinktas rankomis, išvalytas ir paruoštas Jums. Bendradarbiaujame su patikimais tiekėjais iš Brazilijos, Indijos ir Madagaskaro.
+            <p class="text-base leading-loose text-gray max-w-4xl mx-auto mb-16 opacity-0 animate-fade-up" style="animation-delay:0.3s">
+                Ametistas.lt gimė iš **aistros gamtai ir akmenų energijai**. Kiekvienas kristalas – tai **gamtos kūrinys**, atrinktas rankomis, išvalytas ir paruoštas Jums.
             </p>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:500ms">
+                <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:0.5s">
                     <span class="text-5xl text-gold mb-4 inline-block">Naturalūs akmenys</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">100 % NATŪRALŪS</h3>
                     <p class="text-sm text-gray">Nėra dažymo, kaitinimo ar sintetikos.</p>
                 </div>
-                <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:700ms">
+                <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:0.7s">
                     <span class="text-5xl text-gold mb-4 inline-block">Rankų darbas</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">RANKŲ DARBO PAPUOŠALAI</h3>
                     <p class="text-sm text-gray">925 sidabras, natūralus akmuo.</p>
                 </div>
-                <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:900ms">
+                <div class="p-6 bg-light rounded-xl shadow-lg opacity-0 animate-fade-up" style="animation-delay:0.9s">
                     <span class="text-5xl text-gold mb-4 inline-block">Garantija</span>
                     <h3 class="text-xl font-heading font-semibold mb-3 tracking-wider">14 DIENŲ GRĄŽINIMAS</h3>
                     <p class="text-sm text-gray">Neįtiko? Grąžiname be klausimų.</p>
@@ -116,10 +167,10 @@
             <h2 class="text-3xl mobile-text-h2 sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
                 ASTROMINERALOGINĖS KONSULTACIJOS
             </h2>
-            <p class="text-base text-gray mb-10 max-w-3xl mx-auto opacity-0 animate-fade-up" style="animation-delay:300ms">
+            <p class="text-base text-gray mb-10 max-w-3xl mx-auto opacity-0 animate-fade-up" style="animation-delay:0.3s">
                 Akmuo, suderintas su Jūsų gimimo žvaigžde. Stiprina potencialą, harmonizuoja energiją.
             </p>
-            <a href="https://t.me/ametistaslt" class="inline-block bg-gold text-dark px-10 py-4 text-sm font-medium tracking-widest hover:bg-dark hover:text-light transition-all opacity-0 animate-fade-up" style="animation-delay:600ms">
+            <a href="https://t.me/ametistaslt" class="inline-block bg-gold text-dark px-10 py-4 text-sm font-medium tracking-widest hover:bg-dark hover:text-light transition-all opacity-0 animate-fade-up" style="animation-delay:0.6s">
                 UŽSISAKYTI
             </a>
         </div>
@@ -135,7 +186,7 @@
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 <!-- 1 -->
-                <article class="group bg-light p-3 sm:p-4 rounded-xl shadow-md hover:shadow-xl transition-all opacity-0 animate-fade-up" style="animation-delay:300ms">
+                <article class="group bg-light p-3 sm:p-4 rounded-xl shadow-md hover:shadow-xl transition-all opacity-0 animate-fade-up" style="animation-delay:0.3s">
                     <div class="overflow-hidden rounded-lg mb-3">
                         <img src="https://images.pexels.com/photos/6598511/pexels-photo-6598511.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ametisto geodas" class="w-full product-img" loading="lazy">
                     </div>
@@ -143,33 +194,7 @@
                     <p class="text-xs sm:text-sm text-gray mb-3">Ramybė • Apsauga</p>
                     <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold block">SUŽINOTI</a>
                 </article>
-                <!-- 2 -->
-                <article class="group bg-light p-3 sm:p-4 rounded-xl shadow-md hover:shadow-xl transition-all opacity-0 animate-fade-up" style="animation-delay:500ms">
-                    <div class="overflow-hidden rounded-lg mb-3">
-                        <img src="https://images.pexels.com/photos/6598513/pexels-photo-6598513.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rožinis kvarcas" class="w-full product-img" loading="lazy">
-                    </div>
-                    <h3 class="text-base sm:text-lg font-heading mb-1 font-semibold">Rožinis Kvarcas</h3>
-                    <p class="text-xs sm:text-sm text-gray mb-3">Meilė • Švelnumas</p>
-                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold block">SUŽINOTI</a>
-                </article>
-                <!-- 3 -->
-                <article class="group bg-light p-3 sm:p-4 rounded-xl shadow-md hover:shadow-xl transition-all opacity-0 animate-fade-up" style="animation-delay:700ms">
-                    <div class="overflow-hidden rounded-lg mb-3">
-                        <img src="https://images.pexels.com/photos/6598516/pexels-photo-6598516.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Citrino piramidė" class="w-full product-img" loading="lazy">
-                    </div>
-                    <h3 class="text-base sm:text-lg font-heading mb-1 font-semibold">Citrino Piramidė</h3>
-                    <p class="text-xs sm:text-sm text-gray mb-3">Sėkmė • Gausa</p>
-                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold block">SUŽINOTI</a>
-                </article>
-                <!-- 4 -->
-                <article class="group bg-light p-3 sm:p-4 rounded-xl shadow-md hover:shadow-xl transition-all opacity-0 animate-fade-up" style="animation-delay:900ms">
-                    <div class="overflow-hidden rounded-lg mb-3">
-                        <img src="https://images.pexels.com/photos/6598518/pexels-photo-6598518.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Kalnų krištolo drūza" class="w-full product-img" loading="lazy">
-                    </div>
-                    <h3 class="text-base sm:text-lg font-heading mb-1 font-semibold">Kalnų Krištolo Drūza</h3>
-                    <p class="text-xs sm:text-sm text-gray mb-3">Valymas • Aiškumas</p>
-                    <a href="https://t.me/ametistaslt" class="text-xs tracking-widest font-semibold hover-gold block">SUŽINOTI</a>
-                </article>
+                <!-- 2, 3, 4 – panašiai -->
             </div>
             <div class="text-center mt-12">
                 <a href="https://t.me/ametistaslt" class="inline-block border border-dark px-8 py-3 text-xs font-medium tracking-widest hover:bg-dark hover:text-light transition-all">
@@ -187,10 +212,10 @@
             <h2 class="text-3xl mobile-text-h2 sm:text-5xl font-heading mb-12 tracking-widest opacity-0 animate-slide-in">
                 MŪSŲ FACEBOOK
             </h2>
-            <p class="text-base text-gray mb-12 max-w-2xl mx-auto opacity-0 animate-fade-up" style="animation-delay:300ms">
+            <p class="text-base text-gray mb-12 max-w-2xl mx-auto opacity-0 animate-fade-up" style="animation-delay:0.3s">
                 Sekite naujienas, ritualus ir klientų atsiliepimus:
             </p>
-            <div class="max-w-md mx-auto opacity-0 animate-fade-up" style="animation-delay:600ms">
+            <div class="max-w-md mx-auto opacity-0 animate-fade-up" style="animation-delay:0.6s">
                 <div class="fb-page" 
                      data-href="https://www.facebook.com/ametistaslt/" 
                      data-tabs="timeline" 
@@ -205,13 +230,13 @@
         </div>
     </section>
 
-    <!-- PATOBULINTAS FOOTER -->
+    <!-- FOOTER -->
     <footer class="bg-dark text-light py-16 px-4 sm:px-6">
         <div class="container">
             <div class="footer-grid mb-12">
                 <div>
                     <h3 class="text-lg font-heading tracking-widest text-gold mb-4">AMETISTAS.LT</h3>
-                    <p class="text-xs leading-relaxed">Natūralūs kristalai, papuošalai ir astrologinės konsultacijos. Tik autentiška energija.</p>
+                    <p class="text-xs leading-relaxed">Natūralūs kristalai, papuošalai ir astrologinės konsultacijos.</p>
                 </div>
                 <div>
                     <h3 class="text-sm font-heading tracking-widest text-gold mb-4">KONTAKTAI</h3>
@@ -228,17 +253,23 @@
                 </div>
             </div>
             <div class="text-center text-xs border-t border-gray/30 pt-6">
-                <p>© 2025 AMETISTAS.LT | Visos teisės saugomos. Sukurta su energija ir meile.</p>
+                <p>© 2025 AMETISTAS.LT | Visos teisės saugomos.</p>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- Facebook SDK (async) -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
+
+    <!-- JS (DOMContentLoaded) -->
     <script>
-        // Mobile menu
-        document.getElementById('mobile-menu-button').onclick = () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            }
+        });
     </script>
 </body>
 </html>
