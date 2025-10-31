@@ -61,30 +61,38 @@
 
     /* Sticky navigacija */
     nav{position:sticky;top:0;z-index:999;background:var(--nav-bg);box-shadow:var(--nav-shadow); transition: background var(--transition);}
-    .nav-wrap{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem;}
-    /* NAV LOGO dingo is HTML! */
+    .nav-wrap{
+        max-width:var(--max-width);
+        margin:0 auto;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:1rem;
+    }
+    
     .nav-links a{margin-left:1.5rem;font-weight:600;color:var(--heading-color);transition:color var(--transition);}
     .nav-links a:hover{color:var(--gold);}
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus toggle mygtukas */
+    /* Mobilus toggle mygtukas - PAKEISTA SPALVA Į AUKSINĘ */
     .mobile-toggle { 
-        color: var(--heading-color); 
+        color: var(--gold) !important; /* Naudojame auksinę, kad visada būtų matoma */
         font-size: 1.2rem; 
-        display: none !important; /* Paslėptas pagal nutylėjimą */
+        display: none !important;
+        padding: 0.5rem; /* Leidžia tiksliau spausti */
     } 
 
     /* RADIKALIAI PAKEISTAS MOBILE MENIU STILIUS */
     .mobile-menu {
-        position: fixed; /* Būtinai fiksuotas ant viso ekrano */
+        position: fixed; 
         top: 0;
         right: 0;
-        width: 80%; /* Kad neužimtų viso pločio */
+        width: 80%; /* Meniu užims 80% ekrano pločio */
         height: 100vh;
-        z-index: 9999; /* Virš visų */
+        z-index: 9999; 
         background: var(--nav-bg);
-        padding: 4rem 1.5rem 1.5rem; /* Paliekame vietos viršuje fiksavimui */
+        padding: 4rem 1.5rem 1.5rem; 
         box-shadow: -5px 0 20px rgba(0,0,0,.15);
         
         /* SLEPIMAS: Meniu paslėptas už ekrano */
@@ -117,7 +125,6 @@
     @media(max-width:768px){
         /* Mobile: rodom elementus */
         .nav-links{display:none;}
-        /* NAV LOGO YRA PASALINTAS IS HTML - rodom tik mobile toggle */
         .mobile-toggle { display: block !important; } 
         #darkToggle { display: none; } 
         
@@ -127,8 +134,8 @@
           padding: 2rem 0.5rem; 
         }
         .hero h1 { 
-          font-size: 1.6rem; /* MAŽESNIS ŠRIFTAS */
-          letter-spacing: 0.1em; 
+          font-size: 1.6rem; 
+          letter-spacing: 0.05em; /* SUMAŽINTI tarpai */
           line-height: 1.2; 
         } 
         .hero p { 
@@ -158,7 +165,10 @@
     
     @media(max-width:400px){
         /* EKSTRA MAŽI EKRANAI - dar agresyvesnis šrifto mažinimas */
-        .hero h1 { font-size: 1.4rem; letter-spacing: 0.05em; } /* MAŽIAUSIAS ŠRIFTAS */
+        .hero h1 { 
+            font-size: 1.3rem; 
+            letter-spacing: normal; /* Visiškai pašalinti tarpai tarp raidžių! */
+        } 
     }
 
     /* Hero */
@@ -325,7 +335,7 @@
         <h1 class="animate-fade-up" style="animation-delay:0.3s;">AMETISTAS<span class="dot">.</span>LT</h1>
         <p class="lead animate-fade-up" style="animation-delay:0.6s;font-family:'Cormorant Garamond',serif;font-style:italic;">Natūralūs Akmenys. Aura. Astromineralogija.</p>
         <div class="ctas animate-fade-up" style="animation-delay: 0.9s;">
-            <a class="btn-telegram" href="#kolekcijos-perziura" aria-label="Peržiūrėti naują kolekciją Telegram kanale">
+            <a class="btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Peržiūrėti naują kolekciją Telegram kanale">
                 <i class="fab fa-telegram-plane"></i> Peržiūrėti Kolekciją
             </a>
             <a class="btn-ghost" href="#astromineralogija">Gaukite konsultaciją</a>
@@ -537,7 +547,7 @@
           });
       }
       
-      // Uždaryti meniu paspaudus nuorodą (Pataisyta/Užbaigta logika)
+      // Uždaryti meniu paspaudus nuorodą
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             if(link.id !== 'darkToggleMobile' && mobileToggle) {
