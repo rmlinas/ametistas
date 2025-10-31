@@ -2,24 +2,21 @@
 <html lang="lt">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Ametistas.lt - kristalų oazė</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7Rsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Minimal critical CSS (mobile-first, responsive) -->
   <style>
     :root{
       --amethyst-900:#1B002C; --amethyst-700:#5E3A87; --amethyst-300:#C8A2C8;
       --gold:#A58B5C; --dark:#0b0b0b; --light:#FBFAFF;
       --max-width:1200px;
     }
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:#111;}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:#111; overflow-x:hidden;} /* Užtikrina, kad scroll būtų tik vertikalus */
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
 
@@ -33,10 +30,14 @@
     .brand .dot{color:var(--gold)}
     nav.desktop{display:none}
     .icon-btn{background:transparent;border:0;color:var(--light);font-size:1.125rem;padding:.25rem}
+    .nav-link{transition:color .15s ease}
+    .nav-link:hover{color:var(--gold) !important}
+
 
     /* Mobile menu */
     .mobile-menu{display:none;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:.75rem 1rem}
-    .mobile-menu a{display:block;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,0.03);color:#f3eefe}
+    .mobile-menu a{display:block;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,0.03);color:#f3eefe;transition:color .15s ease}
+    .mobile-menu a:hover{color:var(--gold)}
 
     /* Hero */
     .hero{min-height:62vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--amethyst-900),var(--amethyst-700));color:var(--light);text-align:center;padding:3.5rem 1rem}
@@ -47,11 +48,12 @@
     .hero .ctas{margin-top:1.6rem;display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
     .btn-primary{background:var(--gold);color:var(--dark);padding:.75rem 1.15rem;border-radius:.5rem;font-weight:700;box-shadow:0 8px 24px rgba(165,139,92,.14);transition:transform .18s ease,box-shadow .18s ease}
     .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(165,139,92,.18)}
-    .btn-ghost{border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.95);padding:.7rem 1rem;border-radius:.5rem}
+    .btn-ghost{border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.95);padding:.7rem 1rem;border-radius:.5rem;transition:background .18s ease}
+    .btn-ghost:hover{background:rgba(255,255,255,.1)}
 
     /* Sections */
     section{padding:4rem 0}
-    .section-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--amethyst-300);text-align:center;margin-bottom:1rem}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--amethyst-700);text-align:center;margin-bottom:1rem;letter-spacing:0.1em}
     .lead{text-align:center;color:#333;max-width:68ch;margin:0 auto}
 
     /* About */
@@ -61,9 +63,47 @@
     .about-card{background:linear-gradient(180deg,#fff,#fbf7ff);padding:1.25rem;border-radius:12px;box-shadow:0 8px 30px rgba(17,17,17,0.04)}
     .about-hero{border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(11,6,18,0.18)}
 
-    /* Facebook area */
-    .fb-wrap{max-width:720px;margin:0 auto;text-align:center}
-    .fb-note{color:#444;margin-bottom:1rem}
+    /* Katalogas (CSS Grid) */
+    .product-grid{
+        display:grid;
+        grid-template-columns:repeat(2, 1fr); /* 2 stulpeliai mobiliesiems */
+        gap:1.25rem;
+        max-width:100%;
+        margin:0 auto;
+    }
+    @media(min-width:768px){
+        .product-grid{grid-template-columns:repeat(3, 1fr); gap:1.5rem;} /* 3 stulpeliai tabletėms */
+    }
+    @media(min-width:1024px){
+        .product-grid{grid-template-columns:repeat(4, 1fr); gap:1.75rem;} /* 4 stulpeliai dideliems ekranams */
+    }
+    .product-card{
+        background:var(--light);
+        border-radius:10px;
+        padding:1rem;
+        box-shadow:0 4px 12px rgba(0,0,0,.04);
+        transition:transform .2s ease, box-shadow .2s ease;
+        text-align:left;
+    }
+    .product-card:hover{
+        transform:translateY(-4px);
+        box-shadow:0 12px 28px rgba(0,0,0,.08);
+    }
+    .product-img-wrap{height:180px; overflow:hidden; border-radius:6px; margin-bottom:.75rem;}
+    @media(min-width:768px){.product-img-wrap{height:220px;}}
+    .product-img-wrap img{width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;}
+    .product-card:hover .product-img-wrap img{transform:scale(1.05);}
+    .product-card h3{font-size:1rem; margin:.2rem 0; font-weight:700; font-family:Inter}
+    .product-price{font-size:1.25rem; color:var(--gold); font-weight:700; margin-top:.35rem;}
+    .product-link{color:var(--amethyst-700); font-size:.85rem; font-weight:600;}
+    .product-link:hover{color:var(--gold)}
+
+    /* Facebook/Instagram area */
+    .social-section{padding:3.5rem 0;background:linear-gradient(180deg,#fbfbfc,#fff)}
+    .social-wrap{max-width:1000px;margin:0 auto;text-align:center;display:grid;gap:1.5rem;grid-template-columns:1fr;}
+    @media(min-width:768px){.social-wrap{grid-template-columns:1fr 1fr;}}
+    .fb-wrap, .ig-wrap{padding:1rem;border-radius:12px;background:#fff;box-shadow:0 8px 30px rgba(17,17,17,0.04);}
+    .social-note{color:#444;margin-bottom:1rem}
 
     /* Footer */
     footer{background:linear-gradient(180deg,var(--amethyst-900),var(--amethyst-700));color:var(--light);padding:2.25rem 0}
@@ -71,31 +111,36 @@
     @media(min-width:768px){ .footer-links{flex-direction:row;justify-content:center} }
     .social-inline{display:flex;gap:.6rem;align-items:center;justify-content:center;margin-top:.6rem}
     .social-inline a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,0.06);color:var(--light);transition:transform .12s}
-    .social-inline a:hover{transform:translateY(-3px);background:rgba(255,255,255,0.11)}
+    .social-inline a:hover{transform:translateY(-3px);background:rgba(255,255,255,0.11);color:var(--gold)}
 
     .contact-row{margin-top:1rem;text-align:center;color:rgba(255,255,255,0.9);font-weight:600}
     .small{font-size:.85rem;opacity:.9}
 
+    /* Desktop styles */
+    @media(min-width:768px){ 
+      nav.desktop{display:block}
+      .mobile-controls{display:none}
+      .hero h1{letter-spacing:.25em}
+    }
+    
     /* Utilities */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="wrap nav-inner">
-      <a class="brand" href="#" aria-label="Ametistas LT">AMETISTAS<span class="dot">.</span>LT</a>
+      <a class="brand nav-link" href="#" aria-label="Ametistas LT">AMETISTAS<span class="dot">.</span>LT</a>
 
-      <!-- Desktop nav -->
       <nav class="desktop" aria-label="Pagrindinis meniu">
-        <a href="#apie-mus" class="small" style="color:rgba(255,255,255,0.95);margin-right:1.25rem">Apie mus</a>
-        <a href="#astromineralogija" class="small" style="color:rgba(255,255,255,0.95);margin-right:1.25rem">Konsultacijos</a>
-        <a href="#pristatymas" class="small" style="color:rgba(255,255,255,0.95);margin-right:1.25rem">Pristatymas</a>
-        <a href="#kontaktai" class="small" style="color:rgba(255,255,255,0.95)">Kontaktai</a>
+        <a href="#katalogas" class="small nav-link" style="color:rgba(255,255,255,0.95);margin-right:1.25rem">Katalogas</a>
+        <a href="#apie-mus" class="small nav-link" style="color:rgba(255,255,255,0.95);margin-right:1.25rem">Apie mus</a>
+        <a href="#astromineralogija" class="small nav-link" style="color:rgba(255,255,255,0.95);margin-right:1.25rem">Konsultacijos</a>
+        <a href="#pristatymas" class="small nav-link" style="color:rgba(255,255,255,0.95);margin-right:1.25rem">Pristatymas</a>
+        <a href="#kontaktai" class="small nav-link" style="color:rgba(255,255,255,0.95)">Kontaktai</a>
       </nav>
 
-      <!-- Mobile toggle -->
       <div class="mobile-controls">
         <button id="mobile-toggle" class="icon-btn" aria-expanded="false" aria-controls="mobile-menu" title="Meniu">
           <i class="fa fa-bars" aria-hidden="true"></i>
@@ -104,9 +149,9 @@
       </div>
     </div>
 
-    <!-- Mobile menu (hidden by default) -->
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
       <div class="wrap">
+        <a href="#katalogas">Katalogas</a>
         <a href="#apie-mus">Apie mus</a>
         <a href="#astromineralogija">Konsultacijos</a>
         <a href="#pristatymas">Pristatymas</a>
@@ -115,7 +160,6 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <main>
     <section class="hero" role="region" aria-label="Hero">
       <div class="wrap">
@@ -131,7 +175,102 @@
       </div>
     </section>
 
-    <!-- APPE MUS -->
+    <section id="katalogas">
+        <div class="wrap">
+            <h2 class="section-title">PREKIŲ KATALOGAS</h2>
+            <p class="lead" style="color:#2c2c2c; margin-bottom:2rem;">
+                Populiariausios prekės: mineralai, kristalai, papuošalai ir drūzos.
+            </p>
+
+            <div class="product-grid">
+                
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/7406557/pexels-photo-7406557.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Ametisto Geodas" loading="lazy">
+                    </div>
+                    <h3>Ametisto Geodas</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">4.5 kg | Raminanti energija</p>
+                    <p class="product-price">€350</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Užsisakyti</a>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/4030777/pexels-photo-4030777.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Rožinio Kvarco Apyrankė" loading="lazy">
+                    </div>
+                    <h3>Rožinio Kvarco Apyrankė</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">Meilė | 8mm karoliukai</p>
+                    <p class="product-price">€45</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Į krepšelį</a>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/7406558/pexels-photo-7406558.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Citrinas" loading="lazy">
+                    </div>
+                    <h3>Citrino Kristalas</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">Neapdorotas | Sėkmė</p>
+                    <p class="product-price">€79</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Užsisakyti</a>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/6309852/pexels-photo-6309852.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Mėnulio Akmens Pakabukas" loading="lazy">
+                    </div>
+                    <h3>Mėnulio Akmens Pakabukas</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">925 sidabras | Moteriška energija</p>
+                    <p class="product-price">€110</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Į krepšelį</a>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/6268894/pexels-photo-6268894.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Juodasis Turmalinas" loading="lazy">
+                    </div>
+                    <h3>Juodojo Turmalino Drūza</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">250 g | Apsauga</p>
+                    <p class="product-price">€59</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Užsisakyti</a>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/7406555/pexels-photo-7406555.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Selenito Lazdelė" loading="lazy">
+                    </div>
+                    <h3>Selenito Lazdelė</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">15 cm | Energetinis valymas</p>
+                    <p class="product-price">€29</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Į krepšelį</a>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/6268892/pexels-photo-6268892.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Tigro Akis" loading="lazy">
+                    </div>
+                    <h3>Tigro Akies Ritinys</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">100 g | Drąsa ir valia</p>
+                    <p class="product-price">€35</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Užsisakyti</a>
+                </article>
+                
+                <article class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://images.pexels.com/photos/7406556/pexels-photo-7406556.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=2" alt="Kalnų Krištolas" loading="lazy">
+                    </div>
+                    <h3>Kalnų Krištolo Drūza</h3>
+                    <p style="font-size:.85rem; color:#666; margin:0;">500 g | Skaidrumas</p>
+                    <p class="product-price">€99</p>
+                    <a href="https://t.me/ametistaslt" class="product-link">Į krepšelį</a>
+                </article>
+            </div>
+
+            <div style="text-align:center;margin-top:2.5rem">
+                <a class="btn-primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener">Peržiūrėti visą asortimentą</a>
+            </div>
+        </div>
+    </section>
+
     <section id="apie-mus">
       <div class="wrap about-grid">
         <div>
@@ -142,14 +281,13 @@
 
           <div style="margin-top:1rem;color:#444;line-height:1.6">
             <p>Mes esame jauna, ambicinga bendraminčių komanda, kurią vienija aistra natūraliems akmenims ir mineralams. Akmenys – tai ne tik mūsų darbas, bet ir hobis, todėl į savo veiklą dedame visas jėgas ir entuziazmą.</p>
-            <p style="margin-top:.75rem">Savo parduodamas prekes stengiamės kruopščiai atrinkti. Bendradarbiaujame tik su patikimais vakarų Europos didmeninės prekybos mineralais tiekėjais, turinčiais ilgametę patirtį šioje srityje. Dėl to galime užtikrinti aukštą savo siūlomų akmenų ir mineralų kokybę.</p>
-            <p style="margin-top:.75rem">Mums nepriimtinas neaiškios kilmės akmenų pardavimas. Atsisakome bendradarbiauti su Azijos pardavėjais ir neaiškios kilmės internetiniais aukcionais. Visi mūsų siūlomI akmenys yra kruopščiai atrinkti ir atitinka aukščiausius kokybės standartus.</p>
-            <p style="margin-top:.75rem">Prekes parduodame tokias, kokias norėtume patys gauti – t. y. kaip sau. Mums svarbu ne kiekybė, o kokybė. Norime, kad kiekvienas mūsų klientas liktų patenkintas savo pirkiniu ir džiaugtųsi natūralių akmenų teikiama nauda ir grožiu.</p>
+            <p style="margin-top:.75rem">Savo parduodamas prekes stengiamės kruopščiai atrinkti. Bendradarbiaujame tik su patikimais **vakarų Europos didmeninės prekybos mineralais tiekėjais**, turinčiais ilgametę patirtį šioje srityje. Dėl to galime užtikrinti aukštą savo siūlomų akmenų ir mineralų kokybę.</p>
+            <p style="margin-top:.75rem">Mums nepriimtinas neaiškios kilmės akmenų pardavimas. Atsisakome bendradarbiauti su Azijos pardavėjais ir neaiškios kilmės internetiniais aukcionais. Visi mūsų siūlomi akmenys yra kruopščiai atrinkti ir atitinka aukščiausius kokybės standartus.</p>
+            <p style="margin-top:.75rem">Prekes parduodame tokias, kokias norėtume patys gauti – t. y. kaip sau. Mums svarbu ne **kiekybė, o kokybė**. Norime, kad kiekvienas mūsų klientas liktų patenkintas savo pirkiniu ir džiaugtųsi natūralių akmenų teikiama nauda ir grožiu.</p>
           </div>
         </div>
 
         <aside class="about-card about-hero" aria-hidden="true" style="margin-top:1rem">
-          <!-- decorative card with subtle gradient -->
           <div style="padding:1rem">
             <img src="https://images.pexels.com/photos/7406557/pexels-photo-7406557.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80" alt="Ametistas" style="border-radius:8px;display:block">
           </div>
@@ -157,16 +295,15 @@
       </div>
     </section>
 
-    <!-- ASTROMINERALOGIJA -->
     <section id="astromineralogija">
       <div class="wrap">
         <h2 class="section-title">ASTROMINERALOGINĖS KONSULTACIJOS</h2>
         <p class="lead" style="color:#333">Siūlome individualias astromineralogines konsultacijas, kurių metu:</p>
 
         <ul style="max-width:860px;margin:1rem auto 0;list-style:disc;padding-left:1.15rem;color:#444;line-height:1.7">
-          <li>Atsižvelgdami į Jūsų gimimo datą ir laiką, parengsime asmeninį akmenų žemėlapį.</li>
+          <li>Atsižvelgdami į Jūsų gimimo datą ir laiką, parengsime **asmeninį akmenų žemėlapį**.</li>
           <li>Rekomenduosime tinkamiausius akmenis, atitinkančius Jūsų individualius poreikius ir siekius.</li>
-          <li>Patarsime, kaip taisyklingai naudoti ir prižiūrėti akmenis, kad jie atskleistų visas savo galias.</li>
+          <li>Patarsime, kaip **taisyklingai naudoti ir prižiūrėti** akmenis, kad jie atskleistų visas savo galias.</li>
         </ul>
 
         <div style="text-align:center;margin-top:1.5rem">
@@ -175,49 +312,65 @@
       </div>
     </section>
 
-    <!-- PRISTATYMAS -->
     <section id="pristatymas">
       <div class="wrap">
         <h2 class="section-title">PATOGUS PRISTATYMAS</h2>
         <div style="max-width:980px;margin:0 auto;display:grid;gap:1rem">
-          <div style="background:#fff;border-radius:10px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.04)">
+          <div style="background:#fff;border-radius:10px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.04); border-left:4px solid var(--gold);">
             <h3 style="margin:0 0 .5rem;font-weight:700">Pristatymas per kurjerį</h3>
-            <p style="margin:0;color:#444">Greitas ir patogus: Jūsų užsakymas bus pristatytas tiesiai į Jūsų namus ar darbo vietą per 1-3 darbo dienas. Galimybė sekti siuntą.</p>
+            <p style="margin:0;color:#444">Greitas ir patogus: Jūsų užsakymas bus pristatytas tiesiai į Jūsų namus ar darbo vietą per **1-3 darbo dienas**. Galimybė sekti siuntą.</p>
           </div>
-          <div style="background:#fff;border-radius:10px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.04)">
+          <div style="background:#fff;border-radius:10px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.04); border-left:4px solid var(--gold);">
             <h3 style="margin:0 0 .5rem;font-weight:700">Pristatymas į paštomatą</h3>
-            <p style="margin:0;color:#444">Patogus ir lankstus: Galite atsiimti siuntą Jums patogiu laiku iš artimiausio paštomato (LP EXPRESS, Omniva, Venipack, DPD).</p>
+            <p style="margin:0;color:#444">Patogus ir lankstus: Galite atsiimti siuntą Jums patogiu laiku iš artimiausio paštomato (**LP EXPRESS, Omniva, DPD**).</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FACEBOOK FEED ONLY -->
-    <section style="padding:3.5rem 0;background:linear-gradient(180deg,#fbfbfc,#fff)">
-      <div class="wrap fb-wrap" id="facebook-section">
-        <h2 class="section-title">MŪSŲ FACEBOOK</h2>
-        <p class="fb-note">Sekite naujienas, atsiliepimus ir naujas kolekcijas tiesiog Facebook puslapyje.</p>
+    <section class="social-section">
+      <div class="wrap">
+        <h2 class="section-title">SEKITE MUS SOCIALINIUOSE TINKLUOSE</h2>
+        <p class="lead social-note">Naujienos, atsiliepimai, kolekcijos ir grožis tiesiai iš mūsų Facebook bei Instagram paskyrų.</p>
+      </div>
 
-        <!-- Facebook plugin -->
-        <div style="display:flex;justify-content:center">
-          <div class="fb-page"
-               data-href="https://www.facebook.com/ametistaslt"
-               data-tabs="timeline"
-               data-width="520"
-               data-height="600"
-               data-small-header="false"
-               data-adapt-container-width="true"
-               data-hide-cover="false"
-               data-show-facepile="true">
+      <div class="wrap social-wrap">
+        
+        <div class="fb-wrap">
+          <h3 class="section-title" style="font-size:1.3rem; margin-bottom:1.5rem;">FACEBOOK</h3>
+          <div style="display:flex;justify-content:center">
+            <div class="fb-page"
+                 data-href="https://www.facebook.com/ametistaslt"
+                 data-tabs="timeline"
+                 data-width="450"
+                 data-height="500"
+                 data-small-header="false"
+                 data-adapt-container-width="true"
+                 data-hide-cover="false"
+                 data-show-facepile="true">
+            </div>
           </div>
         </div>
+
+        <div class="ig-wrap">
+            <h3 class="section-title" style="font-size:1.3rem; margin-bottom:1.5rem;">INSTAGRAM</h3>
+            <div style="display:flex;justify-content:center;">
+                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/C68QvP6oJ9v/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:450px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;">
+                        <a href="https://www.instagram.com/p/C68QvP6oJ9v/" target="_blank" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;">Ametisto Geodas 💜</a>
+                        <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin:8px 0 0 0; padding:0 4px;">Įrašas, kurį bendrino <a href="https://www.instagram.com/ametistaslt/" target="_blank" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"> Ametistas.lt</a></p>
+                    </div>
+                </blockquote>
+            </div>
+            <script async src="//www.instagram.com/embed.js"></script>
+        </div>
       </div>
+
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer>
+  <footer id="kontaktai">
     <div class="wrap" style="text-align:center;padding-top:1.25rem;padding-bottom:.75rem">
       <div class="footer-links">
         <a href="mailto:info@ametistas.lt" style="color:var(--light);font-weight:600">info@ametistas.lt</a>
@@ -230,16 +383,14 @@
       </div>
 
       <div class="contact-row">
-        <div class="small">© 2025 AMETISTAS.LT — Visos teisės saugomos.</div>
+        <div class="small">© 2025 AMETISTAS.LT | Visos teisės saugomos.</div>
       </div>
     </div>
   </footer>
 
-  <!-- Facebook SDK (placed at end for performance) -->
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
 
-  <!-- Minimal JS: mobile menu toggle, ensure no errors -->
   <script>
     (function(){
       const btn = document.getElementById('mobile-toggle');
@@ -254,10 +405,22 @@
       });
       // Ensure mobile menu hidden by default on larger screens
       function resetMenuOnResize(){
-        if (window.innerWidth >= 768) { menu.style.display = 'none'; menu.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); }
+        if (window.innerWidth >= 768) { 
+          menu.style.display = 'none'; 
+          menu.setAttribute('aria-hidden','true'); 
+          btn.setAttribute('aria-expanded','false'); 
+        }
       }
       window.addEventListener('resize', resetMenuOnResize);
       resetMenuOnResize();
+      // Close mobile menu on click
+      document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.style.display = 'none';
+          menu.setAttribute('aria-hidden','true'); 
+          btn.setAttribute('aria-expanded','false'); 
+        });
+      });
     })();
   </script>
 </body>
