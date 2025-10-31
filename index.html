@@ -15,7 +15,7 @@
   <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v18/co3bmC5gg_AWTcW6LsfNlGjvE71S70rM4Ugy_V14.woff2" as="font" type="font/woff2" crossorigin>
   
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7rSsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7rSsl3hTn6IwX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <style>
     /* GLOBALUS NUSTATYMAI */
@@ -235,7 +235,83 @@
         letter-spacing:.1em; 
         transition: color var(--transition);
     }
-    /* ... (likę CSS stiliai) ... */
+    
+    /* Kitų sekcijų stiliai (reikalingi, kad turinys būtų matomas) */
+    section{padding:5rem 0;background:var(--bg-color); transition: background var(--transition);}
+    .lead{text-align:center;color:var(--text-color);max-width:70ch;margin:0 auto;font-size:1.1rem; transition: color var(--transition);}
+    .section-light-bg{background-color: var(--section-bg-light); transition: background var(--transition);}
+    
+    /* Mygtukų stiliai (atkartojami, kad užtikrintumėte, jog yra) */
+    .hero .ctas{margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    .btn-telegram {
+        background: var(--telegram-blue);
+        color: var(--light);
+        padding:.8rem 1.5rem;
+        border-radius:3px;
+        font-weight:700;
+        box-shadow:0 8px 20px rgba(0, 136, 204, 0.3);
+        transition:transform var(--transition),box-shadow var(--transition), background var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .btn-ghost{border:1px solid rgba(212,175,55,.5);color:var(--gold);padding:.75rem 1.35rem;border-radius:3px;font-weight:600;transition:background var(--transition),color var(--transition);}
+    
+    /* About */
+    .about-grid{display:grid;gap:2rem;margin-top:2rem;}
+    @media(min-width:768px){.about-grid{grid-template-columns:1fr 480px;align-items:center}}
+    .about-card{background:var(--card-bg);padding:1.5rem;border-radius:6px;box-shadow:0 12px 40px rgba(17,17,17,0.08);border-top:3px solid var(--gold); transition: background var(--transition);}
+    .about-hero img{border-radius:6px;object-fit:cover;transition:filter .5s ease;filter:brightness(0.95);}
+    .reiki-note {
+        margin-top:.75rem;
+        color:var(--amethyst-700);
+        font-weight:600;
+        border-left:3px solid var(--gold);
+        padding-left:1rem;
+        font-size: 0.95rem;
+    }
+
+    /* Telegram pirkimo tinklelis */
+    .purchase-steps-grid {
+        max-width:1000px;
+        margin:3rem auto 0;
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+        gap:2rem;
+        text-align:center;
+    }
+    .purchase-step i {
+        font-size:3rem;
+        color:var(--telegram-blue);
+        margin-bottom:1rem;
+    }
+    .purchase-step h4 {
+        font-family:'Cormorant Garamond',serif;
+        font-size:1.4rem;
+        color:var(--heading-color);
+        margin-bottom:0.5rem;
+    }
+    .purchase-step:nth-child(1) i { color: var(--amethyst-700); }
+    .purchase-step:nth-child(3) i { color: var(--gold); }
+    .feature-card{background:var(--card-bg);border-radius:6px;padding:1.5rem;box-shadow:0 8px 24px rgba(0,0,0,.05);border-left:3px solid var(--gold);transition:box-shadow var(--transition), background var(--transition);}
+    
+    /* Facebook */
+    .fb-section{padding:3.5rem 0;background:linear-gradient(180deg,#fbfbfc,#fff);}
+    .fb-wrap{max-width:520px;margin:0 auto;text-align:center;} 
+    .fb-note{color:#444;margin-bottom:1rem;}
+    .fb-page-responsive{max-width:100%;overflow:hidden;display:flex;justify-content:center;}
+
+    /* Footer */
+    footer{background:var(--amethyst-900);color:var(--light);padding:3rem 0;box-shadow:inset 0 10px 30px rgba(0,0,0,0.5);}
+    .footer-nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+    .social-inline{display:flex;gap:.75rem;justify-content:center;margin-top:1rem;}
+    .social-inline a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:rgba(212,175,55,.2);color:var(--light);border:1px solid var(--gold);font-size:1.3rem;transition:transform var(--transition);}
+    .social-inline .telegram-icon {
+        background: rgba(0, 136, 204, 0.2); 
+        border: 1px solid var(--telegram-blue);
+    }
+    .contact-row{margin-top:1.5rem;text-align:center;color:rgba(255,255,255,.75);font-weight:600}
+    .small{font-size:.85rem;opacity:.9}
 
     /* Dark mode stiliai */
     body.dark-mode {
@@ -248,7 +324,12 @@
       --nav-shadow: 0 2px 10px rgba(255,255,255,.05);
       --toggle-icon: var(--gold);
     }
-    /* ... (likę Dark Mode stiliai) ... */
+    body.dark-mode .fb-section {background: #181818;}
+    body.dark-mode .fb-note {color: #ccc;}
+    body.dark-mode .reiki-note { color: var(--amethyst-300); }
+    body.dark-mode .mobile-menu { border-top-color: rgba(255,255,255,.05); }
+    body.dark-mode .mobile-menu a { border-bottom-color: rgba(255,255,255,.05); }
+    body.dark-mode .purchase-step p { color: var(--text-color); }
   </style>
 </head>
 <body class="animate-fade-in">
@@ -267,7 +348,8 @@
           <i class="fas fa-moon"></i>
         </button>
         <button id="mobileToggle" class="mobile-toggle" aria-label="Atidaryti meniu">
-          &#9776; </button>
+          &#9776;
+        </button>
       </div>
     </div>
 
@@ -300,23 +382,146 @@
     </section>
 
     <section id="kolekcijos-perziura" class="animate-fade-up section-light-bg" style="animation-delay:0.5s;">
-        </section>
+        <div class="wrap">
+            <h2 class="section-title">IŠSKIRTINĖ KOLEKCIJA PER TELEGRAM</h2>
+            <p class="lead" style="margin-bottom:3rem;">Mūsų aukščiausios kokybės akmenys parduodami per privatų Telegram kanalą. Tai užtikrina asmeninę konsultaciją ir pirmenybę retų pavyzdžių įsigijimui.</p>
+            
+            <div class="purchase-steps-grid">
+                
+                <div class="purchase-step">
+                    <i class="fas fa-seedling"></i> 
+                    <h4>1. Prisijunkite prie Bendruomenės</h4>
+                    <p>Telegram kanale gausite vertingos edukacinės informacijos apie akmenų savybes, energiją bei naujų kolekcijų anonsus.</p>
+                </div>
+
+                <div class="purchase-step">
+                    <i class="fab fa-telegram-plane"></i>
+                    <h4>2. Atraskite Rinktinius Pavyzdžius</h4>
+                    <p>Kanalas yra mūsų **Virtuali Vitrina**. Talpiname tik aukštos raiškos nuotraukas, detalius aprašymus ir kainas.</p>
+                </div>
+
+                <div class="purchase-step">
+                    <i class="fas fa-hand-holding-heart"></i> 
+                    <h4>3. Užsisakykite Asmeniškai</h4>
+                    <p>Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriui Telegram platformoje. Visi klausimai atsakomi **tiesiogiai**.</p>
+                </div>
+            </div>
+            
+            <div style="text-align:center; margin-top:3.5rem;">
+                <a class="btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Peržiūrėti kolekciją Telegram kanale">
+                    <i class="fab fa-telegram-plane"></i> PERŽIŪRĖTI KOLEKCIJĄ TELEGRAME
+                </a>
+            </div>
+        </div>
+    </section>
     
     <section id="apie-mus" class="animate-fade-up" style="animation-delay:0.7s;">
-        </section>
+      <div class="wrap about-grid">
+        <div>
+          <h2 class="section-title">APIE MUS IR MŪSŲ VIZIJA</h2>
+          <p class="lead" style="font-weight:600;">Ametistas.lt – tai aistra natūraliems akmenims ir mineralams, tiekianti tik aukščiausią kokybę ir autentiškumą.</p>
+          <div style="margin-top:1.5rem;color:#444;line-height:1.7">
+            <p>Mūsų principas: <strong>Kokybė, ne Kiekybė</strong>. Kiekvienas mineralas, kristalas ir papuošalas yra kruopščiai atrenkamas, bendradarbiaujant su patikimais Vakarų Europos tiekėjais. Mes garantuojame akmenų kilmę ir vengiam neaiškios, Azijietiškos kilmės prekių.</p>
+            <p style="margin-top:.75rem;color:#666;">Mes esame jauna bendraminčių komanda, kurios tikslas – tapti Jūsų asmeniniu mineralų šaltiniu. Prekes parduodame tokias, kokias norėtume patys gauti – t. y. kaip sau.</p>
+            
+            <p class="reiki-note">
+              ✨ <strong>Visi akmenys paruošiami Jums.</strong> Kiekvienas mineralas yra energetiškai <strong>išvalomas ir pakraunamas Reiki</strong> energija, kad pasiektų Jus paruoštas Jūsų asmeninėms intencijoms.
+            </p>
+          </div>
+        </div>
+        <aside class="about-card about-hero" aria-hidden="true" style="margin-top:1rem;height:350px;">
+          <div style="padding:.75rem">
+            <img src="https://images.unsplash.com/photo-1549484306-03a890a5015b?q=80&w=1974&auto=format&fit=crop" alt="Ametisto kristalas" loading="lazy">
+          </div>
+        </aside>
+      </div>
+    </section>
 
     <section id="astromineralogija" class="section-light-bg animate-fade-up" style="animation-delay:0.9s;">
-        </section>
+      <div class="wrap">
+        <h2 class="section-title">ASTROMINERALOGINĖS KONSULTACIJOS</h2>
+        <p class="lead" style="margin-bottom:2rem;">Individuali konsultacija, padedanti atrasti Jūsų sielos akmenis. Tai ne tik parinkimas pagal horoskopą, bet ir gili energetinė diagnostika.</p>
+        
+        <div class="purchase-steps-grid" style="margin-top:0;">
+          <div class="feature-card">
+            <h3 style="margin:0 0 .5rem;font-weight:700;color:var(--heading-color);font-family:'Cormorant Garamond',serif;font-size:1.4rem;">Individualus Akmenų Žemėlapis</h3>
+            <p>Sudarysime Jums unikalų akmenų žemėlapį pagal <strong>gimimo datą ir laiką</strong>. Tiksliai sužinosite, kokie mineralai stiprina Jūsų silpnąsias vietas ir skatina sėkmę.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="margin:0 0 .5rem;font-weight:700;color:var(--heading-color);font-family:'Cormorant Garamond',serif;font-size:1.4rem;">Energetinis Parinkimas (Aura)</h3>
+            <p>Atsižvelgiame ne tik į Jūsų gimimo datą, bet ir į <strong>dabartinę auros būseną</strong> bei gyvenimo iššūkius. Akmenys parenkami tam, kad harmonizuotų Jūsų energijos lauką čia ir dabar.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="margin:0 0 .5rem;font-weight:700;color:var(--heading-color);font-family:'Cormorant Garamond',serif;font-size:1.4rem;">Pritaikymas ir Panaudojimas</h3>
+            <p>Gausite išsamias gaires, kaip teisingai <strong>valyti, aktyvuoti ir naudoti</strong> pasirinktus akmenis (nešioti, medituoti, naudoti namų erdvėje), kad jie atskleistų visas savo galias.</p>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem">
+          <a class="btn-primary" href="mailto:info@ametistas.lt" aria-label="Užsisakyti asmeninę konsultaciją el. paštu">Užsisakyti asmeninę konsultaciją</a>
+        </div>
+      </div>
+    </section>
     
     <section id="pristatymas" class="animate-fade-up" style="animation-delay:1.1s; padding: 3rem 0;">
-        </section>
+      <div class="wrap">
+        <h2 class="section-title">SAUGUS PRISTATYMAS</h2>
+        <div class="feature-card" style="max-width:700px; margin:0 auto; border-left:3px solid var(--amethyst-700);">
+           <h3 style="margin:0 0 .5rem;font-weight:700;color:var(--heading-color);font-family:'Cormorant Garamond',serif;font-size:1.4rem;">Pristatymo Būdai</h3>
+           <p>
+             Siunčiame per <strong>Kurjerius (DPD, Venipack)</strong>, pristatymas per 1-2 d.d., arba į <strong>Paštomatus (LP EXPRESS, Omniva)</strong>, pristatymas per 1-3 d.d. Kiekvienas akmuo pakuojamas su ypatingu dėmesiu saugumui.
+           </p>
+        </div>
+      </div>
+    </section>
 
     <section id="facebook-feed" class="fb-section animate-fade-up" style="animation-delay: 1.3s;">
-        </section>
+      <div class="wrap fb-wrap">
+        <h2 class="section-title">MŪSŲ FACEBOOK</h2>
+        <p class="fb-note">Sekite naujienas, atsiliepimus ir naujas kolekcijas tiesiog Facebook puslapyje.</p>
+        <div class="fb-page-responsive">
+          <div class="fb-page"
+               data-href="https://www.facebook.com/ametistaslt"
+               data-tabs="timeline"
+               data-width="450" 
+               data-height="500"
+               data-small-header="true" 
+               data-adapt-container-width="true"
+               data-hide-cover="false"
+               data-show-facepile="false">
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer id="kontaktai" class="animate-fade-in" style="animation-delay: 1.5s;">
-    </footer>
+    <div class="wrap" style="text-align:center;padding-top:2.5rem;padding-bottom:1.5rem">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:700; color:var(--gold); margin-bottom:1rem; font-size:1.5rem; letter-spacing:0.1em;">
+        KONTAKTAI
+      </h3>
+      <div class="footer-nav-links">
+        <a href="#apie-mus" class="small">Apie mus</a>
+        <a href="#kolekcijos-perziura" class="small">Kolekcijos peržiūra</a>
+        <a href="#astromineralogija" class="small">Konsultacijos</a>
+        <a href="https://www.instagram.com/ametistaslt" target="_blank" class="small">Instagram</a>
+      </div>
+      <div class="contact-row" style="margin-top:0.5rem; margin-bottom:1rem;">
+        <a href="mailto:info@ametistas.lt" class="small" style="color:rgba(255,255,255,.8); font-weight:600;">info@ametistas.lt</a>
+      </div>
+      <div class="social-inline" aria-hidden="false">
+        <a href="https://www.facebook.com/ametistaslt" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram" class="telegram-icon"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://www.instagram.com/ametistaslt" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="contact-row" style="margin-top:1.5rem;">
+        <div class="small" style="font-size:0.75rem; color:rgba(255,255,255,.6);">
+          © 2025 AMETISTAS.LT | Visos teisės saugomos.
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
@@ -359,11 +564,10 @@
       // MOBILE MENU
       const mobileToggle = document.getElementById('mobileToggle');
       const mobileMenu = document.getElementById('mobileMenu');
-      const mobileClose = document.getElementById('mobileClose'); // Pridėtas uždarymo mygtukas
+      const mobileClose = document.getElementById('mobileClose'); 
       
       const toggleMenu = () => {
           mobileMenu.classList.toggle('open');
-          // Pastaba: Hamburgerio ikonos nebekeičiame (lieka ☰)
       };
 
       if(mobileToggle && mobileMenu) {
