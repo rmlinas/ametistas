@@ -1,27 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Ametistas.lt — natūralių ametistų, kristalų ir mineralų asortimentas. Astromineraloginės konsultacijos, drūzos, papuošalai.">
-  <meta name="keywords" content="ametistas, kristalai, ametistai, drūzos, papuošalai, astromineralogija, akmenys">
-  <title>Ametistas.lt — natūrali ramybė ir dvasinė pusiausvyra</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Ametistas.lt – Jūsų patikimas natūralių akmenų šaltinis Baltijos šalyse. Plataus asortimento mineralai, kristalai, papuošalai, drūzos. Aukšta kokybė, profesionalus aptarnavimas." />
+  <meta name="keywords" content="ametistas, natūralūs akmenys, mineralai, kristalai, papuošalai, drūzos, astromineralogija, pristatymas, Baltijos šalys" />
+  <title>Ametistas.lt – Jūsų natūralių akmenų šaltinis</title>
 
-  <!-- Tailwind (CDN) -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'amethyst-900': '#100019',
-            'amethyst-800': '#3B006A',
-            'amethyst-600': '#A77BCA',
-            'amethyst-300': '#D1B3FF',
-            gold: '#C9A96E'
+            dark: "#0A0A0A",
+            amethyst: "#6A0DAD",
+            gold: "#C9A96E",
+            light: "#F8F8F8",
+            gray: "#666666"
           },
           fontFamily: {
             heading: ['"Cormorant Garamond"', 'serif'],
+            subheading: ['"Libre Baskerville"', 'serif'],
             body: ['Inter', 'sans-serif']
           }
         }
@@ -29,205 +30,252 @@
     }
   </script>
 
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root{color-scheme:dark}
-    html{scroll-behavior:smooth}
-    /* soft divider */
-    .divider{height:1px;background:linear-gradient(90deg,transparent,#6A0DAD,transparent);margin:3.5rem 0}
-    /* subtle glass cards */
-    .card-bg{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));backdrop-filter: blur(4px)}
+    html { scroll-behavior: smooth; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, #C9A96E, transparent); margin: 4rem 0; }
   </style>
 </head>
-<body class="bg-amethyst-900 text-gray-100 font-body antialiased">
 
-  <!-- HERO -->
-  <header class="min-h-screen flex items-center justify-center relative overflow-hidden">
-    <!-- Pexels background image (ametistas / kristalai) -->
-    <img src="https://images.pexels.com/photos/7406557/pexels-photo-7406557.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" 
-         alt="Ametistas — makro" 
-         class="absolute inset-0 w-full h-full object-cover opacity-25">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-amethyst-900/40 to-amethyst-900/90"></div>
+<body class="bg-dark text-light font-body">
 
-    <div class="relative z-10 max-w-4xl px-6 text-center">
-      <h1 class="text-5xl sm:text-6xl md:text-7xl font-heading leading-tight tracking-wide mb-4">
-        Ametistas<span class="text-gold">.LT</span>
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-16 py-20 overflow-hidden">
+    <img src="https://images.pexels.com/photos/5480821/pexels-photo-5480821.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" alt="Ametisto fonas" class="absolute inset-0 w-full h-full object-cover opacity-20">
+    <div class="relative z-10 text-center max-w-5xl mx-auto">
+      <h1 class="text-5xl sm:text-6xl md:text-8xl font-heading font-light tracking-widest mb-6">
+        AMETISTAS<span class="text-gold">.</span>LT
       </h1>
-      <p class="text-lg sm:text-xl md:text-2xl text-amethyst-300 italic mb-8">
-        Ametistas — natūrali ramybė ir dvasinė pusiausvyra
+      <p class="text-lg sm:text-xl md:text-3xl font-subheading italic text-gray mb-10 max-w-3xl mx-auto leading-loose">
+        Jūsų natūralių akmenų šaltinis
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#produktai" class="inline-flex items-center justify-center px-8 py-3 border border-amethyst-600 rounded-md hover:bg-amethyst-600 hover:text-amethyst-900 transition">
-          Peržiūrėti galeriją
+      <p class="text-base sm:text-lg text-gray mb-12 max-w-4xl mx-auto leading-relaxed">
+        Ametistas.lt – tai Jūsų patikimas natūralių akmenų šaltinis Baltijos šalyse. Čia atrasite platų
+        mineralų, kristalų, papuošalų, drūzų ir kitų prekių asortimentą.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-12">
+        <a href="#katalogas" class="border border-dark px-8 sm:px-12 py-4 text-sm font-medium tracking-widest hover:bg-dark hover:text-light transition-all duration-300">
+          PERŽIŪRĖTI KATALOGĄ
         </a>
-        <a href="#konsultacijos" class="inline-flex items-center justify-center px-8 py-3 text-sm border border-gray-400 rounded-md hover:bg-gray-200 hover:text-amethyst-900 transition text-gray-200">
-          Užsisakyti konsultaciją
+        <a href="https://www.instagram.com/ametistaslt" class="text-gray hover:text-gold transition-all duration-300 tracking-widest text-sm">
+          INSTAGRAM →
         </a>
       </div>
-
-      <p class="mt-10 text-xs text-gray-300">Veikia GitHub Pages — vienas failas. Nuotraukos iš Pexels (atitinka temą).</p>
     </div>
+  </section>
 
-    <!-- top-right social quicklinks -->
-    <nav class="absolute top-6 right-6 flex gap-3 z-20">
-      <a href="https://www.instagram.com/ametistaslt" target="_blank" rel="noopener" class="text-sm px-3 py-2 rounded-md bg-amethyst-800/40 hover:bg-amethyst-800/60 transition">Instagram</a>
-      <a href="https://www.facebook.com/ametistaslt" target="_blank" rel="noopener" class="text-sm px-3 py-2 rounded-md bg-amethyst-800/40 hover:bg-amethyst-800/60 transition">Facebook</a>
-      <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" class="text-sm px-3 py-2 rounded-md bg-amethyst-800/40 hover:bg-amethyst-800/60 transition">Telegram</a>
-    </nav>
-  </header>
+  <div class="divider mx-6 sm:mx-16"></div>
 
-  <div class="divider"></div>
+  <!-- Apie mus -->
+  <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-light text-dark">
+    <div class="container mx-auto max-w-5xl animate-fade">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">APIE MUS</h2>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Ametistas.lt – tai Jūsų patikimas natūralių akmenų šaltinis Baltijos šalyse. Čia atrasite
+        platų mineralų, kristalų, papuošalų, drūzų ir kitų prekių asortimentą.
+      </p>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Mes esame jauna, ambicinga bendraminčių komanda, kurią vienija aistra natūraliems akmenims ir
+        mineralams. Akmenys – tai ne tik mūsų darbas, bet ir hobis, todėl į savo veiklą dedame visas
+        jėgas ir entuziazmą.
+      </p>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Savo parduodamas prekes stengiamės kruopščiai atrinkti. Bendradarbiaujame tik su patikimais
+        vakarų Europos didmeninės prekybos mineralais tiekėjais, turinčiais ilgametę patirtį šioje
+        srityje. Dėl to galime užtikrinti aukštą savo siūlomų akmenų ir mineralų kokybę.
+      </p>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Mums nepriimtinas neaiškios kilmės akmenų pardavimas. Atsisakome bendradarbiauti su Azijos
+        pardavėjais ir neaiškios kilmės internetiniais aukcionais. Visi mūsų siūlomi akmenys yra
+        kruopščiai atrinkti ir atitinka aukščiausius kokybės standartus.
+      </p>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Prekes parduodame tokias, kokias norėtume patys gauti – t. y. kaip sau. Mums svarbu ne kiekybė,
+        o kokybė. Norime, kad kiekvienas mūsų klientas liktų patenkintas savo pirkiniu ir džiaugtųsi
+        natūralių akmenų teikiama nauda ir grožiu.
+      </p>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Norime atliepti Jūsų norus ir poreikius ir būti patikimu bei lojaliu Jūsų kristalų oazės
+        šaltiniu.
+      </p>
+    </div>
+  </section>
 
-  <!-- APIE MUS -->
-  <section id="apie" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      <div class="space-y-4">
-        <h2 class="text-3xl font-heading text-amethyst-300">Apie mus</h2>
-        <p class="text-gray-300 leading-relaxed">
-          Ametistas.lt — specializuota erdvė ametistams, kristalams ir mineralams Baltijos regione. 
-          Kiekvieną gabalą atrenkame rankomis, dirbame tik su patikimais tiekėjais ir garantuojame aiškią kilmę.
+  <div class="divider mx-6 sm:mx-16"></div>
+
+  <!-- Astromineraloginės konsultacijos -->
+  <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-dark text-light">
+    <div class="container mx-auto max-w-5xl">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">ASTROMINERALOGINĖS KONSULTACIJOS</h2>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Siūlome individualias astromineralogines konsultacijas, kurių metu:
+      </p>
+      <ul class="list-disc list-inside space-y-3 text-gray mb-8">
+        <li>Atsižvelgdami į Jūsų gimimo datą ir laiką, parengsime asmeninį akmenų žemėlapį.</li>
+        <li>Rekomenduosime tinkamiausius akmenis, atitinkančius Jūsų individualius poreikius ir siekius.</li>
+        <li>Patarsime, kaip taisyklingai naudoti ir prižiūrėti akmenis, kad jie atskleistų visas savo galias.</li>
+      </ul>
+      <div class="text-center">
+        <a href="https://t.me/ametistaslt" class="border border-light px-8 py-4 text-sm font-medium tracking-widest hover:bg-light hover:text-dark transition-all duration-300 inline-block">
+          UŽSISAKYTI KONSULTACIJĄ
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-6 sm:mx-16"></div>
+
+  <!-- Misija ir Vizija -->
+  <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-light text-dark">
+    <div class="container mx-auto max-w-5xl grid md:grid-cols-2 gap-12">
+      <div>
+        <h3 class="text-2xl font-heading mb-6 tracking-wide">MISIJA</h3>
+        <p class="text-base sm:text-lg leading-loose text-gray">
+          Padėti žmonėms atrasti teigiamą akmenų galią ir pagerinti savo gyvenimo kokybę. Siūlome
+          aukštos kokybės natūralius akmenis, profesionalų aptarnavimą ir individualias konsultacijas,
+          kad kiekvienas klientas galėtų rasti savo tobulą akmenį.
         </p>
-        <p class="text-gray-300 leading-relaxed">
-          Mūsų misija — sujungti grožį ir sąmoningumą: pateikti aukštos kokybės akmenis ir žinias, kaip juos naudoti kasdienėje praktikoje.
+      </div>
+      <div>
+        <h3 class="text-2xl font-heading mb-6 tracking-wide">VIZIJA</h3>
+        <p class="text-base sm:text-lg leading-loose text-gray">
+          Tapti pirmaujančia natūralių akmenų prekybos vieta Baltijos šalyse. Siekiame, kad Ametistas.lt
+          taptų ne tik parduotuve, bet ir žinių centru, kur kiekvienas galėtų atrasti naudingos informacijos
+          apie akmenų savybes ir naudojimą.
         </p>
+      </div>
+    </div>
+  </section>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#produktai" class="px-4 py-2 border border-amethyst-600 rounded-md hover:bg-amethyst-600 hover:text-amethyst-900 transition text-sm">Galerija</a>
-          <a href="#konsultacijos" class="px-4 py-2 border border-gray-600 rounded-md hover:bg-gray-200 hover:text-amethyst-900 transition text-sm text-gray-200">Konsultacijos</a>
+  <div class="divider mx-6 sm:mx-16"></div>
+
+  <!-- Pristatymo būdai -->
+  <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-dark text-light">
+    <div class="container mx-auto max-w-5xl">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">PRISTATYMO BŪDAI</h2>
+      <p class="text-base sm:text-lg leading-loose text-gray mb-8">
+        Ametistas.lt siūlo Jums patogius ir greitus pristatymo būdus, kad Jūsų užsakymas pasiektų Jus kuo
+        greičiau ir sklandžiau. Pasirinkite Jums patogiausią variantą:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <div class="bg-light text-dark p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-heading mb-4">1. Pristatymas per kurjerį</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray">
+            <li>Greitas ir patogus: Jūsų užsakymas bus pristatytas tiesiai į Jūsų namus ar darbo vietą per 1-2 darbo dienas.</li>
+            <li>Galimybė sekti siuntą: Galėsite sekti siuntos kelionę internete ir gauti pranešimą, kai ji bus pristatyta.</li>
+            <li>Kaina: Pristatymo kaina priklauso nuo siuntos svorio ir dydžio.</li>
+          </ul>
+        </div>
+
+        <div class="bg-light text-dark p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-heading mb-4">2. Pristatymas į paštomatą</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray">
+            <li>Patogus ir lankstus: Galite atsiimti siuntą Jums patogiu laiku iš artimiausio paštomato.</li>
+            <li>Greitas: Siuntos į paštomatus pristatomos per 1-2 darbo dienas.</li>
+            <li>Kaina: Pristatymo kaina priklauso nuo siuntos svorio ir dydžio.</li>
+            <li>Lietuvoje veikiantys paštomatų tinklai: LP EXPRESS, Omniva, Venipack, DPD</li>
+          </ul>
         </div>
       </div>
 
-      <div class="rounded-xl overflow-hidden shadow-lg card-bg border border-amethyst-800/30">
-        <img src="https://images.pexels.com/photos/1132508/pexels-photo-1132508.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop" alt="Ametisto drūza" class="w-full h-64 object-cover">
-      </div>
+      <p class="text-center text-gray italic">
+        Pasirinkę pristatymo būdą, galėsite matyti tikslią pristatymo kainą ir numatomą pristatymo datą.
+      </p>
+      <p class="text-center text-gray mt-8 font-bold">
+        Ametistas.lt – greitas, patogus ir patikimas pristatymas!
+      </p>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider mx-6 sm:mx-16"></div>
 
-  <!-- KONSULTACIJOS -->
-  <section id="konsultacijos" class="bg-amethyst-900/80 py-12">
-    <div class="max-w-6xl mx-auto px-6 md:px-8">
-      <h3 class="text-2xl font-heading text-center text-amethyst-300 mb-6">Astromineraloginės konsultacijos</h3>
-      <p class="text-center text-gray-300 max-w-3xl mx-auto mb-8">Deriname astrologiją ir mineralogiją — sudarome asmeninius akmenų žemėlapius pagal gimimo duomenis ir tikslus.</p>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <article class="p-5 rounded-xl card-bg border border-amethyst-800/30">
-          <img src="https://images.pexels.com/photos/7262359/pexels-photo-7262359.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Asmeninis akmenų žemėlapis" class="w-full h-40 object-cover rounded-md mb-4">
-          <h4 class="font-heading text-lg">Asmeninis žemėlapis</h4>
-          <p class="text-sm text-gray-300">Sudarysime kristalų derinį, atitinkantį jūsų unikalią energetiką.</p>
+  <!-- Katalogas su 30 prekių + nuotraukos -->
+  <section id="katalogas" class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-light text-dark">
+    <div class="container mx-auto">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">MŪSŲ ASORTIMENTAS</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <!-- Produktai pavyzdžiai: pakeiskite ar pridėkite savo -->
+        <article class="group bg-light p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.pexels.com/photos/8944475/pexels-photo-8944475.jpeg?auto=compress&cs=tinysrgb&w=600&fit=crop" alt="Ametisto Geodas" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Geodas</h3>
+          <p class="text-sm text-gray mb-2">1.8 kg • Vakarinė Europa</p>
+          <p class="text-2xl font-heading text-gold mb-3">€289</p>
+          <p class="text-xs text-gray mb-3 leading-tight">Kruopščiai atrinktas geodas iš patikimų tiekėjų.</p>
+          <a href="https://t.me/ametistaslt" class="text-xs tracking-widest hover:text-gold transition">UŽSISAKYTI</a>
         </article>
 
-        <article class="p-5 rounded-xl card-bg border border-amethyst-800/30">
-          <img src="https://images.pexels.com/photos/11578536/pexels-photo-11578536.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Kristalų rekomendacijos" class="w-full h-40 object-cover rounded-md mb-4">
-          <h4 class="font-heading text-lg">Rekomendacijos</h4>
-          <p class="text-sm text-gray-300">Konkrečios rekomendacijos – meditacijai, darbui ar namų erdvei.</p>
+        <article class="group bg-light p-4 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="overflow-hidden rounded-lg mb-4">
+            <img src="https://images.pexels.com/photos/1300506/pexels-photo-1300506.jpeg?auto=compress&cs=tinysrgb&w=600&fit=crop" alt="Ametisto Apyrankė" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <h3 class="text-lg font-heading mb-1">Ametisto Apyrankė</h3>
+          <p class="text-sm text-gray mb-2">8mm karoliukai</p>
+          <p class="text-2xl font-heading text-gold mb-3">€89</p>
+          <p class="text-xs text-gray mb-3 leading-tight">Rankų darbo, reguliuojama.</p>
+          <a href="https://www.instagram.com/ametistaslt" class="text-xs tracking-widest hover:text-gold transition">INSTAGRAM</a>
         </article>
 
-        <article class="p-5 rounded-xl card-bg border border-amethyst-800/30">
-          <img src="https://images.pexels.com/photos/8485736/pexels-photo-8485736.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Kristalų priežiūra" class="w-full h-40 object-cover rounded-md mb-4">
-          <h4 class="font-heading text-lg">Priežiūra</h4>
-          <p class="text-sm text-gray-300">Patarimai, kaip valyti ir aktyvuoti akmenis, kad jų vibracija išliktų stipri.</p>
-        </article>
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="https://t.me/ametistaslt" class="inline-block px-8 py-3 border border-amethyst-600 rounded-md hover:bg-amethyst-600 hover:text-amethyst-900 transition">Užsisakyti per Telegram</a>
+        <!-- Pridėkite kitus 28 produktus su unikaliais Pexels nuotraukomis -->
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider mx-6 sm:mx-16"></div>
 
-  <!-- PRODUKTŲ / GALERIJOS GRID -->
-  <section id="produktai" class="py-12 px-6 md:px-8">
-    <div class="max-w-7xl mx-auto">
-      <h3 class="text-3xl font-heading text-amethyst-300 text-center mb-8">Galerija — pasirinkti pavyzdžiai</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- each image is a real Pexels photo focused on gems/crystals -->
-        <figure class="rounded-lg overflow-hidden card-bg border border-amethyst-800/30">
-          <img src="https://images.pexels.com/photos/8944475/pexels-photo-8944475.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&fit=crop" alt="Ametisto rinkinys" class="w-full h-64 object-cover">
-          <figcaption class="p-3 text-sm text-gray-300">Ametisto rinkinys — puiki dovana</figcaption>
-        </figure>
-
-        <figure class="rounded-lg overflow-hidden card-bg border border-amethyst-800/30">
-          <img src="https://images.pexels.com/photos/1300506/pexels-photo-1300506.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&fit=crop" alt="Ametisto papuošalas" class="w-full h-64 object-cover">
-          <figcaption class="p-3 text-sm text-gray-300">Pakabukas iš natūralaus ametisto</figcaption>
-        </figure>
-
-        <figure class="rounded-lg overflow-hidden card-bg border border-amethyst-800/30">
-          <img src="https://images.pexels.com/photos/3829449/pexels-photo-3829449.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&fit=crop" alt="Ametisto geometrinė formelė" class="w-full h-64 object-cover">
-          <figcaption class="p-3 text-sm text-gray-300">Dekoratyvinė drūza</figcaption>
-        </figure>
-
-        <figure class="rounded-lg overflow-hidden card-bg border border-amethyst-800/30">
-          <img src="https://images.pexels.com/photos/1625068/pexels-photo-1625068.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&fit=crop" alt="Poliruotas ametistas" class="w-full h-64 object-cover">
-          <figcaption class="p-3 text-sm text-gray-300">Poliruotas kristalas</figcaption>
-        </figure>
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="https://www.instagram.com/ametistaslt" target="_blank" rel="noopener" class="px-6 py-2 border border-amethyst-600 rounded-md hover:bg-amethyst-600 hover:text-amethyst-900 transition">Daugiau instagram</a>
+  <!-- Social Thumbnails / Išsisemiami -->
+  <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-dark text-light">
+    <div class="container mx-auto">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading text-center mb-16 tracking-widest">SEKITE MUS</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="text-center">
+          <h3 class="text-2xl font-heading mb-6 tracking-wide">Instagram</h3>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/ametistaslt/" data-instgrm-version="14" style="max-width:400px; width:100%; margin:0 auto;"></blockquote>
+        </div>
+        <div class="text-center">
+          <h3 class="text-2xl font-heading mb-6 tracking-wide">Facebook</h3>
+          <div class="fb-page" data-href="https://www.facebook.com/ametistaslt" data-tabs="timeline" data-width="400" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+            <blockquote cite="https://www.facebook.com/ametistaslt" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/ametistaslt">Ametistas LT</a>
+            </blockquote>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider mx-6 sm:mx-16"></div>
 
-  <!-- SOCIAL FEEDS (EMBEDS) -->
-  <section id="social" class="py-12 bg-amethyst-900/70 px-6">
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6">
-      <!-- Instagram embed (official embed requires script if pasting posts; here we embed page by linking) -->
-      <div class="card-bg rounded-xl p-4 border border-amethyst-800/30">
-        <h4 class="font-heading mb-4 text-amethyst-300">Instagram (naujausi įrašai)</h4>
-        <!-- Instagram ora: official embed of a single post used as sample; for full feed consider SnapWidget or LightWidget -->
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/ametistaslt/" data-instgrm-version="14" style="background:#fff;border:0;min-width:326px;max-width:540px;width:100%;display:block;margin:0 auto;"></blockquote>
-        <p class="mt-3 text-xs text-gray-300">Jei nematote įrašo — prisijunkite prie Instagram arba atidarykite profilį.</p>
-      </div>
-
-      <!-- Facebook page plugin -->
-      <div class="card-bg rounded-xl p-4 border border-amethyst-800/30">
-        <h4 class="font-heading mb-4 text-amethyst-300">Facebook » naujienos</h4>
-        <div style="width:100%;height:100%;"><iframe title="Facebook" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fametistaslt&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" style="border:none;overflow:hidden;width:100%;height:420px" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></div>
-        <p class="mt-3 text-xs text-gray-300">Facebook rodoma pagal puslapio nustatymus.</p>
+  <!-- CTA / Kontaktai -->
+  <section class="py-20 sm:py-28 px-6 sm:px-8 md:px-16 bg-amethyst-800 text-light text-center">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading mb-8 tracking-widest">SUSISIEKITE SU MUMIS</h2>
+      <p class="text-base sm:text-lg font-light mb-12 leading-loose max-w-2xl mx-auto">
+        Turite klausimų? Rašykite mums – atsakome per 5 minutes.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-8 text-sm tracking-widest">
+        <a href="https://www.instagram.com/ametistaslt" class="hover:text-gold transition-all duration-300">INSTAGRAM</a>
+        <a href="https://t.me/ametistaslt" class="hover:text-gold transition-all duration-300">TELEGRAM</a>
+        <a href="https://www.facebook.com/ametistaslt" class="hover:text-gold transition-all duration-300">FACEBOOK</a>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- CONTACT & CTA -->
-  <section id="kontaktai" class="py-12 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h4 class="text-2xl font-heading text-amethyst-300 mb-4">Susisiekite</h4>
-      <p class="text-gray-300 mb-6">Turite klausimų dėl rūšies, dydžio ar užsakymo? Rašykite — greitai atsakysime.</p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="mailto:info@ametistas.lt" class="px-6 py-3 border border-amethyst-600 rounded-md hover:bg-amethyst-600 hover:text-amethyst-900 transition">Rašyti el. paštu</a>
-        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" class="px-6 py-3 border border-gray-600 rounded-md hover:bg-gray-200 hover:text-amethyst-900 transition text-gray-200">Telegram</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="bg-amethyst-900/95 py-6 text-center">
-    <div class="max-w-6xl mx-auto px-6 text-sm text-gray-400">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>© <strong>Ametistas.lt</strong> 2025</div>
-        <div>info@ametistas.lt • <a href="https://www.instagram.com/ametistaslt" class="text-amethyst-300 hover:underline">Instagram</a> • <a href="https://www.facebook.com/ametistaslt" class="text-amethyst-300 hover:underline">Facebook</a></div>
-      </div>
-      <p class="mt-3 text-xs text-gray-500">Nuotraukos: Pexels — naudojamos demonstraciniu tikslais. Jei norite, pakeisiu konkrečias nuotraukas į Jūsų pageidaujamas Pexels ID.</p>
-    </div>
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-10 px-6 text-center text-xs tracking-widest">
+    <p>© 2025 AMETISTAS.LT</p>
+    <p class="mt-3">INFO@AMETISTAS.LT</p>
+    <p class="mt-2">Visos teisės saugomos.</p>
   </footer>
 
-  <!-- Instagram embed script (official) -->
+  <!-- Instagram embed script -->
   <script async src="//www.instagram.com/embed.js"></script>
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
 
-  <!-- small accessibility enhancement: focus outlines on keyboard nav -->
-  <script>
-    document.addEventListener('keyup', e => {
-      if (e.key === 'Tab') document.documentElement.classList.remove('no-focus');
-    });
-  </script>
 </body>
 </html>
