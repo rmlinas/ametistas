@@ -15,9 +15,10 @@
   <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v18/co3bmC5gg_AWTcW6LsfNlGjvE71S70rM4Ugy_V14.woff2" as="font" type="font/woff2" crossorigin>
   
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7Rsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7rSsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <style>
+    /* ... ĮKELKITE VISĄ NAUJĄ CSS BLOKĄ IŠ VIRŠAUS ČIA ... */
     /* GLOBALUS NUSTATYMAI */
     *, *::before, *::after {
         box-sizing: border-box; 
@@ -62,71 +63,78 @@
     /* Sticky navigacija */
     nav{position:sticky;top:0;z-index:999;background:var(--nav-bg);box-shadow:var(--nav-shadow); transition: background var(--transition);}
     .nav-wrap{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem;}
-    /* NAUJA: NAV LOGO YRA TIK MOBILUS */
     .nav-logo{font-family:'Cormorant Garamond', serif;font-weight:700;font-size:1.5rem;color:var(--heading-color);letter-spacing:.1em; transition: color var(--transition); display: none;} 
     .nav-links a{margin-left:1.5rem;font-weight:600;color:var(--heading-color);transition:color var(--transition);}
     .nav-links a:hover{color:var(--gold);}
     .nav-controls { display: flex; align-items: center; gap: 1rem; }
     #darkToggle {color:var(--toggle-icon); font-size:1.2rem;}
     
-    /* Mobilus meniu */
+    /* Mobilus toggle mygtukas */
     .mobile-toggle { 
         color: var(--heading-color); 
         font-size: 1.2rem; 
+        display: none !important; /* Paslėptas pagal nutylėjimą */
     } 
-    /* KRITINIS PAKEITIMAS: Naudojame visibility/opacity/max-height su transition */
+
+    /* RADIKALIAI PAKEISTAS MOBILE MENIU STILIUS */
     .mobile-menu {
-        display: block; 
+        position: fixed; /* Būtinai fiksuotas ant viso ekrano */
+        top: 0;
+        right: 0;
+        width: 80%; /* Kad neužimtų viso pločio */
+        height: 100vh;
+        z-index: 9999; /* Virš visų */
         background: var(--nav-bg);
-        border-top: 1px solid rgba(0,0,0,.05);
-        padding: 0 1rem;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        top: 100%;
-        max-height: 0; 
-        overflow: hidden; 
-        opacity: 0;
-        visibility: hidden;
-        transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out, visibility 0.4s;
-        box-shadow: 0 5px 10px rgba(0,0,0,.05);
-    }
-    .mobile-menu.open { 
-        max-height: 500px;
-        opacity: 1;
-        visibility: visible;
-        padding: 0 1rem 1rem 1rem;
-    }
-    .mobile-menu a {
-        display: block;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid rgba(0,0,0,.05);
-        color: var(--heading-color);
-        font-weight: 600;
+        padding: 4rem 1.5rem 1.5rem; /* Paliekame vietos viršuje fiksavimui */
+        box-shadow: -5px 0 20px rgba(0,0,0,.15);
+        
+        /* SLEPIMAS: Meniu paslėptas už ekrano */
+        transform: translateX(100%);
+        transition: transform 0.4s ease-out;
+        overflow-y: auto;
     }
     
+    .mobile-menu.open { 
+        /* ATIDARYMAS: Grąžinimas į vietą */
+        transform: translateX(0);
+    }
+
+    .mobile-menu a {
+        display: block;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(0,0,0,.08);
+        color: var(--heading-color);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    
+    /* MEDIA QUERIES (RESPONSIVE) */
     @media(min-width:769px) { 
-        .mobile-toggle { display: none !important; } /* GRIEŽTAS IŠJUNGIMAS DESKTOP */
+        /* Desktop: paslepiame mobile elementus */
+        .mobile-toggle { display: none !important; } 
+        .nav-logo { display: none; }
     }
 
     @media(max-width:768px){
+        /* Mobile: rodom elementus */
         .nav-links{display:none;}
-        .nav-logo{display: block;} /* Rodo LOGO tik mobiliajame! */
-        .mobile-toggle { display: block !important; } /* GRIEŽTAS ĮJUNGIMAS MOBILE */
+        .nav-logo{display: block;} 
+        .mobile-toggle { display: block !important; } 
         #darkToggle { display: none; } 
-
-        /* HERO SECTIONS STILIAI (OPTIMIZUOTA) */
+        
+        /* HERO SECTIONS STILIAI (EKSTRA MAŽI EKRANAI) */
         .hero { 
           min-height: 50vh; 
           padding: 2rem 0.5rem; 
         }
         .hero h1 { 
-          font-size: 2rem; 
+          font-size: 1.8rem; /* Mažesnis šriftas */
           letter-spacing: 0.1em; 
           line-height: 1.2; 
         } 
         .hero p { 
-          font-size: 0.95rem; 
+          font-size: 0.9rem; 
         }
         
         .hero .ctas { 
@@ -152,7 +160,7 @@
     
     @media(max-width:400px){
         /* EKSTRA MAŽI EKRANAI - dar agresyvesnis šrifto mažinimas */
-        .hero h1 { font-size: 1.6rem; letter-spacing: 0.05em; } 
+        .hero h1 { font-size: 1.5rem; letter-spacing: 0.05em; } 
     }
 
     /* Hero */
