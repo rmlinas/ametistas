@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Atraskite Savo Akmenį: Tikra Energija, Tikrai Jums | Ametistas.lt</title>
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <style>
-    /* === BAZINIAI STILIAI === */
+    /* Baziniai stiliai palikti */
     :root {
       --color-primary: #3C2459; --color-dark: #0F0018; --color-accent: #D4AF37; 
       --color-bg-light: #FBFAFF; --color-text: #111; --color-muted: #666;
@@ -25,30 +26,35 @@
     .section--light { background: var(--color-section-light); }
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     
-    /* === GRID STILIAI === */
+    /* GRID STILIAI */
     .grid { display: grid; gap: 2rem; }
     @media (min-width: 769px) {
         .grid--2-cols { grid-template-columns: 1fr 1fr; }
         .grid--3-cols { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* === MYGTUKAI STILIAI === */
-    .btn { padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; border: none; max-width: 100%; text-decoration: none; }
+    /* MYGTUKAI STILIAI palikti */
+    .btn { padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; border: none; max-width: 100%; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
     .btn--primary { background: var(--color-primary); color: var(--color-bg-light); }
     .btn--ghost { border: 1.5px solid var(--color-accent); color: var(--color-accent); background: none; }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(60,36,89,0.5); }
     .btn:focus { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-    /* === HEADER & NAVIGACIJA (FIX: Šiukšlynas) === */
-    header { position: sticky; top: 0; z-index: 1000; background: var(--color-bg-light); border-bottom: 1px solid rgba(0,0,0,0.08); transition: box-shadow 0.3s, background-color 0.3s; }
+    /* === HEADER & NAVIGACIJA (FIX: Scroll Logikos CSS) === */
+    header { 
+        position: sticky; top: 0; z-index: 1000; background: var(--color-bg-light); 
+        border-bottom: 1px solid rgba(0,0,0,0.08); 
+        transition: box-shadow 0.3s, background-color 0.3s, transform 0.3s ease-in-out; /* ĮJUNGTA */
+    }
+    header.scrolled { box-shadow: 0 2px 10px rgba(0,0,0,0.15); } /* ĮJUNGTA */
+    header.hide-on-scroll { transform: translateY(-100%); } /* ĮJUNGTA */
     
-    /* FIX: header-nav stiliai atstatyti */
     .header-nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
     
-    /* Desktop Navigacija */
     .nav-links { display: none; }
     @media (min-width: 769px) { .nav-links { display: flex; gap: 1.5rem; } }
 
-    /* Mobilus Meniu Toggle (FIX: Ikonų keitimas) */
+    /* Mobilus Meniu */
     .mobile-toggle { width: 44px; height: 44px; display: grid; place-items: center; border: none; background: none; cursor: pointer; z-index: 10000; position: relative; }
     .mobile-toggle .fas { transition: opacity 0.3s, transform 0.3s; color: var(--color-primary); font-size: 1.5rem; position: absolute; }
     .mobile-toggle[aria-expanded="true"] .fa-bars { opacity: 0; transform: rotate(90deg); }
@@ -56,16 +62,13 @@
     .mobile-toggle[aria-expanded="true"] .fa-times { opacity: 1; transform: rotate(0); }
     .mobile-toggle[aria-expanded="false"] .fa-bars { opacity: 1; transform: rotate(0); }
 
-    /* Mobilus Meniu (FIX: Uždarymas/Animacija) */
     .menu--mobile {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-bg-light);
         transform: translateX(-100%); 
         transition: transform 0.3s ease-in-out; 
         z-index: 9999; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;
     }
-    .menu--mobile.is-open { 
-        transform: translateX(0); 
-    }
+    .menu--mobile.is-open { transform: translateX(0); }
     .menu--mobile .close-btn { align-self: flex-end; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--color-primary); }
     .menu--mobile a { font-size: 1.5rem; color: var(--color-dark); text-decoration: none; }
 
@@ -75,20 +78,24 @@
         text-align: center; min-height: 70vh; overflow: hidden; position: relative; 
         background: var(--color-primary);
     }
-    .hero-img { display: none; }
+    .hero-img { 
+        will-change: transform; transition: transform 0.5s ease-out; 
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+        object-fit: cover; z-index: -2; 
+    }
+    .hero-img { display: none; } /* Paslėpta, kol neįkelsite tikros nuotraukos */
     .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: -1; }
     .hero-content {
         z-index: 10; color: white; padding: 0 var(--space-mobile); max-width: 100%;
     }
     .hero-content h1 { color: white; word-break: break-word; }
 
-    /* === FACEBOOK LOADER (Grąžintas) === */
+    /* FACEBOOK LOADER paliktas */
     .fb-load-area { min-height: 500px; display: grid; place-items: center; background: #fff; border: 1px solid #ddd; border-radius: 8px; position: relative; }
     .fb-load-area.loading { display: flex; justify-content: center; align-items: center; }
     .fb-load-area.loading::after { 
         content: ""; width: 40px; height: 40px; border: 4px solid #D4AF37; 
-        border-top: 4px solid transparent; border-radius: 50%; 
-        animation: spin 1s linear infinite;
+        border-top: 4px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;
     }
     @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
     
@@ -101,93 +108,14 @@
 </head>
 <body>
 
-  <a href="#main-content" class="skip-link">Pereiti prie pagrindinio turinio</a>
-
-  <header role="banner">
-    <div class="container header-nav">
-        <span class="header-logo">AMETISTAS.LT</span>
-        <nav class="nav-links" id="desktop-nav-links" aria-label="Pagrindinė navigacija"></nav>
-        <div class="flex">
-            <button id="mobileToggle" class="mobile-toggle" aria-label="Atidaryti meniu" aria-expanded="false" aria-controls="mobileMenu">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-times"></i> 
-            </button>
-        </div>
-    </div>
-    <div id="mobileMenu" class="menu--mobile" aria-modal="true" role="dialog">
-        <button class="close-btn" id="mobileClose" aria-label="Uždaryti meniu"><i class="fas fa-times"></i></button>
-        <div id="mobile-nav-links"></div>
-    </div>
-  </header>
-
-  <main id="main-content" role="main">
-
-    <section class="hero" role="region" aria-label="Pagrindinis">
-      <div class="hero-content">
-        <h1 fetchpriority="high">Tikra Energija. Tikrai Jums.</h1>
-        <p class="text--lead" style="max-width: 600px; margin: 0 auto 1.5rem;">Kviečiame rasti mineralą, kuris geriausiai tinka Jūsų nuotaikai ir gyvenimo etapui.</p>
-        <div class="cta-group">
-          <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-telegram-plane"></i> <strong>Peržiūrėti Rinktinę Kolekciją</strong> 
-          </a>
-          <a class="btn btn--ghost" href="#astromineralogija" aria-describedby="hero-desc"><strong>Konsultacija</strong></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="kolekcijos-perziura" class="section--light" aria-labelledby="kolekcijos-h2">
-      <div class="container">
-        <h2 class="section-title" id="kolekcijos-h2">MINERALO KELIONĖ</h2>
-        <div class="grid grid--3-cols">
-          <article class="step-card"><i class="fas fa-handshake-angle"></i><h4>ETIKA</h4><p>Dirbame tik su Vakarų Europos partneriais.</p></article>
-          <article class="step-card"><i class="fas fa-hand-sparkles"></i><h4>REIKI ĮKROVIMAS</h4><p>Prieš išsiuntimą, visos kolekcijos yra energetiškai įkraunamos.</p></article>
-          <article class="step-card"><i class="fas fa-box-open"></i><h4>ASMENINĖ VITRINA</h4><p>Naujausius mineralus pristatome per Telegram kanalą.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="astromineralogija" aria-labelledby="astromineralogija-h2">
-      <div class="container">
-        <h2 class="section-title" id="astromineralogija-h2">ASTROMINERALOGIJA</h2>
-        <form class="form--consult" id="consult-form" action="https://formsubmit.co/your-email@example.com" method="POST" novalidate>
-          <input type="text" id="name-input" placeholder="Jūsų vardas ir pavardė" name="name" required>
-          <input type="email" id="email-input" placeholder="El. paštas" name="email" required>
-          <input type="tel" id="phone-input" placeholder="Telefonas (neprivaloma)" name="phone">
-          <button type="submit" class="btn btn--primary">Užklausa Individualiam Parinkimui</button>
-        </form>
-      </div>
-    </section>
-    
-    <section id="facebook-feed" class="section--light" style="padding: 3rem 0;" aria-labelledby="facebook-h2">
-      <div class="container fb-wrap">
-        <h2 class="section-title" id="facebook-h2">MŪSŲ FACEBOOK</h2>
-        <p style="color:var(--color-muted); margin-bottom: 1.5rem;">Sekite naujienas, atsiliepimus ir naujas kolekcijas tiesiog Facebook puslapyje.</p>
-        
-        <div class="fb-load-area" id="fbLoadArea">
-            <button class="btn btn--primary" id="loadFacebookFeed">
-                <i class="fab fa-facebook-f"></i> Įkelti Facebook Naujienų Juostą (Greitis)
-            </button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer id="kontaktai" class="footer">
-    <div class="container">
-      <h3>KONTAKTAI</h3>
-    </div>
-  </footer>
-
-  <div id="fb-root"></div> <script defer>
+  <script defer>
     document.addEventListener('DOMContentLoaded', function() {
+        // Navigacijos įkėlimas paliktas
         const navItems = [
             { href: '#kolekcijos-perziura', text: 'Kolekcijos' },
             { href: '#astromineralogija', text: 'Konsultacijos' },
             { href: '#kontaktai', text: 'Kontaktai' },
         ];
-        
-        // --- NAVIGACIJOS RENDERIS ---
         const renderNav = (targetId) => {
             const target = document.getElementById(targetId);
             if (!target) return;
@@ -198,21 +126,68 @@
 
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        const mobileClose = document.getElementById('mobileClose'); // Atjungtas mygtukas, naudojame logiką
+        const mobileClose = document.getElementById('mobileClose');
+        const header = document.querySelector('header');
+        const hero = document.querySelector('.hero');
+        const heroImg = document.querySelector('.hero-img');
         
-        // --- MOBILAUS MENIU VALDYMAS (FIX: Meniu užsidarymas) ---
+        // Meniu Valdymas paliktas
         const closeMenu = () => { mobileMenu?.classList.remove('is-open'); mobileToggle?.setAttribute('aria-expanded', 'false'); };
         const openMenu = () => { mobileMenu?.classList.add('is-open'); mobileToggle?.setAttribute('aria-expanded', 'true'); };
         
         mobileToggle?.addEventListener('click', () => {
             mobileMenu?.classList.contains('is-open') ? closeMenu() : openMenu();
         });
-        
         mobileMenu?.querySelectorAll('a').forEach(link => { link.addEventListener('click', closeMenu); });
         mobileClose?.addEventListener('click', closeMenu);
 
         
-        // --- FACEBOOK CLICK-TO-LOAD (Grąžintas, kad atsirastų feed'as) ---
+        // --- SCROLL HANDLERIAI (ĮJUNGTI) ---
+        const debounce = (func, wait) => {
+          let timeout;
+          return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+          }
+        };
+        const getScrollPos = () => window.scrollY || document.documentElement.scrollTop; 
+
+        let lastScroll = 0;
+        const handleScroll = () => {
+            const currentScroll = getScrollPos();
+            
+            // Header Hide/Show (Tai galėjo sukelti "nesąmonę")
+            if(currentScroll > 100) { 
+                if(currentScroll > lastScroll) {
+                    header.classList.add('hide-on-scroll'); // Slėpti
+                } else {
+                    header.classList.remove('hide-on-scroll'); // Rodyti
+                }
+            } else {
+                 header.classList.remove('hide-on-scroll'); // Rodyti, jei pačiame viršuje
+            }
+            lastScroll = currentScroll;
+
+            // Sticky Shadow
+            if (currentScroll > 50) { header?.classList.add('scrolled'); } 
+            else { header?.classList.remove('scrolled'); }
+
+            // Hero Parallax (ĮJUNGTA)
+            if(hero && heroImg && heroImg.style.display !== 'none'){
+                const maxOffset = hero.offsetHeight * 0.3; 
+                let offset = Math.min(currentScroll * 0.2, maxOffset);
+                heroImg.style.transform = `translateY(${offset}px)`;
+            }
+            
+            // Navigacijos Highlight atjungtas, kad būtų paprasčiau
+
+        };
+
+        window.addEventListener('scroll', debounce(handleScroll, 20));
+        handleScroll();
+
+
+        // --- FACEBOOK CLICK-TO-LOAD (Patobulinta, kad veiktų mobiliai) ---
         const fbButton = document.getElementById('loadFacebookFeed');
         const fbArea = document.getElementById('fbLoadArea');
         let sdkLoaded = false;
@@ -227,9 +202,10 @@
                 
                 const fbContainer = document.createElement('div');
                 fbContainer.className = 'fb-page';
+                // Mobilioje versijoje turėtume naudoti mažesnį plotį arba auto
                 fbContainer.setAttribute('data-href', 'https://www.facebook.com/ametistaslt');
                 fbContainer.setAttribute('data-tabs', 'timeline');
-                fbContainer.setAttribute('data-width', '450');
+                fbContainer.setAttribute('data-width', '100%'); // Kritinis pokytis mobiliai
                 fbContainer.setAttribute('data-height', '500');
                 fbContainer.setAttribute('data-small-header', 'true');
                 fbContainer.setAttribute('data-adapt-container-width', 'true');
@@ -241,7 +217,6 @@
                 fbArea.style.minHeight = 'auto';
                 fbArea.appendChild(fbContainer);
 
-                // Įkeliamas Facebook SDK (Tikrinama ar jau įkeltas)
                 if (!sdkLoaded) {
                     (function(d, s, id) {
                       var js, fjs = d.getElementsByTagName(s)[0];
@@ -251,21 +226,18 @@
                       fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));
                     sdkLoaded = true;
-                } else if (window.FB && window.FB.XFBML) {
+                } 
+                
+                // Visada paleisti FB.XFBML.parse() po elemento įkėlimo (užtikrinimui)
+                if (window.FB && window.FB.XFBML) {
                     window.FB.XFBML.parse(); 
                 }
             }, 500);
         });
         
-        // --- FORMOS VALIDACIJA ---
+        // Formos validacija palikta minimali
         const form = document.getElementById('consult-form');
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // ... (Pilna formos validacijos logika čia būtų grąžinta, bet dabar paliekame ją tik tam atvejui, jei ji kėlė klaidų)
-        // DĖMESIO: Paliekame tik minimalų patikrinimą, kad nebūtų klaidos.
         form?.addEventListener('submit', function(e) { e.preventDefault(); this.submit(); });
-
-
-        // SUDĖTINGI SCROLL HANDLERIAI (Header Hide/Show, Parallax, Nav Highlight) YRA VIS DAR ATJUNGTI.
         
     });
   </script>
