@@ -49,13 +49,13 @@
     :root {
       --font-primary: 'Cormorant Garamond', serif;
       --font-body: 'Inter', system-ui, sans-serif;
-      --color-amethyst-900: #0F0018; /* Tamsi ametisto */
-      --color-amethyst-700: #3C2459; /* Pagrindinė antraščių spalva */
-      --color-amethyst-300: #C8A2C8; /* Šviesi ametisto (naudojama dark mode) */
-      --color-gold: #D4AF37; /* Akcentinė, auksinė */
-      --color-bg: #FBFAFF; /* Labai šviesus fonas */
-      --color-text: #111; /* Pagrindinis teksto tonas */
-      --color-muted: #666; /* Prislopintas tekstas */
+      --color-amethyst-900: #0F0018; 
+      --color-amethyst-700: #3C2459; 
+      --color-amethyst-300: #C8A2C8; 
+      --color-gold: #D4AF37; 
+      --color-bg: #FBFAFF; 
+      --color-text: #111; 
+      --color-muted: #666; 
       --color-telegram: #0088CC;
       --color-section-light: #F7F7F7;
       --radius: 8px;
@@ -64,14 +64,14 @@
       --shadow-md: 0 12px 32px rgba(0,0,0,0.12);
       --container-max: 1200px;
       
-      /* Typography - Mobile First */
-      --font-size-base: 1rem; /* Bazinė mob. (16px) */
+      /* Typography - Mobile First (Griežtesnis) */
+      --font-size-base: 1rem; 
       --font-size-lead: 1.1rem; 
-      --font-size-hero: 2.5rem; /* Hero mob. */
-      --font-size-title: 1.8rem; /* Sekcijos mob. */
+      --font-size-hero: 2.2rem; /* SUMAŽINTA MOBILE HERO ANTRAM TEKSTUI */
+      --font-size-title: 1.6rem; /* SUMAŽINTA MOBILE SECCIJOS ANTRAM TEKSTUI */
     }
 
-    /* Desktop overrides (Mobile First principas) */
+    /* Desktop overrides */
     @media (min-width: 769px) {
         :root {
             --font-size-base: 1.1rem;
@@ -92,21 +92,26 @@
         line-height: 1.6;
     }
     body { 
-        overflow-x: hidden; /* UŽTIKRINTI, KAD NEBŪTŲ ŠONINIO SLINKIMO */
+        overflow-x: hidden; /* KRITIŠKA: UŽTIKRINTI, KAD NEBŪTŲ ŠONINIO SLINKIMO */
     }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; background: none; border: none; }
     img { max-width: 100%; height: auto; display: block; }
-    h1, h2, h3, h4 { margin-bottom: 0.5rem; font-family: var(--font-primary); color: var(--color-amethyst-700); }
+    h1, h2, h3, h4 { 
+        margin-bottom: 0.5rem; 
+        font-family: var(--font-primary); 
+        color: var(--color-amethyst-700); 
+        word-wrap: break-word; /* KRITIŠKA: ILGI ŽODŽIAI NELIPA PER KRAŠTUS */
+    }
 
-    .container { width: min(100% - 2rem, var(--container-max)); margin-inline: auto; }
+    .container { 
+        width: min(100% - 2rem, var(--container-max)); /* PADDING UŽTIKRINIMAS */
+        margin-inline: auto; 
+    }
     .grid { 
         display: grid; 
         gap: 2rem; 
-        grid-template-columns: 1fr; /* Mobile First default: viena kolona */
-    }
-    @media (min-width: 600px) { /* Pavyzdys, kai grid kinta */
-        .purchase-steps-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        grid-template-columns: 1fr; 
     }
     .flex { display: flex; gap: 1rem; align-items: center; }
 
@@ -122,14 +127,12 @@
       display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;
     }
     
-    /* Nav Links (Desktop Only) - Mobile First: PASLĖPTI */
     .nav-links { display: none; } 
     @media (min-width: 769px) {
         .nav-links { display: flex; gap: 1.5rem; font-weight: 600; }
         .nav-links a:hover { color: var(--color-gold); }
     }
     
-    /* Nav Controls */
     .nav-controls button {
       width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
       background: rgba(60,36,89,0.1); color: var(--color-amethyst-700); transition: all var(--transition);
@@ -137,7 +140,6 @@
     }
     .nav-controls button:hover { background: var(--color-amethyst-700); color: white; transform: scale(1.05); }
 
-    /* Hamburger Mygtukas (Mobile Only) - Mobile First: RODOMI */
     .mobile-toggle {
         display: flex; 
         font-size: 1.6rem; 
@@ -149,10 +151,10 @@
         background: rgba(60,36,89,0.1);
     }
     @media (min-width: 769px) {
-      .mobile-toggle { display: none; } /* Desktop: Paslėpti */
+      .mobile-toggle { display: none; } 
     }
 
-    /* Mobile Menu (PATAISYTA) */
+    /* Mobile Menu (Griežtos Pataisos) */
     .mobile-menu {
       position: fixed; top: 0; right: 0; width: 85%; max-width: 350px; height: 100vh; 
       background: var(--color-bg); 
@@ -165,10 +167,9 @@
         transform: translateX(0); 
     }
     .mobile-menu .close-btn { 
-        /* UŽDARYMO IKONOS PATAISA */
         position: absolute; 
-        top: 1rem; 
-        right: 1rem; 
+        top: 0.5rem; /* PATAISA */
+        right: 0.5rem; /* PATAISA */
         font-size: 1.5rem; 
         color: var(--color-amethyst-700); 
         z-index: 10000; 
@@ -181,29 +182,31 @@
     }
     .mobile-menu a { display: block; padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: var(--color-amethyst-700); font-weight: 600; font-size: 1.1rem; transition: color var(--transition); }
     .mobile-menu a:hover { color: var(--color-gold); }
-    /* Mobile Dark Mode Mygtukas */
     #darkToggleMobile { border-bottom: none !important; margin-top: 1rem; }
 
     /* ---------------------------------------------------- */
     /* 3. HERO SECTION */
     /* ---------------------------------------------------- */
     .hero {
-      min-height: 50vh; /* Mobile First */
+      min-height: 70vh; /* Padidintas mobile aukštis geresniam vaizdui */
       display: grid; place-items: center; text-align: center; position: relative; overflow: hidden;
       background: linear-gradient(135deg, rgba(15,0,24,0.65), rgba(60,36,89,0.55)), url('/img/hero.jpg') center/cover no-repeat;
       color: white;
+      padding: 3rem 0; /* PADDING UŽTIKRINIMAS */
     }
     @media (min-width: 769px) {
         .hero { min-height: 70vh; }
     }
 
-    .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 2rem 1rem; }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 0 1rem; }
     .hero h1 { 
         font-size: var(--font-size-hero); 
         margin-bottom: 0.5rem; 
         color: white; 
         line-height: 1.1; 
         font-weight: 300;
+        letter-spacing: 0.1em; /* PADAILINIMAS */
+        max-width: 100%; /* UŽTIKRINTI, KAD NETRUKDYS SLINKIMUI */
     }
     .hero .dot { color: var(--color-gold); }
     .hero .text-lead { 
@@ -211,13 +214,13 @@
         color: rgba(255,255,255,0.92); 
     }
     
-    /* CTA Mobile Optimization (Mobile First: column) */
+    /* KRITIŠKA CTA PATAISA: pilnas plotis ir column elgsena */
     .hero .ctas { 
-        margin-top: 1.5rem; 
+        margin-top: 2rem; 
         flex-direction: column; 
         justify-content: center;
         width: 100%;
-        max-width: 350px; /* Apribojame mygtukų ploti mobiliajame */
+        max-width: 350px; 
         margin-left: auto;
         margin-right: auto;
     }
@@ -229,8 +232,13 @@
     /* 4. BUTTONS & TYPOGRAPHY */
     /* ---------------------------------------------------- */
     .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 700; font-size: 1rem;
-      transition: all var(--transition); min-width: 200px; justify-content: center;
+      display: flex; /* Naudojame flex, kad užtikrinti full-width elemente */
+      align-items: center; gap: 0.5rem; padding: 0.9rem 1.5rem; /* PAAUKŠTINAME PADDING */
+      border-radius: var(--radius); font-weight: 700; font-size: 1rem;
+      transition: all var(--transition); 
+      width: 100%; /* KRITIŠKA: VISADA PILNAS PLOTIS MOBILIEMS CTA */
+      max-width: 100%;
+      justify-content: center;
     }
     .btn-primary { background: var(--color-telegram); color: white; box-shadow: 0 8px 20px rgba(0,136,204,0.3); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,136,204,0.4); }
@@ -249,13 +257,13 @@
     /* ---------------------------------------------------- */
     /* 5. SECTIONS AND COMPONENTS */
     /* ---------------------------------------------------- */
-    section { padding: 4rem 0; } /* Mobile First: Mažiau paddingo vertikaliai */
+    section { padding: 4rem 0; } 
     @media (min-width: 769px) {
         section { padding: 5rem 0; }
     }
     .section-light { background: var(--color-section-light); }
 
-    .purchase-steps-grid { grid-template-columns: 1fr; } /* Mobile First: Viena kolona */
+    .purchase-steps-grid { grid-template-columns: 1fr; } 
     @media (min-width: 600px) {
         .purchase-steps-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     }
@@ -276,7 +284,7 @@
     }
     .testimonial-card cite { display: block; margin-top: 0.75rem; font-size: 0.9rem; color: var(--color-muted); font-style: normal; }
 
-    .about-grid { grid-template-columns: 1fr; } /* Mobile First: Viena kolona */
+    .about-grid { grid-template-columns: 1fr; } 
     @media (min-width: 769px) {
         .about-grid { grid-template-columns: 1fr 480px; align-items: center; }
         .about-hero { order: 2; }
@@ -318,13 +326,13 @@
     }
     #backToTop.show { display: flex; }
 
-    /* Dark Mode (Tik per JS) */
+    /* Dark Mode */
     html.dark {
       --color-bg: var(--color-amethyst-900);
       --color-text: #eee;
       --color-muted: #aaa;
       --color-section-light: #181818;
-      --color-amethyst-700: var(--color-amethyst-300); /* Antraštės šviečia */
+      --color-amethyst-700: var(--color-amethyst-300); 
     }
     html.dark header { background: rgba(15,0,24,0.98); border-bottom-color: rgba(255,255,255,0.08); }
     html.dark .nav-controls button { background: rgba(212,175,55,0.1); color: var(--color-gold); }
@@ -389,7 +397,7 @@
         <div class="purchase-step"><i class="fas fa-hand-holding-heart"></i><h4>3. Užsisakykite Asmeniškai</h4><p>Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriui Telegram platformoje. Visi klausimai atsakomi <strong>tiesiogiai</strong>.</p></div>
       </div>
       <div style="text-align:center;margin-top:3.5rem;">
-        <a class="btn btn-primary btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
+        <a class="btn btn-primary btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener" style="max-width:350px;">
           <i class="fab fa-telegram-plane"></i> PERŽIŪRĖTI KOLEKCIJĄ TELEGRAME
         </a>
         </div>
