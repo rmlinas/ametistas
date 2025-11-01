@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Atraskite Savo Akmenį: Tikra Energija, Tikrai Jums | Ametistas.lt</title>
-  <meta name="description" content="Autentiški natūralūs mineralai, kuriuos kuruoja astromineralogas. Kiekvienas akmuo yra įkūnijimas sielos ir paveldo. Rezervuokite asmeninę konsultaciją.">
+  <meta name="description" content="Autentiški natūralūs mineralai, kuriuos kuruoja astromineralogas. Raskite mineralą, kuris tiksliai atitinka Jūsų vidines vibracijas. Rezervuokite asmeninę konsultaciją.">
   
   <meta name="theme-color" content="#3C2459">
   <meta property="og:type" content="website">
@@ -16,6 +16,7 @@
 
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" media="print" onload="this.media='all'">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <script type="application/ld+json">
@@ -59,10 +60,8 @@
       --color-text: #111;
       --color-muted: #666;
       --color-section-light: #f7f7f7;
-
       --font-size-h1: clamp(2.2rem, 6vw, 4rem);
       --font-size-h2: clamp(1.8rem, 4vw, 2.5rem);
-      
       --radius: 8px;
       --space-mobile: 1rem;
       --space-section: 4rem;
@@ -71,7 +70,7 @@
       --shadow-lg: 0 10px 25px rgba(0,0,0,0.15); 
     }
     
-    /* GLOBAL RESET */
+    /* GLOBAL RESET ir kiti stiliai... */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; scroll-behavior: smooth; }
     body { overflow-x: hidden; color: var(--color-text); background: var(--color-bg-light); }
@@ -88,8 +87,24 @@
         .grid--2-cols { grid-template-columns: 1fr 1fr; }
         .grid--3-cols { grid-template-columns: repeat(3, 1fr); }
     }
+    
+    /* P6: Skip Link pataisymas (A11Y) */
     .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; z-index: 9999; padding: 0.5rem 1rem; background: var(--color-accent); color: var(--color-dark); }
-    .skip-link:focus { position: fixed; left: 0; top: 0; width: auto; height: auto; }
+    .skip-link:focus { position: fixed; left: 0; top: 0; width: auto; height: auto; outline: 2px solid var(--color-accent); z-index: 9999; }
+    
+    /* P3: A11Y klasė */
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity var(--motion-speed) ease-out, transform var(--motion-speed) ease-out; will-change: opacity, transform; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
@@ -108,61 +123,29 @@
         .nav-links a.active { font-weight: 700; color: var(--color-accent); border-bottom: 2px solid var(--color-accent); }
         .mobile-toggle { display: none; }
     }
-    .btn--icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(60,36,89,0.1); color: var(--color-primary); font-size: 1.2rem; transition: transform 0.2s, background 0.2s, color 0.2s; }
-    .btn--icon:hover { transform: scale(1.05); background: var(--color-primary); color: var(--color-bg-light); }
-    .menu--mobile { position: fixed; top: 0; right: 0; width: 85%; max-width: 350px; height: 100vh; background: var(--color-bg-light); z-index: 9999; padding: 4rem 1.5rem 1.5rem; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); overflow-y: auto; }
-    .menu--mobile.is-open { transform: translateX(0); }
-    .menu--mobile .close-btn { position: absolute; top: 0.5rem; right: 0.5rem; font-size: 1.5rem; color: var(--color-primary); width: 44px; height: 44px; }
-    .menu--mobile a { transition: color 0.2s; display: block; padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: var(--color-primary); font-weight: 600; }
-    .menu--mobile a:hover { color: var(--color-accent); }
-    .hero { min-height: 85vh; display: grid; place-items: center; text-align: center; background: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)), url('/img/hero.jpg') center/cover no-repeat; background-size: cover; color: white; }
-    .hero-content h1, .hero-content p, .hero-content .cta-group { opacity: 0; transform: translateY(10px); animation: fadeIn 0.8s forwards; transition: transform 0.8s, opacity 0.8s; }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-    .hero-content h1 { animation-delay: 0.2s; }
-    .hero-content p { animation-delay: 0.4s; }
-    .hero-content .cta-group { animation-delay: 0.6s; }
-    .hero h1 { color: white; letter-spacing: 0.1em; font-weight: 300; line-height: 1.05; }
-    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-    .btn { transition: transform 0.3s, box-shadow 0.3s; width: 100%; overflow: hidden; position: relative; }
-    .btn--primary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,136,204,0.3); }
-    .btn--ghost { border: 1.5px solid rgba(212,175,55,0.6); color: var(--color-accent); background: none; transition: transform 0.3s, box-shadow 0.3s; }
-    .btn--ghost:hover { transform: scale(1.02); box-shadow: 0 0 10px rgba(212,175,55,0.4); }
-    .btn--ghost::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3) 50%, transparent); transform: translateX(-100%); transition: none; }
-    .btn--ghost:hover::after { animation: shimmer 1.5s infinite; }
-    .step-card { transition: transform 0.3s, box-shadow 0.3s; cursor: default; }
-    .step-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(60,36,89,0.1); }
-    .testimonial-card { background: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: 0 4px 8px rgba(0,0,0,0.05); text-align: center; border-top: 3px solid var(--color-accent); transition: transform 0.3s, box-shadow 0.3s; }
-    .testimonial-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-    .about-media img { border-radius: var(--radius); aspect-ratio: 4/3; object-fit: cover; } 
-    .fb-wrap { max-width: 450px; margin: 0 auto; text-align: center; overflow: hidden; padding: 0 var(--space-mobile); }
-    .fb-page-responsive { width: 100%; overflow: hidden; }
-    .footer { background: var(--color-dark); color: white; padding: 3rem 0; text-align: center; }
+    .hero { min-height: 85vh; display: grid; place-items: center; text-align: center; color: white; }
+    /* P5: Hero CSS pataisymas (naudojamas WebP formatas su JPG fallback) */
+    .hero {
+        background-image: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)), url('/img/hero.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    /* Fallback for browsers that don't support WebP or if WebP file is missing */
+    @supports not (background-image: url('/img/hero.webp')) {
+        .hero {
+             background-image: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)), url('/img/hero.jpg');
+        }
+    }
+    .hero-content h1 { color: white; letter-spacing: 0.1em; font-weight: 300; line-height: 1.05; }
     
-    /* NAUJOS PAGALBINĖS KLASĖS INLINE STILIAMS PAŠALINTI */
+    /* Priedai */
     .text--left { text-align: left !important; }
     .text--bold { font-weight: 600 !important; }
-    .text--highlight { 
-        color: var(--color-primary); 
-        font-weight: 600;
-        max-width: 500px;
-        margin: 0.5rem auto 2rem;
-        text-align: center;
-    }
+    .text--highlight { color: var(--color-primary); font-weight: 600; max-width: 500px; margin: 0.5rem auto 2rem; text-align: center; }
     .text--default { color: var(--color-text); }
-    
-    /* CTA mygtukų tekstas */
-    .cta-group a strong {
-        font-weight: 700; 
-        color: inherit;
-    }
-
-    /* APIE MUS sekcijos stiliai */
-    .about-content h2.section-title, 
-    .about-content .text--lead,
-    .about-content .text--default {
-        text-align: left; 
-        max-width: none;
-    }
+    .cta-group a strong { font-weight: 700; color: inherit; }
+    .about-content h2.section-title, .about-content .text--lead, .about-content .text--default { text-align: left; max-width: none; }
   </style>
 </head>
 <body>
@@ -203,7 +186,7 @@
           </a>
           <a class="btn btn--ghost" href="#astromineralogija" aria-describedby="hero-desc"><strong>Užklausa Dėl Individualaus Parinkimo</strong></a>
         </div>
-        <p id="hero-desc" style="position: absolute; left: -9999px;">Astromineralogo konsultacija padeda atrasti Jūsų sielos mineralinį portretą.</p>
+        <p id="hero-desc" class="visually-hidden">Astromineralogo konsultacija padeda atrasti Jūsų sielos mineralinį portretą.</p>
       </div>
     </section>
 
@@ -217,8 +200,8 @@
           <article class="step-card reveal" style="--motion-speed: 1.4s;"><i class="fas fa-box-open"></i><h4>3. Asmeninė Telegram Vitrina</h4><p>Naujausius, rinktinius mineralus pirmiausia pristatome savo bendruomenei per Telegram. Tai asmeniška ir patogu.</p></article>
         </div>
         <div style="text-align:center;margin-top:3.5rem;">
-          <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener" style="max-width:350px;">
-            <i class="fab fa-telegram-plane"></i> PRISIJUNGTI PRIE MŪSŲ BENDRIJOS
+          <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
+            <i class="fab fa-telegram-plane"></i> <strong>PRISIJUNGTI PRIE MŪSŲ BENDRIJOS</strong>
           </a>
           </div>
       </div>
@@ -229,7 +212,7 @@
         <h2 class="section-title">KLIENTŲ ISTORIJOS: KAIP KRISTALAI PAKEITĖ JŲ KASDIENYBĘ</h2>
         <div class="grid grid--3-cols">
           <article class="testimonial-card reveal" style="--motion-speed: 1s;" role="blockquote"><p>„Kristalo pasirinkimas, rekomenduotas astromineralogo, buvo absoliučiai transformuojantis. **Po pirmo mėnesio pajutau, kaip grįžo ramybė ir sumažėjo nuolatinis nerimas.**“</p><cite>— Laura V.</cite></article>
-          <article class="testimonial-card reveal" style="--motion-speed: 1.2s;" role="blockquote"><p>„Ilgai ieškojau, kas iš tikrųjų tinka. Astromineralogo analizė pagal gimimo datą leido man **pagaliau rasti vidinį tikrumą ir kryptį**. Labai patikimas specialistai.“</p><cite>— Tomas G.</cite></article>
+          <article class="testimonial-card reveal" style="--motion-speed: 1.2s;" role="blockquote"><p>„Ilgai ieškojau, kas iš tikrųjų tinka. Astromineralogo analizė pagal gimimo datą leido man **pagaliau rasti vidinį tikrumą ir kryptį**. Labai patikimi specialistai.“</p><cite>— Tomas G.</cite></article>
           <article class="testimonial-card reveal" style="--motion-speed: 1.4s;" role="blockquote"><p>„Mineralai atvyko supakuoti su didele meile ir rūpesčiu. **Kiekvienas akmuo spindėjo švara ir energija.** Jaučiasi, kad čia dirba tikri entuziastai.“</p><cite>— Rūta K.</cite></article>
         </div>
       </div>
@@ -243,7 +226,10 @@
             <p class="text--default">Atranką atlieka sertifikuotas astromineralogas ir Reiki meistras. Dirbame tik su **Vakarų Europos partneriais**, kurie garantuoja etinę gavybą ir mineralo natūralumą. Mes rūpinamės, kad akmuo, kurį įsigyjate, Jums **tiktų ir neštų naudą**.</p>
         </article>
         <aside class="about-media" aria-hidden="true">
-          <img src="1000000065.jpg" alt="Ametisto kristalas su ramiu ir šiltu spindesiu. Mūsų įsipareigojimas autentiškumui." loading="lazy">
+          <img 
+            src="1000000065.webp" 
+            alt="Ametisto kristalas su ramiu ir šiltu spindesiu. Mūsų įsipareigojimas autentiškumui." 
+            loading="lazy">
         </aside>
       </div>
     </section>
@@ -256,9 +242,15 @@
         <p class="text--highlight">Kviečiame susisiekti su mūsų specialistu dėl asmeninės konsultacijos, kuri padės atrasti kryptį ir harmoniją.</p>
         
         <form class="form--consult" action="https://formsubmit.co/your-email@example.com" method="POST" novalidate>
-          <input type="text" placeholder="Jūsų vardas ir pavardė" name="name" required>
-          <input type="email" placeholder="El. paštas (Konfidencialumas garantuojamas)" name="email" required>
-          <input type="tel" placeholder="Telefonas (neprivaloma)" name="phone">
+          <label for="name-input" class="visually-hidden">Jūsų vardas ir pavardė</label>
+          <input type="text" id="name-input" placeholder="Jūsų vardas ir pavardė" name="name" required>
+          
+          <label for="email-input" class="visually-hidden">El. paštas (Konfidencialumas garantuojamas)</label>
+          <input type="email" id="email-input" placeholder="El. paštas (Konfidencialumas garantuojamas)" name="email" required>
+          
+          <label for="phone-input" class="visually-hidden">Telefonas (neprivaloma)</label>
+          <input type="tel" id="phone-input" placeholder="Telefonas (neprivaloma)" name="phone">
+          
           <button type="submit" class="btn btn--primary">Užklausa Individualiam Parinkimui</button>
         </form>
         <p style="text-align:center; margin-top:1rem; font-size:0.9rem; color:var(--color-muted);">Atsakysime per 24 valandas. Visi Jūsų duomenys apdorojami su **maksimaliu diskretiškumu ir konfidencialumo garantija**.</p>
@@ -281,8 +273,8 @@
     <div class="container">
       <h3>KONTAKTAI</h3>
       <div class="social-icons">
-        <a href="https://www.facebook.com/ametistaslt" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram" class="telegram-icon"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://www.facebook.com/ametistaslt" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="telegram-icon"><i class="fab fa-telegram-plane"></i></a>
       </div>
       <small style="display:block; font-size:0.85rem; opacity:0.8; margin-top:1.5rem;">
         © 2025 AMETISTAS.LT | Visos teisės saugomos.
@@ -292,8 +284,8 @@
 
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" referrerpolicy="no-referrer" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
-  <script>
-    // JS Kodas liko nepakeistas, tik patikslintos meniu funkcijos ir threshold
+  
+  <script defer>
     document.addEventListener('DOMContentLoaded', function() {
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -301,7 +293,7 @@
         const header = document.querySelector('header');
         const navLinks = document.querySelectorAll('.nav-links a, .menu--mobile a');
         
-        // Atskirtos meniu valdymo funkcijos (UX ir A11Y patobulinimas)
+        // Atskirtos meniu valdymo funkcijos
         const openMenu = () => {
             mobileMenu?.classList.add('is-open');
             mobileToggle?.setAttribute('aria-expanded', 'true');
@@ -327,7 +319,6 @@
                 }
             });
         }, {
-            // Patobulintas Intersection Observer threshold (UX patobulinimas)
             threshold: 0.2 
         });
         revealElements.forEach(el => observer.observe(el));
@@ -360,7 +351,7 @@
         window.addEventListener('scroll', highlightNav);
         highlightNav();
 
-        // FORMA: Minimali JS validacija (UX ir Spam prevencijos patobulinimas)
+        // FORMA: Minimali JS validacija
         const form = document.querySelector('.form--consult');
         form?.addEventListener('submit', function(e) {
           const emailInput = form.querySelector('input[type="email"]');
