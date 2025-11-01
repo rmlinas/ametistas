@@ -143,14 +143,33 @@
       .mobile-toggle { display: none; }
     }
 
-    /* Mobile Menu */
+    /* Mobile Menu (PATAISYTA) */
     .mobile-menu {
-      position: fixed; top: 0; right: 0; width: 85%; max-width: 350px; height: 100vh; background: var(--color-bg); z-index: 9999;
-      padding: 4rem 1.5rem 1.5rem; box-shadow: -5px 0 20px rgba(0,0,0,0.15); transform: translateX(100%);
+      /* Naudojame fixed, bet ne relative */
+      position: fixed; top: 0; right: 0; width: 85%; max-width: 350px; height: 100vh; 
+      background: var(--color-bg); z-index: 9999;
+      padding: 4rem 1.5rem 1.5rem; box-shadow: -5px 0 20px rgba(0,0,0,0.15); 
+      transform: translateX(100%);
       transition: transform 0.4s ease-out; overflow-y: auto;
     }
-    .mobile-menu.open { transform: translateX(0); }
-    .mobile-menu .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; color: var(--color-amethyst-700); }
+    .mobile-menu.open { 
+        transform: translateX(0); 
+    }
+    .mobile-menu .close-btn { 
+        position: absolute; 
+        top: 1rem; 
+        right: 1rem; 
+        font-size: 1.5rem; 
+        color: var(--color-amethyst-700); 
+        z-index: 10000; /* Užtikriname, kad būtų virš visko */
+        /* Padidinu paspaudimo plotą patogumui */
+        padding: 0.5rem; 
+        width: 44px; 
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .mobile-menu a { display: block; padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: var(--color-amethyst-700); font-weight: 600; font-size: 1.1rem; transition: color var(--transition); }
     .mobile-menu a:hover { color: var(--color-gold); }
     /* Mobile Dark Mode Mygtukas */
