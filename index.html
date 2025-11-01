@@ -53,7 +53,7 @@
     .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(60,36,89,0.5); }
     .btn:focus { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-    /* === HEADER & NAVIGACIJA (Sticky bet NE animuotas per scroll) === */
+    /* === HEADER & NAVIGACIJA (Sticky - NE animuotas per scroll) === */
     header { 
         position: sticky; top: 0; z-index: 1000; background: var(--color-bg-light); 
         border-bottom: 1px solid rgba(0,0,0,0.08); 
@@ -63,13 +63,14 @@
     .nav-links { display: none; }
     @media (min-width: 769px) { .nav-links { display: flex; gap: 1.5rem; } }
 
-    /* Mobilus Meniu */
+    /* Mobilus Meniu Toggle (FIX: Stabilios ikonų perjungimo klasės) */
     .mobile-toggle { width: 44px; height: 44px; display: grid; place-items: center; border: none; background: none; cursor: pointer; z-index: 10000; position: relative; }
-    .mobile-toggle .fas { transition: opacity 0.3s, transform 0.3s; color: var(--color-primary); font-size: 1.5rem; position: absolute; }
-    .mobile-toggle[aria-expanded="true"] .fa-bars { opacity: 0; transform: rotate(90deg); }
-    .mobile-toggle[aria-expanded="false"] .fa-times { opacity: 0; transform: rotate(-90deg); }
-    .mobile-toggle[aria-expanded="true"] .fa-times { opacity: 1; transform: rotate(0); }
-    .mobile-toggle[aria-expanded="false"] .fa-bars { opacity: 1; transform: rotate(0); }
+    .mobile-toggle .fas { color: var(--color-primary); font-size: 1.5rem; position: absolute; }
+    
+    .mobile-toggle[aria-expanded="true"] .fa-bars { display: none; }
+    .mobile-toggle[aria-expanded="false"] .fa-times { display: none; }
+    .mobile-toggle[aria-expanded="true"] .fa-times { display: block; }
+    .mobile-toggle[aria-expanded="false"] .fa-bars { display: block; }
 
     .menu--mobile {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-bg-light);
@@ -81,7 +82,7 @@
     .menu--mobile .close-btn { align-self: flex-end; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--color-primary); }
     .menu--mobile a { font-size: 1.5rem; color: var(--color-dark); text-decoration: none; }
 
-    /* === HERO (Grąžinta Parallax CSS bet neaktyvi per JS) === */
+    /* === HERO (FIX: Paveikslėlis nebėra paslėptas) === */
     .hero { 
         display: flex; flex-direction: column; justify-content: center; align-items: center; 
         text-align: center; min-height: 70vh; overflow: hidden; position: relative; 
@@ -91,9 +92,7 @@
         will-change: transform; transition: transform 0.5s ease-out; 
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
         object-fit: cover; z-index: -2; 
-        /* Palikta, kad galėtumėte įkelti nuotrauką */
     }
-    .hero-img { display: none; } /* Palikta, kad neduotų klaidos, kol nuotrauka neįkelta */
     .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)); z-index: -1; }
     .hero-content {
         z-index: 10; color: white; padding: 0 var(--space-mobile); max-width: 100%;
@@ -110,8 +109,15 @@
     .social-icons a { color: white; font-size: 1.5rem; margin: 0 0.8rem; transition: color 0.3s; }
     .social-icons a:hover { color: var(--color-accent); }
 
-    /* === FACEBOOK LOADER (Su vizualizacija) === */
+    /* === FACEBOOK LOADER (FIX: Responsyvumas) === */
     .fb-load-area { min-height: 500px; display: grid; place-items: center; background: #fff; border: 1px solid #ddd; border-radius: 8px; position: relative; }
+    
+    /* KRITINIS FIXAS: Privertimas FB iFrame'o būti 100% pločio */
+    .fb-page, .fb-page > span, .fb-page > span > iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
     .fb-load-area.loading { display: flex; justify-content: center; align-items: center; }
     .fb-load-area.loading::after { 
         content: ""; width: 40px; height: 40px; border: 4px solid #D4AF37; 
@@ -255,14 +261,17 @@
 
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        const mobileClose = document.getElementById('mobileClose');
-        const header = document.querySelector('header');
-        const hero = document.querySelector('.hero');
-        const heroImg = document.querySelector('.hero-img');
-
-        // --- MOBILAUS MENIU VALDYMAS (Tvirtas) ---
-        const closeMenu = () => { mobileMenu?.classList.remove('is-open'); mobileToggle?.setAttribute('aria-expanded', 'false'); };
-        const openMenu = () => { mobileMenu?.classList.add('is-open'); mobileToggle?.setAttribute('aria-expanded', 'true'); };
+        const mobileClose = document.getElementById('mobileClose'); 
+        
+        // --- MOBILAUS MENIU VALDYMAS ---
+        const closeMenu = () => { 
+            mobileMenu?.classList.remove('is-open'); 
+            mobileToggle?.setAttribute('aria-expanded', 'false'); 
+        };
+        const openMenu = () => { 
+            mobileMenu?.classList.add('is-open'); 
+            mobileToggle?.setAttribute('aria-expanded', 'true'); 
+        };
         
         mobileToggle?.addEventListener('click', () => {
             mobileMenu?.classList.contains('is-open') ? closeMenu() : openMenu();
@@ -271,12 +280,10 @@
         mobileClose?.addEventListener('click', closeMenu);
 
         
-        // --- SCROLL HANDLERIAI (VISIŠKAI IŠJUNGTAS - Tai gali būti balto ekrano priežastis) ---
-        // IŠJUNGTAS
-        // window.addEventListener('scroll', debounce(handleScroll, 20));
-        // IŠJUNGTAS
+        // --- SCROLL HANDLERIAI (IŠJUNGTAS) ---
+
         
-        // --- FACEBOOK CLICK-TO-LOAD (Grąžintas ir patobulintas) ---
+        // --- FACEBOOK CLICK-TO-LOAD ---
         const fbButton = document.getElementById('loadFacebookFeed');
         const fbArea = document.getElementById('fbLoadArea');
         let sdkLoaded = false;
@@ -286,13 +293,12 @@
 
             fbArea.classList.add('loading');
 
-            // Timeout'as reikalingas, kad animacija pasirodytų
             setTimeout(() => {
                 fbArea.classList.remove('loading');
                 
                 const fbContainer = document.createElement('div');
                 fbContainer.className = 'fb-page';
-                // Nustatymai mobiliajam
+                
                 fbContainer.setAttribute('data-href', 'https://www.facebook.com/ametistaslt');
                 fbContainer.setAttribute('data-tabs', 'timeline');
                 fbContainer.setAttribute('data-width', '100%'); 
