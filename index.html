@@ -7,364 +7,253 @@
   <meta name="description" content="Natūralūs kristalai, Reiki energija, astromineraloginės konsultacijos. Asmeninis akmenų parinkimas pagal aurą ir gimimo datą.">
   
   <meta property="og:title" content="Ametistas.lt – Kristalų Oazė">
-  <meta property="og:description" content="Natūralūs akmenys su Reiki energija. Astromineraloginės konsultacijos.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1549484306-03a890a5015b?q=80&w=1974&auto=format&fit=crop"> 
   <meta property="og:url" content="https://ametistas.lt">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="canonical" href="https://ametistas.lt">
-  <meta name="robots" content="index, follow">
-
-  <link rel="preload" href="/img/hero.jpg" as="image" importance="high">
-  
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMuC6g1g6kz6x7e6VJrj5F7b4pbYx9q7rSsl3hTn6I4wX1z0lXrVx3pG3z4jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Ametistas.lt – Kristalų Oazė",
-    "description": "Natūralūs kristalai, Reiki energija, astromineraloginės konsultacijos.",
-    "url": "https://ametistas.lt",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Ametistas.lt",
-      "logo": { "@type": "ImageObject", "url": "https://ametistas.lt/img/logo.png" },
-      "sameAs": [
-        "https://www.facebook.com/ametistaslt",
-        "https://www.instagram.com/ametistaslt",
-        "https://t.me/ametistaslt"
-      ]
-    }
-  }
-  </script>
-
   <style>
-    /* ---------------------------------------------------- */
-    /* 1. VISOS SPALVOS PAGRINDINIAI SVIESIAM REZIMUI */
-    /* ---------------------------------------------------- */
+    /*====================================================================*/
+    /* 1. PAGRINDINIAI NUSTATYMAI (MODERNUS RESETAS)                      */
+    /*====================================================================*/
     :root {
-      --font-primary: 'Cormorant Garamond', serif;
-      --font-body: 'Inter', system-ui, sans-serif;
-      --color-amethyst-900: #0F0018; 
-      --color-amethyst-700: #3C2459; 
-      --color-amethyst-300: #C8A2C8; 
-      --color-gold: #D4AF37; 
-      --color-bg: #FBFAFF; 
-      --color-text: #111; 
-      --color-muted: #666; 
-      --color-telegram: #0088CC;
-      --color-section-light: #F7F7F7;
-      --radius: 8px;
-      --transition: 0.3s ease;
-      --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
-      --shadow-md: 0 12px 32px rgba(0,0,0,0.12);
-      --container-max: 1200px;
+      /* Spalvos */
+      --color-primary: #3C2459; /* Pagrindinė ametisto */
+      --color-dark: #0F0018;   /* Tamsus fonas */
+      --color-accent: #D4AF37; /* Auksas */
+      --color-bg-light: #FBFAFF;
+      --color-text: #111;
+      --color-muted: #666;
+
+      /* Tipografija - Mobile First (Maži dydžiai maksimaliam efektyvumui) */
+      --font-size-base: 1rem;
+      --font-size-h1: 2.2rem;
+      --font-size-h2: 1.6rem;
+      --font-size-lead: 1.1rem;
       
-      /* Typography - Mobile First (Griežtesnis) */
-      --font-size-base: 1rem; 
-      --font-size-lead: 1.1rem; 
-      --font-size-hero: 2.2rem; /* SUMAŽINTA MOBILE HERO ANTRAM TEKSTUI */
-      --font-size-title: 1.6rem; /* SUMAŽINTA MOBILE SECCIJOS ANTRAM TEKSTUI */
+      --radius: 8px;
+      --space-mobile: 1.5rem;
+      --space-section: 4rem;
     }
 
-    /* Desktop overrides */
-    @media (min-width: 769px) {
-        :root {
-            --font-size-base: 1.1rem;
-            --font-size-lead: 1.3rem;
-            --font-size-hero: 4rem;
-            --font-size-title: 2.5rem;
-        }
+    /* GLOBALUS RESETAS IR TIPOGRAFIJA */
+    *, *::before, *::after { 
+        box-sizing: border-box; /* KRITIŠKA: Kad paddingas neplėstų pločio */
+        margin: 0; 
+        padding: 0; 
     }
-
-    /* Global Base Styles */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { 
-        font-family: var(--font-body); 
-        color: var(--color-text); 
-        background: var(--color-bg); 
-        scroll-behavior: smooth; 
+        font-family: 'Inter', system-ui, sans-serif; 
         font-size: var(--font-size-base); 
         line-height: 1.6;
+        scroll-behavior: smooth;
     }
     body { 
-        overflow-x: hidden; /* KRITIŠKA: UŽTIKRINTI, KAD NEBŪTŲ ŠONINIO SLINKIMO */
+        overflow-x: hidden; /* UŽTIKRINIMAS NUO ŠONINIO SLINKIMO */
+        color: var(--color-text); 
+        background: var(--color-bg-light); 
     }
+    
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; background: none; border: none; }
     img { max-width: 100%; height: auto; display: block; }
     h1, h2, h3, h4 { 
-        margin-bottom: 0.5rem; 
-        font-family: var(--font-primary); 
-        color: var(--color-amethyst-700); 
-        word-wrap: break-word; /* KRITIŠKA: ILGI ŽODŽIAI NELIPA PER KRAŠTUS */
+        font-family: 'Cormorant Garamond', serif; 
+        color: var(--color-primary); 
+        line-height: 1.1; 
+        margin-bottom: 0.5rem;
+        word-wrap: break-word; /* KRITIŠKA: ilgas tekstas telpa */
     }
+    h1 { font-size: var(--font-size-h1); font-weight: 300; }
+    h2 { font-size: var(--font-size-h2); font-weight: 700; }
 
+    /* KONTEINERIS IR GRID (PAGRINDINĖ IŠDĖSTYMO LOGIKA) */
     .container { 
-        width: min(100% - 2rem, var(--container-max)); /* PADDING UŽTIKRINIMAS */
+        width: min(100% - calc(2 * var(--space-mobile)), 1200px); /* Griežtas plotis su PADDING */
         margin-inline: auto; 
     }
     .grid { 
         display: grid; 
         gap: 2rem; 
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr; /* Mobile Default: 1 stulpelis */
     }
     .flex { display: flex; gap: 1rem; align-items: center; }
+    section { padding: var(--space-section) 0; }
+    .section--light { background: #f7f7f7; }
 
-    /* ---------------------------------------------------- */
-    /* 2. HEADER AND NAVIGATION */
-    /* ---------------------------------------------------- */
-    header {
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(8px);
-      background: rgba(251, 250, 255, 0.98); border-bottom: 1px solid rgba(0,0,0,0.08);
-      transition: all var(--transition);
+    /* Desktop Media Query (TIK GRIEŽTOS PERRAŠOS) */
+    @media (min-width: 769px) {
+        :root {
+            --font-size-h1: 4rem;
+            --font-size-h2: 2.5rem;
+            --space-section: 6rem;
+        }
+        .grid--2-cols { grid-template-columns: 1fr 1fr; }
+        .grid--3-cols { grid-template-columns: repeat(3, 1fr); }
     }
-    .nav {
+
+    /*====================================================================*/
+    /* 2. HEADER KOMPONENTAS                                              */
+    /*====================================================================*/
+    .header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(251, 250, 255, 0.98); 
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .header-nav {
       display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;
     }
-    
-    .nav-links { display: none; } 
+    .header-logo { font-size: 1.2rem; font-weight: 700; color: var(--color-primary); }
+
+    /* Navigacijos mygtukai (Mobile First: Paslėpti) */
+    .nav-links { display: none; }
     @media (min-width: 769px) {
-        .nav-links { display: flex; gap: 1.5rem; font-weight: 600; }
-        .nav-links a:hover { color: var(--color-gold); }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .mobile-toggle { display: none; }
     }
     
-    .nav-controls button {
+    /* Ikonų mygtukai */
+    .btn--icon {
       width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      background: rgba(60,36,89,0.1); color: var(--color-amethyst-700); transition: all var(--transition);
-      font-size: 1.2rem;
-    }
-    .nav-controls button:hover { background: var(--color-amethyst-700); color: white; transform: scale(1.05); }
-
-    .mobile-toggle {
-        display: flex; 
-        font-size: 1.6rem; 
-        font-weight: 700;
-        line-height: 1;
-        padding: 0.5rem 0.8rem;
-        border-radius: var(--radius);
-        color: var(--color-amethyst-700);
-        background: rgba(60,36,89,0.1);
-    }
-    @media (min-width: 769px) {
-      .mobile-toggle { display: none; } 
+      background: rgba(60,36,89,0.1); color: var(--color-primary); font-size: 1.2rem;
     }
 
-    /* Mobile Menu (Griežtos Pataisos) */
-    .mobile-menu {
+    /* Mobile Meniu (Minimalistinis) */
+    .menu--mobile {
       position: fixed; top: 0; right: 0; width: 85%; max-width: 350px; height: 100vh; 
-      background: var(--color-bg); 
-      z-index: 9999;
-      padding: 4rem 1.5rem 1.5rem; box-shadow: -5px 0 20px rgba(0,0,0,0.15); 
+      background: var(--color-bg-light); z-index: 9999;
+      padding: 4rem 1.5rem 1.5rem; 
       transform: translateX(100%);
       transition: transform 0.4s ease-out; overflow-y: auto;
     }
-    .mobile-menu.open { 
-        transform: translateX(0); 
+    .menu--mobile.is-open { transform: translateX(0); }
+    .menu--mobile .close-btn { 
+        position: absolute; top: 0.5rem; right: 0.5rem; font-size: 1.5rem; 
+        color: var(--color-primary); width: 44px; height: 44px; 
+        display: flex; align-items: center; justify-content: center;
     }
-    .mobile-menu .close-btn { 
-        position: absolute; 
-        top: 0.5rem; /* PATAISA */
-        right: 0.5rem; /* PATAISA */
-        font-size: 1.5rem; 
-        color: var(--color-amethyst-700); 
-        z-index: 10000; 
-        padding: 0.5rem; 
-        width: 44px; 
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .mobile-menu a { display: block; padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: var(--color-amethyst-700); font-weight: 600; font-size: 1.1rem; transition: color var(--transition); }
-    .mobile-menu a:hover { color: var(--color-gold); }
-    #darkToggleMobile { border-bottom: none !important; margin-top: 1rem; }
+    .menu--mobile a { display: block; padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: var(--color-primary); font-weight: 600; }
 
-    /* ---------------------------------------------------- */
-    /* 3. HERO SECTION */
-    /* ---------------------------------------------------- */
+    /*====================================================================*/
+    /* 3. HERO KOMPONENTAS                                                */
+    /*====================================================================*/
     .hero {
-      min-height: 70vh; /* Padidintas mobile aukštis geresniam vaizdui */
-      display: grid; place-items: center; text-align: center; position: relative; overflow: hidden;
-      background: linear-gradient(135deg, rgba(15,0,24,0.65), rgba(60,36,89,0.55)), url('/img/hero.jpg') center/cover no-repeat;
+      min-height: 70vh; display: grid; place-items: center; text-align: center; 
+      background: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)), url('/img/hero.jpg') center/cover no-repeat;
       color: white;
-      padding: 3rem 0; /* PADDING UŽTIKRINIMAS */
     }
-    @media (min-width: 769px) {
-        .hero { min-height: 70vh; }
-    }
-
-    .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 0 1rem; }
-    .hero h1 { 
-        font-size: var(--font-size-hero); 
-        margin-bottom: 0.5rem; 
-        color: white; 
-        line-height: 1.1; 
-        font-weight: 300;
-        letter-spacing: 0.1em; /* PADAILINIMAS */
-        max-width: 100%; /* UŽTIKRINTI, KAD NETRUKDYS SLINKIMUI */
-    }
-    .hero .dot { color: var(--color-gold); }
-    .hero .text-lead { 
-        font-size: var(--font-size-lead); 
-        color: rgba(255,255,255,0.92); 
-    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 0 var(--space-mobile); }
+    .hero h1 { color: white; letter-spacing: 0.1em; }
+    .hero p { font-size: var(--font-size-lead); color: rgba(255,255,255,0.92); }
+    .hero .dot { color: var(--color-accent); }
     
-    /* KRITIŠKA CTA PATAISA: pilnas plotis ir column elgsena */
-    .hero .ctas { 
+    /* CTA GRUPĖS TVARKYMAS (KRITIŠKAI SVARBU MOBILE) */
+    .cta-group { 
         margin-top: 2rem; 
-        flex-direction: column; 
-        justify-content: center;
+        display: flex; 
+        flex-direction: column; /* Mobile: mygtukai stulpeliu */
+        gap: 1rem;
         width: 100%;
-        max-width: 350px; 
+        max-width: 350px; /* Apribojame maksimalų mygtukų plotį */
         margin-left: auto;
         margin-right: auto;
     }
     @media (min-width: 500px) {
-        .hero .ctas { flex-direction: row; max-width: none; }
+        .cta-group { flex-direction: row; max-width: none; }
     }
 
-    /* ---------------------------------------------------- */
-    /* 4. BUTTONS & TYPOGRAPHY */
-    /* ---------------------------------------------------- */
+    /*====================================================================*/
+    /* 4. BUTTON KOMPONENTAS                                              */
+    /*====================================================================*/
     .btn {
-      display: flex; /* Naudojame flex, kad užtikrinti full-width elemente */
-      align-items: center; gap: 0.5rem; padding: 0.9rem 1.5rem; /* PAAUKŠTINAME PADDING */
-      border-radius: var(--radius); font-weight: 700; font-size: 1rem;
-      transition: all var(--transition); 
-      width: 100%; /* KRITIŠKA: VISADA PILNAS PLOTIS MOBILIEMS CTA */
-      max-width: 100%;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center; 
+      gap: 0.5rem; padding: 0.9rem 1.5rem; border-radius: var(--radius); 
+      font-weight: 700; font-size: 1rem;
+      width: 100%; /* KRITIŠKA: Visada Mobile Full Width */
     }
-    .btn-primary { background: var(--color-telegram); color: white; box-shadow: 0 8px 20px rgba(0,136,204,0.3); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,136,204,0.4); }
-    .btn-ghost { border: 1.5px solid rgba(212,175,55,0.6); color: var(--color-gold); }
-    .btn-ghost:hover { background: rgba(212,175,55,0.1); }
+    .btn--primary { background: #0088CC; color: white; } /* Telegram spalva */
+    .btn--ghost { border: 1.5px solid rgba(212,175,55,0.6); color: var(--color-accent); }
     
+    /*====================================================================*/
+    /* 5. TURINIO SEKCIJOS STILIAI                                        */
+    /*====================================================================*/
     .section-title { 
-        font-size: var(--font-size-title);
-        text-align: center; 
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        margin-bottom: 1rem;
+        text-align: center; margin-bottom: 1.5rem; letter-spacing: 0.05em;
     }
-    .text-lead { text-align: center; max-width: 80ch; margin: 0 auto 1rem; font-style: italic; }
-    
-    /* ---------------------------------------------------- */
-    /* 5. SECTIONS AND COMPONENTS */
-    /* ---------------------------------------------------- */
-    section { padding: 4rem 0; } 
-    @media (min-width: 769px) {
-        section { padding: 5rem 0; }
-    }
-    .section-light { background: var(--color-section-light); }
+    .text--lead { text-align: center; max-width: 80ch; margin: 0 auto 1.5rem; font-style: italic; }
 
-    .purchase-steps-grid { grid-template-columns: 1fr; } 
-    @media (min-width: 600px) {
-        .purchase-steps-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    }
-    .purchase-step i { font-size: 3rem; margin-bottom: 1rem; color: var(--color-amethyst-700); }
-    .purchase-step:nth-child(2) i { color: var(--color-telegram); }
-    .purchase-step:nth-child(3) i { color: var(--color-gold); }
+    /* Steps ir Cards (Mobile First) */
+    .step-card { text-align: center; }
+    .step-card i { font-size: 3rem; margin-bottom: 1rem; color: var(--color-primary); }
+    .step-card h4 { font-size: 1.2rem; }
 
-    .reiki-note { margin-top: 0.75rem; color: var(--color-amethyst-700); font-weight: 600; border-left: 3px solid var(--color-gold); padding-left: 1rem; font-size: 0.95rem; }
-
-    .testimonial-grid { grid-template-columns: 1fr; }
-    @media (min-width: 769px) {
-        .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
-    }
     .testimonial-card { 
         background: white; padding: 1.5rem; border-radius: var(--radius); 
-        box-shadow: var(--shadow-sm); position: relative; text-align: center; 
-        border-top: 3px solid var(--color-gold);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05); text-align: center; 
+        border-top: 3px solid var(--color-accent);
     }
     .testimonial-card cite { display: block; margin-top: 0.75rem; font-size: 0.9rem; color: var(--color-muted); font-style: normal; }
 
-    .about-grid { grid-template-columns: 1fr; } 
+    .about-media { padding: 0.75rem; border-radius: var(--radius); background: var(--color-bg-light); }
+    .about-media img { border-radius: var(--radius); }
     @media (min-width: 769px) {
         .about-grid { grid-template-columns: 1fr 480px; align-items: center; }
-        .about-hero { order: 2; }
     }
-    .about-hero img { border-radius: var(--radius); object-fit: cover; }
-    .about-hero { background: var(--color-bg); padding: 0.75rem; border-radius: var(--radius); }
-
-    .feature-card { 
-        padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);
-        background: white; border-left: 3px solid var(--color-gold);
-    }
-    .feature-card h3 { font-size: 1.4rem; color: var(--color-amethyst-700); font-weight: 700; }
     
-    .gift-box { background: #f0f0f0; border: 2px dashed var(--color-gold); padding: 1.5rem; border-radius: 8px; text-align: center; margin: 2rem 0; }
-    .form-consult { max-width: 500px; margin: 0 auto; display: grid; gap: 1rem; }
-    .form-consult input { padding: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
-    .form-note { text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--color-muted); }
-
-    .fb-section { padding: 3rem 0; background: var(--color-section-light); }
-    .fb-wrap { max-width: 520px; margin: 0 auto; text-align: center; }
-    .fb-note { color: #444; margin-bottom: 1rem; }
-
-    /* ---------------------------------------------------- */
-    /* 6. FOOTER */
-    /* ---------------------------------------------------- */
-    footer {
-      background: var(--color-amethyst-900); color: white; padding: 3rem 0; text-align: center;
+    /* Forma */
+    .form--consult { max-width: 500px; margin: 0 auto; display: grid; gap: 1rem; }
+    .form--consult input { padding: 1rem; border: 1px solid #ddd; border-radius: var(--radius); font-size: 1rem; }
+    
+    /*====================================================================*/
+    /* 6. FOOTER KOMPONENTAS                                              */
+    /*====================================================================*/
+    .footer {
+      background: var(--color-dark); color: white; padding: 3rem 0; text-align: center;
     }
-    .footer-nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .social-inline { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; }
-    .social-inline a { width: 44px; height: 44px; border-radius: 50%; background: rgba(212,175,55,.2); color: white; border: 1px solid var(--color-gold); font-size: 1.3rem; display: flex; align-items: center; justify-content: center; transition: transform var(--transition); }
-    .social-inline .telegram-icon { background: rgba(0,136,204,0.2); border: 1px solid var(--color-telegram); }
-    .small { font-size: 0.85rem; opacity: 0.8; margin-top: 1.5rem; }
-
-    /* BACK TO TOP */
-    #backToTop {
-      position: fixed; bottom: 1.5rem; right: 1rem; background: var(--color-amethyst-700); color: #fff; padding: 1rem; border-radius: 50%; box-shadow: var(--shadow-md); z-index: 99; display: none; font-size: 1.2rem;
-      transition: background var(--transition);
+    .footer h3 { color: var(--color-accent); font-weight: 700; font-size: 1.5rem; letter-spacing: 0.05em; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+    .social-icons { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; }
+    .social-icons a { 
+        width: 44px; height: 44px; border-radius: 50%; color: white; 
+        background: rgba(212,175,55,.2); border: 1px solid var(--color-accent); 
+        font-size: 1.3rem; display: flex; align-items: center; justify-content: center; 
     }
-    #backToTop.show { display: flex; }
-
-    /* Dark Mode */
+    
+    /*====================================================================*/
+    /* 7. DARK MODE (PERRAŠOS)                                            */
+    /*====================================================================*/
     html.dark {
-      --color-bg: var(--color-amethyst-900);
+      --color-bg-light: var(--color-dark);
       --color-text: #eee;
       --color-muted: #aaa;
-      --color-section-light: #181818;
-      --color-amethyst-700: var(--color-amethyst-300); 
+      --color-primary: var(--color-accent); /* Antraštės šviečia */
     }
-    html.dark header { background: rgba(15,0,24,0.98); border-bottom-color: rgba(255,255,255,0.08); }
-    html.dark .nav-controls button { background: rgba(212,175,55,0.1); color: var(--color-gold); }
-    html.dark .nav-controls button:hover { background: var(--color-gold); color: var(--color-amethyst-900); }
-    html.dark .mobile-toggle { background: rgba(212,175,55,0.1); color: var(--color-gold); }
-    html.dark .reiki-note { color: var(--color-amethyst-300); }
-    html.dark .testimonial-card, html.dark .feature-card { background: #1b1b1b; box-shadow: 0 4px 12px rgba(255,255,255,0.08); }
-    html.dark .fb-section { background: var(--color-section-light); }
-    html.dark .gift-box { background: #1b1b1b; }
-    
-    /* Focus Ring */
-    button:focus-visible, a:focus-visible, input:focus-visible {
-      outline: 2px solid var(--color-gold); outline-offset: 2px; border-radius: 4px;
-    }
+    html.dark .header { background: rgba(15,0,24,0.98); border-bottom-color: rgba(255,255,255,0.08); }
+    html.dark .btn--icon { background: rgba(212,175,55,0.1); color: var(--color-accent); }
+    html.dark .menu--mobile { background: var(--color-dark); }
+    html.dark .step-card { color: var(--color-text); }
+    html.dark .testimonial-card { background: #1b1b1b; box-shadow: 0 4px 8px rgba(255,255,255,0.08); }
+    html.dark .section--light { background: #181818; }
+
   </style>
 </head>
 <body>
 
-  <header role="banner">
-    <nav class="container nav" aria-label="Pagrindinė navigacija">
+  <header class="header" role="banner">
+    <nav class="container header-nav" aria-label="Pagrindinė navigacija">
+        <span class="header-logo">AMETISTAS.LT</span>
         <div class="nav-links">
             <a href="#apie-mus">Apie mus</a>
-            <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
+            <a href="#kolekcijos-perziura">Kolekcijos</a>
             <a href="#astromineralogija">Konsultacijos</a>
             <a href="#kontaktai">Kontaktai</a>
         </div>
-        <div class="nav-controls flex">
-            <button id="themeToggle" aria-label="Perjungti tamsos režimą"><i class="fas fa-moon"></i></button>
-            <button id="mobileToggle" class="mobile-toggle" aria-label="Atidaryti meniu">☰</button>
+        <div class="flex">
+            <button id="themeToggle" class="btn--icon" aria-label="Perjungti tamsos režimą"><i class="fas fa-moon"></i></button>
+            <button id="mobileToggle" class="mobile-toggle btn--icon" aria-label="Atidaryti meniu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
-    <div id="mobileMenu" class="mobile-menu">
+    <div id="mobileMenu" class="menu--mobile">
         <button class="close-btn" id="mobileClose" aria-label="Uždaryti meniu"><i class="fas fa-times"></i></button>
         <a href="#apie-mus">Apie mus</a>
         <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
@@ -376,28 +265,28 @@
 
   <section class="hero" role="region" aria-label="Pagrindinis">
     <div class="hero-content">
-      <h1 class="text-hero">Ametistas.lt – <span class="dot">kristalų oazė</span></h1>
-      <p class="text-lead">Natūralūs Akmenys. Aura. Astromineralogija.</p>
-      <div class="ctas flex">
-        <a class="btn btn-primary btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
+      <h1>Ametistas.lt – <span class="dot">kristalų oazė</span></h1>
+      <p class="text--lead">Natūralūs Akmenys. Aura. Astromineralogija.</p>
+      <div class="cta-group">
+        <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
           <i class="fab fa-telegram-plane"></i> Peržiūrėti Kolekciją
         </a>
-        <a class="btn btn-ghost" href="#astromineralogija">Gaukite konsultaciją</a>
+        <a class="btn btn--ghost" href="#astromineralogija">Gaukite konsultaciją</a>
       </div>
     </div>
   </section>
 
-  <section id="kolekcijos-perziura" class="section-light">
+  <section id="kolekcijos-perziura" class="section--light">
     <div class="container">
       <h2 class="section-title">IŠSKIRTINĖ KOLEKCIJA PER TELEGRAM</h2>
-      <p class="text-lead" style="margin-bottom:3rem;">Mūsų aukščiausios kokybės akmenys parduodami per privatų Telegram kanalą. Tai užtikrina asmeninę konsultaciją ir pirmenybę retų pavyzdžių įsigijimui.</p>
-      <div class="purchase-steps-grid grid">
-        <div class="purchase-step"><i class="fas fa-seedling"></i><h4>1. Prisijunkite prie Bendruomenės</h4><p>Telegram kanale gausite vertingos edukacinės informacijos apie akmenų savybes, energiją bei naujų kolekcijų anonsus.</p></div>
-        <div class="purchase-step"><i class="fab fa-telegram-plane"></i><h4>2. Atraskite Rinktinius Pavyzdžius</h4><p>Kanalas yra mūsų <strong>Virtuali Vitrina</strong>. Talpiname tik aukštos raiškos nuotraukas, detalius aprašymus ir kainas.</p></div>
-        <div class="purchase-step"><i class="fas fa-hand-holding-heart"></i><h4>3. Užsisakykite Asmeniškai</h4><p>Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriui Telegram platformoje. Visi klausimai atsakomi <strong>tiesiogiai</strong>.</p></div>
+      <p class="text--lead">Mūsų aukščiausios kokybės akmenys parduodami per privatų Telegram kanalą. Tai užtikrina asmeninę konsultaciją ir pirmenybę retų pavyzdžių įsigijimui.</p>
+      <div class="grid grid--3-cols">
+        <div class="step-card"><i class="fas fa-seedling"></i><h4>1. Prisijunkite prie Bendruomenės</h4><p>Telegram kanale gausite edukacinės informacijos apie akmenų savybes, energiją bei naujų kolekcijų anonsus.</p></div>
+        <div class="step-card"><i class="fab fa-telegram-plane"></i><h4>2. Atraskite Rinktinius Pavyzdžius</h4><p>Kanalas yra mūsų <strong>Virtuali Vitrina</strong>. Talpiname aukštos raiškos nuotraukas, detalius aprašymus ir kainas.</p></div>
+        <div class="step-card"><i class="fas fa-hand-holding-heart"></i><h4>3. Užsisakykite Asmeniškai</h4><p>Patikusį akmenį rezervuokite parašydami žinutę administratoriui. Visi klausimai atsakomi <strong>tiesiogiai</strong>.</p></div>
       </div>
       <div style="text-align:center;margin-top:3.5rem;">
-        <a class="btn btn-primary btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener" style="max-width:350px;">
+        <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener" style="max-width:350px;">
           <i class="fab fa-telegram-plane"></i> PERŽIŪRĖTI KOLEKCIJĄ TELEGRAME
         </a>
         </div>
@@ -407,36 +296,23 @@
   <section>
     <div class="container">
       <h2 class="section-title">KĄ SAKO MŪSŲ KLIENTAI</h2>
-      <div class="testimonial-grid grid">
-        <div class="testimonial-card">
-          <p>„Gavau ametistą su Reiki energija – jaučiu ramybę namuose. Ačiū!“</p>
-          <cite>— Laura, Vilnius</cite>
-        </div>
-        <div class="testimonial-card">
-          <p>„Konsultacija pagal gimimo datą – tiksliai atspindėjo mano iššūkius. Rekomenduoju!“</p>
-          <cite>— Tomas, Kaunas</cite>
-        </div>
-        <div class="testimonial-card">
-          <p>„Pakuotė prabangi, akmuo šviečia. Greitas pristatymas!“</p>
-          <cite>— Rūta, Klaipėda</cite>
-        </div>
+      <div class="grid grid--3-cols">
+        <div class="testimonial-card"><p>„Gavau ametistą su Reiki energija – jaučiu ramybę namuose.“</p><cite>— Laura</cite></div>
+        <div class="testimonial-card"><p>„Konsultacija pagal gimimo datą – tiksliai atspindėjo mano iššūkius. Rekomenduoju!“</p><cite>— Tomas</cite></div>
+        <div class="testimonial-card"><p>„Pakuotė prabangi, akmuo šviečia. Greitas pristatymas!“</p><cite>— Rūta</cite></div>
       </div>
     </div>
   </section>
 
-  <section id="apie-mus" class="section-light">
-    <div class="container about-grid grid">
+  <section id="apie-mus" class="section--light">
+    <div class="container grid about-grid">
       <div class="about-content">
           <h2 class="section-title" style="text-align:left;">APIE MUS IR MŪSŲ VIZIJA</h2>
-          <p class="text-lead" style="text-align:left; max-width:none; font-weight:600;">Ametistas.lt – tai aistra natūraliems akmenims ir mineralams, tiekianti tik aukščiausią kokybę ir autentiškumą.</p>
-          <div style="margin-top:1.5rem;color:var(--color-muted);line-height:1.7">
-            <p style="color:var(--color-text);">Mūsų principas: <strong>Kokybė, ne Kiekybė</strong>. Kiekvienas mineralas, kristalas ir papuošalas yra kruopščiai atrenkamas, bendradarbiaujant su patikimais Vakarų Europos tiekėjais. Mes garantuojame akmenų kilmę ir vengiam neaiškios, Azijietiškos kilmės prekių.</p>
-            <p style="margin-top:.75rem;">Mes esame jauna bendraminčių komanda, kurios tikslas – tapti Jūsų asmeniniu mineralų šaltiniu. Prekes parduodame tokias, kokias norėtume patys gauti – t. y. kaip sau.</p>
-            <p class="reiki-note">✨ Visi akmenys paruošiami Jums. Kiekvienas mineralas yra energetiškai <strong>išvalomas ir pakraunamas Reiki</strong> energija, kad pasiektų Jus paruoštas Jūsų asmeninėms intencijoms.</p>
-          </div>
+          <p class="text--lead" style="text-align:left; max-width:none; font-weight:600;">Ametistas.lt – tai aistra natūraliems akmenims ir mineralams, tiekianti tik aukščiausią kokybę ir autentiškumą.</p>
+          <p style="color:var(--color-text);">Kiekvienas mineralas kruopščiai atrenkamas, bendradarbiaujant su patikimais Vakarų Europos tiekėjais. Visi akmenys yra energetiškai išvalomi ir pakraunami Reiki energija.</p>
       </div>
-      <aside class="about-hero" aria-hidden="true">
-        <img src="/img/ametistas-kristalas.jpg" alt="Natūralus ametisto kristalas, apšviestas šilta šviesa" loading="lazy">
+      <aside class="about-media" aria-hidden="true">
+        <img src="/img/ametistas-kristalas.jpg" alt="Natūralus ametisto kristalas" loading="lazy">
       </aside>
     </div>
   </section>
@@ -444,125 +320,79 @@
   <section id="astromineralogija">
     <div class="container">
       <h2 class="section-title">ASTROMINERALOGINĖS KONSULTACIJOS</h2>
-      <p class="text-lead" style="margin-bottom:2rem;">Individuali konsultacija, padedanti atrasti Jūsų sielos akmenis. Tai ne tik parinkimas pagal horoskopą, bet ir gili energetinė diagnostika.</p>
-      <div class="purchase-steps-grid grid">
-        <div class="feature-card"><h3>Individualus Akmenų Žemėlapis</h3><p>Sudarysime Jums unikalų akmenų žemėlapį pagal <strong>gimimo datą ir laiką</strong>. Tiksliai sužinosite, kokie mineralai stiprina Jūsų silpnąsias vietas ir skatina sėkmę.</p></div>
-        <div class="feature-card"><h3>Energetinis Parinkimas (Aura)</h3><p>Atsižvelgiame ne tik į Jūsų gimimo datą, bet ir į <strong>dabartinę auros būseną</strong> bei gyvenimo iššūkius. Akmenys parenkami tam, kad harmonizuotų Jūsų energijos lauką čia ir dabar.</p></div>
-        <div class="feature-card"><h3>Pritaikymas ir Panaudojimas</h3><p>Gausite išsamias gaires, kaip teisingai <strong>valyti, aktyvuoti ir naudoti</strong> pasirinktus akmenis (nešioti, medituoti, naudoti namų erdvėje), kad jie atskleistų visas savo galias.</p></div>
-      </div>
-      <div class="gift-box">
-        <h4>🎁 GAUKITE NEMOKAMAI</h4>
-        <p><strong>„Akmenų valymo ir aktyvavimo gidas“ (PDF)</strong> – užsisakę konsultaciją</p>
-      </div>
-      <form class="form-consult" action="mailto:info@ametistas.lt" method="POST" enctype="text/plain">
+      <p class="text--lead">Individuali konsultacija, padedanti atrasti Jūsų sielos akmenis.</p>
+      <form class="form--consult" action="mailto:info@ametistas.lt" method="POST" enctype="text/plain">
         <input type="text" placeholder="Jūsų vardas" required>
         <input type="email" placeholder="El. paštas" required>
         <input type="tel" placeholder="Telefonas (nebūtina)">
-        <button type="submit" class="btn btn-primary btn-telegram">Užsisakyti konsultaciją</button>
+        <button type="submit" class="btn btn--primary">Užsisakyti konsultaciją</button>
       </form>
-      <p class="form-note">Atsakysime per 24 val. Jūsų duomenys saugūs.</p>
+      <p style="text-align:center; margin-top:1rem; font-size:0.9rem; color:var(--color-muted);">Atsakysime per 24 val.</p>
     </div>
   </section>
 
-  <section id="pristatymas" class="section-light" style="padding: 3rem 0;">
+  <footer id="kontaktai" class="footer">
     <div class="container">
-      <h2 class="section-title">SAUGUS PRISTATYMAS</h2>
-      <div class="feature-card" style="max-width:700px;margin:0 auto; border-left: 3px solid var(--color-amethyst-700);">
-        <h3>Pristatymo Būdai</h3>
-        <p>Siunčiame per <strong>Kurjerius (DPD, Venipack)</strong>, pristatymas per 1-2 d.d., arba į <strong>Paštomatus (LP EXPRESS, Omniva)</strong>, pristatymas per 1-3 d.d. Kiekvienas akmuo pakuojamas su ypatingu dėmesiu saugumui.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="facebook-feed" class="fb-section">
-    <div class="container fb-wrap">
-      <h2 class="section-title">MŪSŲ FACEBOOK</h2>
-      <p class="fb-note">Sekite naujienas, atsiliepimus ir naujas kolekcijas tiesiog Facebook puslapyje.</p>
-      <div class="fb-page-responsive">
-        <div class="fb-page" data-href="https://www.facebook.com/ametistaslt" data-tabs="timeline" data-width="450" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"></div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="kontaktai">
-    <div class="container">
-      <h3 style="font-family:var(--font-primary); color:var(--color-gold); font-size:1.5rem; letter-spacing:0.05em; font-weight:700;">KONTAKTAI</h3>
-      <div class="footer-nav-links">
+      <h3>KONTAKTAI</h3>
+      <div class="footer-links">
         <a href="#apie-mus">Apie mus</a>
-        <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
+        <a href="#kolekcijos-perziura">Kolekcijos</a>
         <a href="#astromineralogija">Konsultacijos</a>
-        <a href="https://www.instagram.com/ametistaslt" target="_blank">Instagram</a>
       </div>
-      <div class="contact-row" style="margin-bottom:1rem;">
-        <a href="mailto:info@ametistas.lt" style="color:rgba(255,255,255,0.8);">info@ametistas.lt</a>
-      </div>
-      <div class="social-inline">
+      <div class="social-icons">
         <a href="https://www.facebook.com/ametistaslt" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram" class="telegram-icon"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://www.instagram.com/ametistaslt" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram" style="background: rgba(0,136,204,0.2); border-color:#0088CC;"><i class="fab fa-telegram-plane"></i></a>
       </div>
-      <div class="small">
+      <small style="display:block; font-size:0.85rem; opacity:0.8; margin-top:1.5rem;">
         © 2025 AMETISTAS.LT | Visos teisės saugomos.
-      </div>
+      </small>
     </div>
   </footer>
-
-  <button id="backToTop" aria-label="Grįžti į viršų">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
   <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
         const html = document.documentElement;
-        const themeToggle = document.getElementById('themeToggle');
-        const darkToggleMobile = document.getElementById('darkToggleMobile');
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileClose = document.getElementById('mobileClose');
-        const backToTop = document.getElementById('backToTop');
+        const themeToggle = document.getElementById('themeToggle');
+        const darkToggleMobile = document.getElementById('darkToggleMobile');
 
-        // Theme Toggle
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-        
+        // Theme Toggle Logic
         const setTheme = (dark) => {
             html.classList.toggle('dark', dark);
-            const icon = dark ? 'fa-sun' : 'fa-moon';
-            if (themeToggle) themeToggle.querySelector('i').className = `fas ${icon}`;
-            if (darkToggleMobile) darkToggleMobile.querySelector('i').className = `fas ${icon}`;
             localStorage.setItem('theme', dark ? 'dark' : 'light');
+            // Atnaujiname ikonas abiejuose mygtukuose
+            const iconClass = dark ? 'fa-sun' : 'fa-moon';
+            if (themeToggle) themeToggle.querySelector('i').className = `fas ${iconClass}`;
+            if (darkToggleMobile) darkToggleMobile.querySelector('i').className = `fas ${iconClass}`;
         };
         
         // Nustatyti pradinę temą
         const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
         setTheme(saved ? saved === 'dark' : prefersDark.matches); 
-        
+
         themeToggle?.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
         darkToggleMobile?.addEventListener('click', (e) => { 
             e.preventDefault(); 
             setTheme(!html.classList.contains('dark')); 
+            mobileMenu?.classList.remove('is-open'); // Uždaryti meniu
         });
 
-        // Mobile Menu
-        const toggleMenu = () => mobileMenu?.classList.toggle('open');
+        // Mobile Menu Logic
+        const toggleMenu = () => mobileMenu?.classList.toggle('is-open');
         mobileToggle?.addEventListener('click', toggleMenu);
         mobileClose?.addEventListener('click', toggleMenu);
         
         mobileMenu?.querySelectorAll('a').forEach(link => {
-          if (link.id !== 'darkToggleMobile') link.addEventListener('click', toggleMenu);
+          if (link.id !== 'darkToggleMobile') link.addEventListener('click', () => mobileMenu?.classList.remove('is-open'));
         });
         document.addEventListener('keydown', e => {
-          if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) toggleMenu();
+          if (e.key === 'Escape' && mobileMenu?.classList.contains('is-open')) mobileMenu?.classList.remove('is-open');
         });
-
-        // Back to top
-        const handleScroll = () => backToTop?.classList.toggle('show', window.scrollY > 500);
-        window.addEventListener('scroll', handleScroll);
-        backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         
-        handleScroll();
     });
   </script>
 </body>
