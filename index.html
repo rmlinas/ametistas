@@ -6,6 +6,9 @@
   <title>Atraskite Savo Akmenį: Tikra Energija, Tikrai Jums | Ametistas.lt</title>
   <meta name="description" content="Autentiški natūralūs mineralai, kuriuos kuruoja astromineralogas. Raskite mineralą, kuris tiksliai atitinka Jūsų vidines vibracijas. Rezervuokite asmeninę konsultaciją.">
   
+  <link rel="canonical" href="https://ametistas.lt/">
+  <link rel="alternate" hreflang="lt" href="https://ametistas.lt/">
+  
   <meta name="theme-color" content="#3C2459">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ametistas.lt – Tikra Energija, Tikrai Jums">
@@ -16,7 +19,6 @@
 
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" media="print" onload="this.media='all'">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <script type="application/ld+json">
@@ -51,7 +53,7 @@
   </script>
 
   <style>
-    /* CSS liko tas pats (nes buvo optimizuotas) */
+    /* CSS KINTAMIEJI */
     :root {
       --color-primary: #3C2459; 
       --color-dark: #0F0018;    
@@ -70,7 +72,7 @@
       --shadow-lg: 0 10px 25px rgba(0,0,0,0.15); 
     }
     
-    /* GLOBAL RESET ir kiti stiliai... */
+    /* GLOBAL RESET ir Baziniai Stiliai */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; scroll-behavior: smooth; }
     body { overflow-x: hidden; color: var(--color-text); background: var(--color-bg-light); }
@@ -88,29 +90,26 @@
         .grid--3-cols { grid-template-columns: repeat(3, 1fr); }
     }
     
-    /* P6: Skip Link pataisymas (A11Y) */
+    /* A11Y Stiliai */
     .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; z-index: 9999; padding: 0.5rem 1rem; background: var(--color-accent); color: var(--color-dark); }
     .skip-link:focus { position: fixed; left: 0; top: 0; width: auto; height: auto; outline: 2px solid var(--color-accent); z-index: 9999; }
-    
-    /* P3: A11Y klasė */
-    .visually-hidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
+    /* CTA Mygtukai (Patobulintas Kontrastas ir Hover) */
+    .btn { padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; border: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn--primary { background: var(--color-primary); color: var(--color-bg-light); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(60,36,89,0.3); }
+    .btn--ghost { border: 1.5px solid var(--color-accent); color: var(--color-accent); background: none; }
+    .btn--ghost:hover { transform: scale(1.02); box-shadow: 0 0 10px rgba(212,175,55,0.4); }
+
+    /* Animacijos */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity var(--motion-speed) ease-out, transform var(--motion-speed) ease-out; will-change: opacity, transform; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
         .reveal, .reveal.is-visible { transition: none !important; transform: none !important; opacity: 1 !important; }
-        .btn:hover, .btn--icon:hover, .step-card:hover, .testimonial-card:hover { transform: none !important; box-shadow: none !important; }
     }
+    
+    /* Header Stiliai */
     header { position: sticky; top: 0; z-index: 1000; background: var(--color-bg-light); border-bottom: 1px solid rgba(0,0,0,0.08); transition: box-shadow 0.3s, background-color 0.3s; }
     header.scrolled { background-color: rgba(251, 250, 255, 0.95); box-shadow: var(--shadow-md); backdrop-filter: blur(8px); }
     .header-nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
@@ -123,22 +122,56 @@
         .nav-links a.active { font-weight: 700; color: var(--color-accent); border-bottom: 2px solid var(--color-accent); }
         .mobile-toggle { display: none; }
     }
-    .hero { min-height: 85vh; display: grid; place-items: center; text-align: center; color: white; }
-    /* P5: Hero CSS pataisymas (naudojamas WebP formatas su JPG fallback) */
-    .hero {
-        background-image: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)), url('/img/hero.webp');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    /* Fallback for browsers that don't support WebP or if WebP file is missing */
-    @supports not (background-image: url('/img/hero.webp')) {
-        .hero {
-             background-image: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)), url('/img/hero.jpg');
-        }
-    }
+    
+    /* Hero Section (Su Picture elementu) */
+    .hero { min-height: 85vh; display: grid; place-items: center; text-align: center; color: white; position: relative; }
+    .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)); z-index: -1; }
+    .hero-content { z-index: 10; }
     .hero-content h1 { color: white; letter-spacing: 0.1em; font-weight: 300; line-height: 1.05; }
     
+    /* Mobile Menu (CSS FIX: Slinkimo Animacija) */
+    .menu--mobile {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      max-width: 90vw;
+      height: 100vh;
+      background: var(--color-bg-light);
+      box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+      z-index: 9999;
+      padding: 2rem 1.5rem;
+      display: flex; 
+      flex-direction: column;
+    }
+    .menu--mobile.is-open {
+      transform: translateX(0);
+    }
+    #mobile-nav-links a {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--color-primary);
+        border-bottom: 1px solid rgba(60,36,89,0.1);
+        transition: color 0.2s;
+    }
+    #mobile-nav-links a:last-child { border-bottom: none; }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
     /* Priedai */
     .text--left { text-align: left !important; }
     .text--bold { font-weight: 600 !important; }
@@ -155,33 +188,29 @@
   <header role="banner">
     <div class="container header-nav">
         <span class="header-logo">AMETISTAS.LT</span>
-        <nav class="nav-links" aria-label="Pagrindinė navigacija">
-            <a href="#apie-mus">Apie mus</a>
-            <a href="#kolekcijos-perziura">Kolekcijos</a>
-            <a href="#astromineralogija">Konsultacijos</a>
-            <a href="#kontaktai">Kontaktai</a>
-        </nav>
+        <nav class="nav-links" id="desktop-nav-links" aria-label="Pagrindinė navigacija"></nav>
         <div class="flex">
             <button id="mobileToggle" class="mobile-toggle btn--icon" aria-label="Atidaryti meniu" aria-expanded="false" aria-controls="mobileMenu"><i class="fas fa-bars"></i></button>
         </div>
     </div>
     <div id="mobileMenu" class="menu--mobile" aria-modal="true" role="dialog">
         <button class="close-btn" id="mobileClose" aria-label="Uždaryti meniu"><i class="fas fa-times"></i></button>
-        <a href="#apie-mus">Apie mus</a>
-        <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
-        <a href="#astromineralogija">Konsultacijos</a>
-        <a href="#kontaktai">Kontaktai</a>
+        <div id="mobile-nav-links"></div>
     </div>
   </header>
 
   <main id="main-content" role="main">
 
     <section class="hero" role="region" aria-label="Pagrindinis">
+      <picture>
+          <source srcset="/img/hero.webp" type="image/webp"> 
+          <img src="/img/hero.jpg" alt="Ametisto kristalas su ramiu ir šiltu spindesiu. Atraskite savo akmenį." class="hero-img" loading="eager" fetchpriority="high">
+      </picture>
       <div class="hero-content">
         <h1 fetchpriority="high">Atraskite Savo Akmenį: <span class="dot">Tikra Energija, Tikrai Jums.</span></h1>
         <p class="text--lead">Kviečiame rasti mineralą, kuris geriausiai tinka Jūsų nuotaikai ir gyvenimo etapui. Autentiški, natūralūs akmenys, įkrauti Reiki energija Jūsų ramybei ir jėgai.</p>
         <div class="cta-group">
-          <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
+          <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-telegram-plane"></i> <strong>Peržiūrėti Rinktinę Kolekciją</strong> 
           </a>
           <a class="btn btn--ghost" href="#astromineralogija" aria-describedby="hero-desc"><strong>Užklausa Dėl Individualaus Parinkimo</strong></a>
@@ -200,7 +229,7 @@
           <article class="step-card reveal" style="--motion-speed: 1.4s;"><i class="fas fa-box-open"></i><h4>3. Asmeninė Telegram Vitrina</h4><p>Naujausius, rinktinius mineralus pirmiausia pristatome savo bendruomenei per Telegram. Tai asmeniška ir patogu.</p></article>
         </div>
         <div style="text-align:center;margin-top:3.5rem;">
-          <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
+          <a class="btn btn--primary" href="https://t.me/ametistaslt" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-telegram-plane"></i> <strong>PRISIJUNGTI PRIE MŪSŲ BENDRIJOS</strong>
           </a>
           </div>
@@ -241,7 +270,7 @@
         
         <p class="text--highlight">Kviečiame susisiekti su mūsų specialistu dėl asmeninės konsultacijos, kuri padės atrasti kryptį ir harmoniją.</p>
         
-        <form class="form--consult" action="https://formsubmit.co/your-email@example.com" method="POST" novalidate>
+        <form class="form--consult" id="consult-form" action="https://formsubmit.co/your-email@example.com" method="POST" novalidate>
           <label for="name-input" class="visually-hidden">Jūsų vardas ir pavardė</label>
           <input type="text" id="name-input" placeholder="Jūsų vardas ir pavardė" name="name" required>
           
@@ -287,11 +316,32 @@
   
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
+        // NAVIGACIJOS DUOMENYS (Unifikacija Fix)
+        const navItems = [
+            { href: '#apie-mus', text: 'Apie mus' },
+            { href: '#kolekcijos-perziura', text: 'Kolekcijos' },
+            { href: '#astromineralogija', text: 'Konsultacijos' },
+            { href: '#kontaktai', text: 'Kontaktai' },
+        ];
+
+        // FUNKCIJA NAVIGACIJOS GENERAVIMUI
+        const renderNav = (targetId) => {
+            const target = document.getElementById(targetId);
+            if (!target) return;
+            target.innerHTML = navItems.map(item => 
+                `<a href="${item.href}">${item.text}</a>`
+            ).join('');
+        };
+
+        renderNav('desktop-nav-links');
+        renderNav('mobile-nav-links');
+
+        // LIKUSIOS JS KINTAMOSIOS
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileClose = document.getElementById('mobileClose');
         const header = document.querySelector('header');
-        const navLinks = document.querySelectorAll('.nav-links a, .menu--mobile a');
+        const navLinks = document.querySelectorAll('.nav-links a, #mobile-nav-links a');
         
         // Atskirtos meniu valdymo funkcijos
         const openMenu = () => {
@@ -305,10 +355,89 @@
 
         mobileToggle?.addEventListener('click', openMenu);
         mobileClose?.addEventListener('click', closeMenu);
+        // Uždarymas paspaudus ant linko
         mobileMenu?.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', closeMenu); 
         });
+
+        // DEBOUNCE FUNKCIJA (Performance Fix)
+        const debounce = (func, wait) => {
+          let timeout;
+          return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+          }
+        };
         
+        // Saugus Scroll Position nustatymas (Browser Compatibility Fix)
+        const getScrollPos = () => window.scrollY || document.documentElement.scrollTop; 
+
+        const updateHeader = () => {
+            if (getScrollPos() > 50) { 
+                header?.classList.add('scrolled');
+            } else {
+                header?.classList.remove('scrolled');
+            }
+        };
+        window.addEventListener('scroll', debounce(updateHeader, 50));
+        updateHeader();
+        
+        // Navigation Scroll-Spy (Pagerinta logika)
+        const highlightNav = () => {
+            let current = '';
+            const scrollPos = getScrollPos();
+            
+            document.querySelectorAll('section[id], main[id]').forEach(section => {
+                const sectionId = section.getAttribute('id');
+                const sectionTop = section.offsetTop - 100;
+
+                if (scrollPos >= sectionTop) { 
+                    current = '#' + sectionId;
+                }
+            });
+            
+            navLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === current) {
+                    a.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', highlightNav);
+        highlightNav();
+
+        // FORMA: Pilna Regex Validacija (Critical Fix)
+        const form = document.getElementById('consult-form');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // Paprastas telefono regex, leidžiantis + ir 7-15 skaitmenų
+        const phonePattern = /^\+?\d{7,15}$/; 
+
+        form?.addEventListener('submit', function(e) {
+            const emailInput = form.querySelector('#email-input');
+            const phoneInput = form.querySelector('#phone-input');
+            
+            let isValid = true;
+
+            // Email validacija (privalomas)
+            if (emailInput && !emailPattern.test(emailInput.value)) {
+                alert('Prašome įvesti teisingą el. pašto adresą.');
+                emailInput.focus();
+                isValid = false;
+            }
+
+            // Telefonas (neprivalomas, bet jei įvestas, tikrinamas formatas)
+            if (isValid && phoneInput && phoneInput.value.length > 0 && !phonePattern.test(phoneInput.value)) {
+                alert('Įvestas telefono numeris neteisingas. Prašome naudoti tarptautinį formatą (+370...).');
+                phoneInput.focus();
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+        
+        // Intersection Observer (Animacijos)
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -322,45 +451,6 @@
             threshold: 0.2 
         });
         revealElements.forEach(el => observer.observe(el));
-        
-        const updateHeader = () => {
-            if (window.scrollY > 50) {
-                header?.classList.add('scrolled');
-            } else {
-                header?.classList.remove('scrolled');
-            }
-        };
-        window.addEventListener('scroll', updateHeader);
-        updateHeader();
-        
-        const highlightNav = () => {
-          let current = '';
-          document.querySelectorAll('section, main').forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            if (document.documentElement.scrollTop >= sectionTop) {
-              current = section.getAttribute('id');
-            }
-          });
-          navLinks.forEach(a => {
-            a.classList.remove('active');
-            if (a.getAttribute('href')?.includes(current)) {
-              a.classList.add('active');
-            }
-          });
-        };
-        window.addEventListener('scroll', highlightNav);
-        highlightNav();
-
-        // FORMA: Minimali JS validacija
-        const form = document.querySelector('.form--consult');
-        form?.addEventListener('submit', function(e) {
-          const emailInput = form.querySelector('input[type="email"]');
-          if (emailInput && !emailInput.value.includes('@')) {
-            alert('Prašome įvesti teisingą el. pašto adresą.');
-            e.preventDefault();
-            emailInput.focus();
-          }
-        });
     });
   </script>
 </body>
