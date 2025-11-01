@@ -57,58 +57,77 @@
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     
     /* === MYGTUKAI (Premium Hover + Focus) === */
-    .btn { padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; border: none; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s, background 0.3s; }
-    .btn--primary { background: var(--color-primary); color: var(--color-bg-light); }
+    .btn { transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s, background 0.3s; }
     .btn--primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(60,36,89,0.5); background: #503175; }
-    .btn--ghost { border: 1.5px solid var(--color-accent); color: var(--color-accent); background: none; }
     .btn--ghost:hover { transform: scale(1.02); box-shadow: 0 0 15px rgba(212,175,55,0.6); }
-    /* PREMIUM TWEAK: Button Focus States */
     .btn:focus { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
     /* === HEADER & NAVIGACIJA === */
     header { position: sticky; top: 0; z-index: 1000; background: var(--color-bg-light); border-bottom: 1px solid rgba(0,0,0,0.08); transition: box-shadow 0.3s, background-color 0.3s, transform 0.3s ease-in-out; }
     header.scrolled { box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-    /* PREMIUM TWEAK: Scroll Hide/Show Header */
     header.hide-on-scroll { transform: translateY(-100%); }
     
-    /* NAV ACTIVE LINK TWEAK: Underline Animacija */
     .nav-links { display: none; }
     @media (min-width: 769px) {
         .nav-links { display: flex; gap: 1.5rem; }
-        .nav-links a { transition: color 0.2s; position: relative; }
-        .nav-links a:hover { color: var(--color-accent); }
-        .nav-links a.active { font-weight: 700; color: var(--color-accent); }
+        .nav-links a.active { font-weight: 700; color: var(--color-accent); position: relative; }
         .nav-links a.active::after {
             content: ""; position: absolute; bottom: -4px; left: 0; width: 100%; 
             height: 3px; background: var(--color-accent); border-radius: 2px; 
-            transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+            transform: scaleX(1); transition: transform 0.3s ease;
         }
-        .nav-links a.active::after { transform: scaleX(1); } /* Parodo underline */
     }
 
+    /* === MOBILUS MENIU PATAISYMAS (KRITINIS) === */
+    .menu--mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-bg-light);
+        /* Meniu slėpimas */
+        transform: translateX(-100%); 
+        transition: transform 0.3s ease-in-out;
+        z-index: 9999; /* Aukštesnis už Header, kad dengtų viską */
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .menu--mobile.is-open {
+        /* Meniu atidarymas */
+        transform: translateX(0); 
+    }
+    .menu--mobile .close-btn {
+        align-self: flex-end;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--color-primary);
+    }
+    .menu--mobile a {
+        font-size: 1.5rem;
+        color: var(--color-dark);
+        text-decoration: none;
+    }
+    
     /* === HERO (Parallax Fix) === */
-    .hero { 
-        display: flex; flex-direction: column; justify-content: center; align-items: center; 
-        text-align: center; min-height: 70vh; overflow: hidden; position: relative; 
-    }
-    .hero-img { 
-        will-change: transform; transition: transform 0.5s ease-out; /* Premium Parallax */
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
-    }
+    .hero { overflow: hidden; position: relative; }
+    .hero-img { will-change: transform; transition: transform 0.5s ease-out; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
     .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(60,36,89,0.6)); z-index: -1; }
 
-    /* === KORTELĖS / ANIMACIJOS === */
-    /* PREMIUM TWEAK: Reveal + Scale Animacija */
+    /* === ANIMACIJOS === */
     .reveal { opacity: 0; transform: translateY(20px) scale(0.98); transition: opacity var(--motion-speed) ease-out, transform var(--motion-speed) cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: opacity, transform; }
     .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-    .step-card, .testimonial-card { transition: transform 0.3s, box-shadow 0.3s; }
     .step-card:hover, .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
 
     /* === FORMA: Inline Error Styles === */
     .form--consult input { display: block; width: 100%; padding: 10px; margin-bottom: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
     .form--consult .error-msg { color: #cc0000; font-size: 0.9rem; margin-top: -0.5rem; margin-bottom: 0.5rem; display: block; }
 
-    /* === FACEBOOK LOADER (Spinner) === */
+    /* === FACEBOOK LOADER === */
     .fb-load-area { min-height: 500px; display: grid; place-items: center; background: #fff; border: 1px solid #ddd; border-radius: 8px; position: relative; }
     .fb-load-area.loading { display: flex; justify-content: center; align-items: center; }
     .fb-load-area.loading::after { 
@@ -117,12 +136,6 @@
         animation: spin 1s linear infinite;
     }
     @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} } 
-
-    /* === RESPONSIVE === */
-    @media (min-width: 769px) {
-        .grid--2-cols { grid-template-columns: 1fr 1fr; }
-        .grid--3-cols { grid-template-columns: repeat(3, 1fr); }
-    }
   </style>
 </head>
 <body>
@@ -168,9 +181,9 @@
       </div>
     </section>
 
-    <section id="kolekcijos-perziura" class="section--light">
+    <section id="kolekcijos-perziura" class="section--light" aria-labelledby="kolekcijos-h2">
       <div class="container reveal">
-        <h2 class="section-title">MINERALO KELIONĖ: AUTENTIŠKUMAS IR ENERGIJA</h2>
+        <h2 class="section-title" id="kolekcijos-h2">MINERALO KELIONĖ: AUTENTIŠKUMAS IR ENERGIJA</h2>
         <p class="text--lead" style="max-width: 800px; margin: 0.5rem auto 3rem; text-align: center;">
           Etiškai atrinktos žaliavos. &bull; Energetiškai išvalytas (Reiki). &bull; Skirtas Jūsų gerovei.
         </p>
@@ -187,10 +200,10 @@
       </div>
     </section>
 
-    <section id="apie-mus" class="section--light">
+    <section id="apie-mus" class="section--light" aria-labelledby="apie-mus-h2">
       <div class="container grid grid--2-cols about-grid reveal">
         <article class="about-content">
-            <h2 class="section-title text--left">GEROJI KRISTALŲ PRAKTIKA</h2>
+            <h2 class="section-title text--left" id="apie-mus-h2">GEROJI KRISTALŲ PRAKTIKA</h2>
             <p class="text--lead text--left text--bold">Mūsų vizija – užtikrinti, kad kiekvienas mineralas Jūsų gyvenime atneštų tik gerąją energiją. Etiškai. Autentiškai. Jums.</p>
             <p class="text--default">Atranką atlieka sertifikuotas astromineralogas ir Reiki meistras. Dirbame tik su **Vakarų Europos partneriais**, kurie garantuoja mineralo natūralumą. Rūpinamės, kad akmuo Jums **tiktų ir neštų naudą**.</p>
         </article>
@@ -203,9 +216,9 @@
       </div>
     </section>
 
-    <section id="astromineralogija">
+    <section id="astromineralogija" aria-labelledby="astromineralogija-h2">
       <div class="container reveal">
-        <h2 class="section-title">SUŽINOKITE, KAS JUMS TINKA: ASTROMINERALOGIJA</h2>
+        <h2 class="section-title" id="astromineralogija-h2">SUŽINOKITE, KAS JUMS TINKA: ASTROMINERALOGIJA</h2>
         <p class="text--lead">Asmeninė konsultacija leis atrasti mineralus, kurie tiksliai atitinka Jūsų **vidines vibracijas ir dabartinius poreikius**.</p>
         
         <form class="form--consult" id="consult-form" action="https://formsubmit.co/your-email@example.com" method="POST" novalidate>
@@ -224,9 +237,9 @@
       </div>
     </section>
     
-    <section id="facebook-feed" class="section--light" style="padding: 3rem 0;">
+    <section id="facebook-feed" class="section--light" style="padding: 3rem 0;" aria-labelledby="facebook-h2">
       <div class="container fb-wrap reveal">
-        <h2 class="section-title">MŪSŲ FACEBOOK</h2>
+        <h2 class="section-title" id="facebook-h2">MŪSŲ FACEBOOK</h2>
         <p style="color:var(--color-muted); margin-bottom: 1.5rem;">Sekite naujienas, atsiliepimus ir naujas kolekcijas tiesiog Facebook puslapyje.</p>
         
         <div class="fb-load-area" id="fbLoadArea">
@@ -281,12 +294,14 @@
         const hero = document.querySelector('.hero');
         const heroImg = document.querySelector('.hero-img');
         
+        // Meniu Valdymas
         const openMenu = () => { mobileMenu?.classList.add('is-open'); mobileToggle?.setAttribute('aria-expanded', 'true'); };
         const closeMenu = () => { mobileMenu?.classList.remove('is-open'); mobileToggle?.setAttribute('aria-expanded', 'false'); };
         mobileToggle?.addEventListener('click', () => mobileMenu?.classList.contains('is-open') ? closeMenu() : openMenu());
         mobileClose?.addEventListener('click', closeMenu);
         mobileMenu?.querySelectorAll('a').forEach(link => { link.addEventListener('click', closeMenu); });
 
+        // Debounce (naudojamas tik handleScroll)
         const debounce = (func, wait) => {
           let timeout;
           return function(...args) {
@@ -296,7 +311,7 @@
         };
         const getScrollPos = () => window.scrollY || document.documentElement.scrollTop; 
 
-        /* PREMIUM TWEAK: Scroll Hide/Show Header + Parallax */
+        // Scroll Handlers (Header, Parallax, Nav Highlight)
         let lastScroll = 0;
         const handleScroll = () => {
             const currentScroll = getScrollPos();
@@ -309,29 +324,31 @@
             }
             lastScroll = currentScroll;
 
-            // Hero Parallax
-            if(heroImg) heroImg.style.transform = `translateY(${currentScroll * 0.2}px)`;
+            // Hero Parallax (Optimizuotas)
+            if(hero && heroImg){
+                const maxOffset = hero.offsetHeight * 0.3; // Apribojimas
+                let offset = Math.min(currentScroll * 0.2, maxOffset);
+                heroImg.style.transform = `translateY(${offset}px)`;
+            }
 
             // Sticky Shadow
-            if (currentScroll > 50) { 
-                header?.classList.add('scrolled');
-            } else {
-                header?.classList.remove('scrolled');
-            }
+            if (currentScroll > 50) { header?.classList.add('scrolled'); } 
+            else { header?.classList.remove('scrolled'); }
             
-            // Nav Highlight
             highlightNav();
         };
 
         window.addEventListener('scroll', debounce(handleScroll, 20));
-        handleScroll(); // Paleisti kartą įkrovus
+        handleScroll();
         
         const highlightNav = () => {
             let current = '';
             const scrollPos = getScrollPos();
-            document.querySelectorAll('section[id], main[id]').forEach(section => {
+            // Tikriname Main ir sekcijas
+            document.querySelectorAll('section[id], main[id]').forEach(section => { 
                 const sectionId = section.getAttribute('id');
                 const sectionTop = section.offsetTop - 100;
+
                 if (scrollPos >= sectionTop) { 
                     current = '#' + sectionId;
                 }
@@ -358,18 +375,19 @@
         revealElements.forEach(el => observer.observe(el));
 
 
-        /* PREMIUM TWEAK: Inline Form Error Feedback */
+        // Formos Validacija (First Error Focus)
         const form = document.getElementById('consult-form');
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const phonePattern = /^\+?\d{7,15}$/; 
 
         form?.addEventListener('submit', function(e) {
-            e.preventDefault(); // Pirma stabdome
+            e.preventDefault(); 
             const emailInput = form.querySelector('#email-input');
             const phoneInput = form.querySelector('#phone-input');
             
             let valid = true;
-            form.querySelectorAll('.error-msg').forEach(el => el.remove()); // Šaliname senas klaidas
+            let firstError = null; // Naujas kintamasis pirmai klaidai
+            form.querySelectorAll('.error-msg').forEach(el => el.remove()); 
 
             // 1. Email validacija
             if (!emailPattern.test(emailInput.value)) {
@@ -377,7 +395,7 @@
                 span.className = 'error-msg'; 
                 span.textContent = 'El. paštas neteisingas.'; 
                 emailInput.insertAdjacentElement('afterend', span); 
-                emailInput.focus();
+                if (!firstError) firstError = emailInput;
                 valid = false;
             }
 
@@ -387,24 +405,28 @@
                 span.className = 'error-msg'; 
                 span.textContent = 'Telefono numeris neteisingas (+370...).'; 
                 phoneInput.insertAdjacentElement('afterend', span); 
-                phoneInput.focus();
+                if (!firstError) firstError = phoneInput;
                 valid = false;
             }
             
-            if (valid) { form.submit(); } // Siunčiame, jei viskas gerai
+            if(firstError) firstError.focus(); // Fokusas pirmai klaidai
+            
+            if (valid) { form.submit(); } 
         });
         
-        /* PREMIUM TWEAK: Facebook Click-to-Load su Spinneriu */
+        // Facebook Click-to-Load su Spinneriu (SDK Optimizacija)
         const fbButton = document.getElementById('loadFacebookFeed');
         const fbArea = document.getElementById('fbLoadArea');
+        let sdkLoaded = false; // Stebime, ar SDK jau įkeltas
 
         fbButton?.addEventListener('click', function() {
-            fbArea.classList.add('loading'); // Rodo spinnerį
+            if (fbArea.classList.contains('loading')) return; // Apsauga nuo dvigubo paspaudimo
+
+            fbArea.classList.add('loading');
 
             setTimeout(() => {
                 fbArea.classList.remove('loading');
                 
-                // Kuria FB Iframe vietą
                 const fbContainer = document.createElement('div');
                 fbContainer.className = 'fb-page';
                 fbContainer.setAttribute('data-href', 'https://www.facebook.com/ametistaslt');
@@ -421,14 +443,21 @@
                 fbArea.style.minHeight = 'auto';
                 fbArea.appendChild(fbContainer);
 
-                // Įkeliamas Facebook SDK (jei dar neįkeltas)
-                if (!document.getElementById('facebook-jssdk')) {
-                    const js = document.createElement('script'); 
-                    js.id = 'facebook-jssdk'; 
-                    js.src = "https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0";
-                    document.body.appendChild(js);
+                // Įkeliamas Facebook SDK (Tikrinama ar jau įkeltas)
+                if (!sdkLoaded) {
+                    (function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                    sdkLoaded = true;
+                } else if (window.FB && window.FB.XFBML) {
+                    // Jei SDK įkeltas, bet elementas naujas, paleidžiame analizę
+                    window.FB.XFBML.parse(); 
                 }
-            }, 500); // 0.5s spinnerio animacija
+            }, 500);
         });
     });
   </script>
