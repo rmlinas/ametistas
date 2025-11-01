@@ -53,57 +53,63 @@
     :root {
       --font-primary: 'Cormorant Garamond', serif;
       --font-body: 'Inter', system-ui, sans-serif;
-      --color-amethyst: #6B4E9C;
+      --color-amethyst-900: #0F0018;
+      --color-amethyst-700: #3C2459;
+      --color-amethyst-300: #C8A2C8;
       --color-gold: #D4AF37;
       --color-bg: #FBFAFF;
-      --color-text: #1a1a1a;
+      --color-text: #111;
       --color-muted: #666;
+      --color-telegram: #0088CC;
       --radius: 12px;
       --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
       --shadow-md: 0 12px 32px rgba(0,0,0,0.12);
       --container-max: 1200px;
+      --font-size-base: clamp(1rem, 0.8rem + 0.5vw, 1.2rem);
+      --font-size-lead: clamp(1.1rem, 0.9rem + 0.6vw, 1.3rem);
+      --font-size-hero: clamp(2.5rem, 2rem + 4vw, 4rem);
+      --font-size-title: clamp(1.8rem, 1.5rem + 2vw, 2.5rem);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --color-bg: #0F0018;
-        --color-text: #f0f0f0;
+        --color-bg: var(--color-amethyst-900);
+        --color-text: #eee;
         --color-muted: #aaa;
       }
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); scroll-behavior: smooth; }
+    html { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); scroll-behavior: smooth; font-size: var(--font-size-base); }
     body { line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; background: none; border: none; }
     img { max-width: 100%; height: auto; display: block; }
 
     .text-balance { text-wrap: balance; }
-    .text-hero { font-family: var(--font-primary); font-weight: 300; font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: -0.02em; }
-    .text-lead { font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-style: italic; opacity: 0.9; }
-    .section-title { font-family: var(--font-primary); font-weight: 700; font-size: clamp(1.8rem, 5vw, 2.5rem); text-align: center; letter-spacing: 0.05em; }
+    .text-hero { font-family: var(--font-primary); font-weight: 300; font-size: var(--font-size-hero); letter-spacing: -0.02em; }
+    .text-lead { font-size: var(--font-size-lead); font-style: italic; opacity: 0.92; }
+    .section-title { font-family: var(--font-primary); font-weight: 700; font-size: var(--font-size-title); text-align: center; letter-spacing: 0.05em; }
 
     .container { width: min(100% - 2rem, var(--container-max)); margin-inline: auto; }
-    .grid { display: grid; gap: 2rem; }
-    .flex { display: flex; gap: 1rem; align-items: center; }
+    .grid { display: grid; gap: clamp(1rem, 2vw, 2rem); }
+    .flex { display: flex; gap: clamp(0.75rem, 1.5vw, 1rem); align-items: center; }
 
     /* HEADER */
     header {
       position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px);
-      background: rgba(251, 250, 255, 0.85); border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: rgba(251, 250, 255, 0.95); border-bottom: 1px solid rgba(0,0,0,0.05);
       transition: all var(--transition);
     }
     .nav {
-      display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;
+      display: flex; justify-content: space-between; align-items: center; padding: clamp(0.75rem, 1.5vw, 1rem) 0;
     }
     .nav-links {
-      display: flex; gap: 2rem; font-weight: 600;
+      display: flex; gap: clamp(1rem, 2vw, 2rem); font-weight: 600;
     }
     .nav-links a {
-      position: relative; padding: 0.5rem 0;
-      transition: color var(--transition);
+      position: relative; padding: 0.5rem 0; transition: color var(--transition);
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--color-gold); transition: width var(--transition);
@@ -112,94 +118,106 @@
     .nav-links a:hover::after, .nav-links a:focus::after { width: 100%; }
 
     .nav-controls button {
-      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      background: rgba(107, 78, 156, 0.1); color: var(--color-amethyst); transition: all var(--transition);
+      width: clamp(36px, 4vw, 44px); height: clamp(36px, 4vw, 44px); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: rgba(60,36,89,0.1); color: var(--color-amethyst-700); transition: all var(--transition);
+      font-size: clamp(1rem, 2vw, 1.2rem);
     }
-    .nav-controls button:hover { background: var(--color-amethyst); color: white; transform: scale(1.05); }
+    .nav-controls button:hover { background: var(--color-amethyst-700); color: white; transform: scale(1.05); }
 
-    /* MOBILE MENU */
+    /* MOBILE MENU (TOBULAS NARŠYMAS) */
     .mobile-menu {
       position: fixed; top: 0; right: 0; width: 80%; height: 100vh; background: var(--color-bg); z-index: 9999;
-      padding: 4rem 1.5rem 1.5rem; box-shadow: -5px 0 20px rgba(0,0,0,0.15); transform: translateX(100%);
+      padding: clamp(3rem, 8vw, 4rem) 1.5rem 1.5rem; box-shadow: -5px 0 20px rgba(0,0,0,0.15); transform: translateX(100%);
       transition: transform 0.4s ease-out; overflow-y: auto;
     }
     .mobile-menu.open { transform: translateX(0); }
-    .mobile-menu .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; }
-    .mobile-menu a { display: block; padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); font-weight: 600; }
-
-    @container (max-width: 768px) {
-      .nav-links { display: none; }
-      .mobile-toggle { display: flex; }
-      .hero .ctas { flex-direction: column; }
-    }
+    .mobile-menu .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: clamp(1.2rem, 3vw, 1.5rem); color: var(--color-amethyst-700); }
+    .mobile-menu a { display: block; padding: clamp(0.6rem, 2vw, 0.8rem) 0; border-bottom: 1px solid rgba(0,0,0,0.08); color: var(--color-amethyst-700); font-weight: 600; font-size: clamp(1rem, 2.5vw, 1.1rem); transition: color var(--transition); }
+    .mobile-menu a:hover { color: var(--color-gold); }
 
     /* HERO */
     .hero {
-      min-height: 100vh; display: grid; place-items: center; text-align: center; position: relative; overflow: hidden;
-      background: linear-gradient(135deg, rgba(15,0,24,0.7), rgba(107,78,156,0.5)), url('/img/hero.jpg') center/cover no-repeat;
+      min-height: clamp(50vh, 100vh - 10rem, 70vh); display: grid; place-items: center; text-align: center; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, rgba(15,0,24,0.65), rgba(60,36,89,0.55)), url('/img/hero.jpg') center/cover no-repeat;
       color: white;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 2rem; }
-    .hero h1, .hero p, .hero .ctas { opacity: 0; transform: translateY(20px); }
-    .hero.animate h1 { animation: fadeUp 1s 0.3s forwards; }
-    .hero.animate p { animation: fadeUp 1s 0.5s forwards; }
-    .hero.animate .ctas { animation: fadeUp 1s 0.7s forwards; }
+    .hero-content { position: relative; z-index: 1; max-width: clamp(300px, 90vw, 800px); padding: clamp(2rem, 5vw, 3.5rem) 1rem; }
+    .hero h1 { margin-bottom: clamp(0.5rem, 1vw, 0.5rem); }
+    .hero .dot { color: var(--color-gold); }
+    .hero .ctas { margin-top: clamp(1.5rem, 3vw, 2rem); flex-wrap: wrap; justify-content: center; }
 
-    @keyframes fadeUp { to { transform: translateY(0); opacity: 1; } }
-
+    /* BUTTONS (TOBULI MOBILE) */
     .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 700;
-      transition: all var(--transition); will-change: transform;
+      display: inline-flex; align-items: center; gap: 0.5rem; padding: clamp(0.75rem, 2vw, 0.85rem) clamp(1.25rem, 3vw, 1.75rem); border-radius: 8px; font-weight: 700; font-size: clamp(0.9rem, 2vw, 1rem);
+      transition: all var(--transition); will-change: transform; touch-action: manipulation; min-width: 200px; justify-content: center;
     }
-    .btn-primary { background: #0088CC; color: white; box-shadow: 0 8px 20px rgba(0,136,204,0.3); }
+    .btn-primary { background: var(--color-telegram); color: white; box-shadow: 0 8px 20px rgba(0,136,204,0.3); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,136,204,0.4); }
     .btn-ghost { border: 1.5px solid rgba(212,175,55,0.6); color: var(--color-gold); }
     .btn-ghost:hover { background: rgba(212,175,55,0.1); }
 
     /* SECTIONS */
-    section { padding: 5rem 0; }
-    .section-light { background: #f8f8f8; }
+    section { padding: clamp(3rem, 8vw, 5rem) 0; }
+    .section-light { background: #f7f7f7; }
 
     .purchase-steps-grid {
-      display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); text-align: center;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); text-align: center;
     }
-    .purchase-step i { font-size: 3rem; margin-bottom: 1rem; }
-    .purchase-step:nth-child(1) i { color: var(--color-amethyst); }
-    .purchase-step:nth-child(2) i { color: #0088CC; }
-    .purchase-step:nth-child(3) i { color: var(--color-gold); }
+    .purchase-step i { font-size: clamp(2.5rem, 6vw, 3rem); margin-bottom: 1rem; }
+    .purchase-step h4 { font-family: var(--font-primary); font-size: clamp(1.2rem, 3vw, 1.4rem); }
 
-    .reiki-note { margin-top: 1rem; color: var(--color-amethyst); font-weight: 600; border-left: 3px solid var(--color-gold); padding-left: 1rem; }
+    .reiki-note { margin-top: clamp(0.5rem, 1.5vw, 0.75rem); color: var(--color-amethyst-700); font-weight: 600; border-left: 3px solid var(--color-gold); padding-left: 1rem; font-size: clamp(0.85rem, 2vw, 0.95rem); }
 
-    .testimonial-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .testimonial-card { background: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); position: relative; }
-    .testimonial-card::before { content: '“'; font-size: 4rem; color: var(--color-gold); position: absolute; top: -10px; left: 1rem; opacity: 0.2; font-family: var(--font-primary); }
+    .testimonial-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .testimonial-card { background: var(--color-bg); padding: clamp(1rem, 3vw, 1.5rem); border-radius: var(--radius); box-shadow: var(--shadow-sm); position: relative; text-align: center; }
+    .testimonial-card p { font-size: clamp(0.85rem, 2vw, 0.95rem); }
 
-    .form-consult { max-width: 500px; margin: 2.5rem auto 0; display: grid; gap: 1rem; }
-    .form-consult input { padding: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+    .form-consult { max-width: clamp(300px, 80vw, 500px); display: grid; gap: 1rem; }
+    .form-consult input { padding: clamp(0.75rem, 2vw, 1rem); border: 1px solid #ddd; border-radius: 8px; font-size: clamp(0.9rem, 2vw, 1rem); }
     .form-consult input:focus { border-color: var(--color-gold); outline: none; }
 
-    .gift-box { background: #f0f0f0; border: 2px dashed var(--color-gold); padding: 1.5rem; border-radius: 8px; text-align: center; margin: 2rem 0; }
+    .gift-box { background: #f0f0f0; border: 2px dashed var(--color-gold); padding: clamp(1rem, 3vw, 1.5rem); border-radius: 8px; text-align: center; margin: clamp(1.5rem, 4vw, 2rem) 0; font-size: clamp(0.9rem, 2vw, 1rem); }
 
-    .fb-section { padding: 3.5rem 0; background: linear-gradient(180deg, #fbfbfc, #fff); }
-    .fb-wrap { max-width: 520px; margin: 0 auto; text-align: center; }
-    .fb-page-responsive { overflow: hidden; display: flex; justify-content: center; }
+    .fb-section { padding: clamp(2.5rem, 6vw, 3.5rem) 0; background: linear-gradient(180deg, #fbfbfc, #fff); }
+    .fb-wrap { max-width: clamp(320px, 80vw, 520px); margin: 0 auto; text-align: center; }
+    .fb-note { color: #444; margin-bottom: 1rem; font-size: clamp(0.9rem, 2vw, 1rem); }
 
     footer {
-      background: #0F0018; color: white; padding: 3rem 0; text-align: center;
+      background: var(--color-amethyst-900); color: white; padding: clamp(2rem, 5vw, 3rem) 0; text-align: center;
     }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
-    .social-links { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
-    .social-links a { width: 44px; height: 44px; border-radius: 50%; background: rgba(212,175,55,0.2); border: 1px solid var(--color-gold); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; }
+    .footer-nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(0.75rem, 2vw, 1rem); margin-bottom: 1.5rem; }
+    .social-inline { display: flex; gap: clamp(0.5rem, 1.5vw, 0.75rem); justify-content: center; margin-top: 1rem; }
+    .social-inline a { width: clamp(36px, 8vw, 44px); height: clamp(36px, 8vw, 44px); border-radius: 999px; background: rgba(212,175,55,.2); color: white; border: 1px solid var(--color-gold); font-size: clamp(1rem, 3vw, 1.3rem); display: flex; align-items: center; justify-content: center; transition: transform var(--transition); }
+    .social-inline .telegram-icon { background: rgba(0,136,204,0.2); border: 1px solid var(--color-telegram); }
+    .social-inline a:hover { transform: scale(1.1); }
 
     #backToTop {
-      position: fixed; bottom: 2rem; right: 1rem; background: var(--color-gold); color: #000; width: 56px; height: 56px; border-radius: 50%; display: none; align-items: center; justify-content: center; box-shadow: var(--shadow-md); z-index: 99; font-size: 1.3rem;
+      position: fixed; bottom: clamp(1.5rem, 4vw, 2rem); right: clamp(0.75rem, 2vw, 1rem); background: var(--color-gold); color: #fff; padding: clamp(0.75rem, 2vw, 1rem); border-radius: 50%; box-shadow: var(--shadow-md); z-index: 99; display: none; font-size: clamp(1rem, 2.5vw, 1.2rem);
     }
     #backToTop.show { display: flex; }
 
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: flex !important; }
+      .hero { min-height: 35vh; padding: clamp(1.5rem, 4vw, 2rem) 1rem; }
+      .hero .ctas { flex-direction: column; gap: 0.75rem; width: 100%; max-width: 350px; margin: auto; }
+      .btn { width: 100%; text-align: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-hero { order: -1; margin-top: 0 !important; }
+      .lead { font-size: clamp(0.9rem, 3vw, 0.95rem); padding: 0 0.75rem; }
+      .purchase-step p { font-size: clamp(0.8rem, 2.5vw, 0.9rem); }
+      .purchase-step h4 { font-size: clamp(1rem, 3vw, 1.2rem); }
+      .btn-telegram, .btn-ghost { font-size: clamp(0.85rem, 2.5vw, 0.95rem); }
+    }
+
     @media (prefers-color-scheme: dark) {
-      header { background: rgba(15,0,24,0.85); }
-      .section-light, .gift-box, .fb-section { background: #181818; }
-      .testimonial-card { background: #1b1b1b; }
+      header { background: rgba(15,0,24,0.95); }
+      .section-light { background: #181818; }
+      .gift-box { background: #1b1b1b; }
+      .testimonial-card, .feature-card { background: #1b1b1b; }
+      .fb-section { background: #181818; }
+      .fb-note { color: #ccc; }
+      .reiki-note { color: var(--color-amethyst-300); }
     }
 
     button:focus-visible, a:focus-visible {
@@ -235,14 +253,14 @@
 
   <!-- HERO -->
   <section class="hero" role="region" aria-label="Pagrindinis">
-    <div class="container hero-content">
-      <h1 class="text-hero text-balance">Ametistas.lt – <span style="color: var(--color-gold);">kristalų oazė</span></h1>
+    <div class="hero-content">
+      <h1 class="text-hero text-balance">Ametistas.lt – <span class="dot">kristalų oazė</span></h1>
       <p class="text-lead">Natūralūs Akmenys. Aura. Astromineralogija.</p>
-      <div class="ctas flex" style="justify-content: center; flex-wrap: wrap; gap: 1rem;">
-        <a href="https://t.me/ametistaslt" class="btn btn-primary" target="_blank" rel="noopener">
+      <div class="ctas flex">
+        <a class="btn btn-primary btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
           <i class="fab fa-telegram-plane"></i> Peržiūrėti Kolekciją
         </a>
-        <a href="#astromineralogija" class="btn btn-ghost">Gaukite konsultaciją</a>
+        <a class="btn btn-ghost" href="#astromineralogija">Gaukite konsultaciją</a>
       </div>
     </div>
   </section>
@@ -252,16 +270,16 @@
     <div class="container">
       <h2 class="section-title">IŠSKIRTINĖ KOLEKCIJA PER TELEGRAM</h2>
       <p class="text-lead" style="margin-bottom:3rem;">Mūsų aukščiausios kokybės akmenys parduodami per privatų Telegram kanalą. Tai užtikrina asmeninę konsultaciją ir pirmenybę retų pavyzdžių įsigijimui.</p>
-      <div class="purchase-steps-grid">
+      <div class="purchase-steps-grid grid">
         <div class="purchase-step"><i class="fas fa-seedling"></i><h4>1. Prisijunkite prie Bendruomenės</h4><p>Telegram kanale gausite vertingos edukacinės informacijos apie akmenų savybes, energiją bei naujų kolekcijų anonsus.</p></div>
         <div class="purchase-step"><i class="fab fa-telegram-plane"></i><h4>2. Atraskite Rinktinius Pavyzdžius</h4><p>Kanalas yra mūsų <strong>Virtuali Vitrina</strong>. Talpiname tik aukštos raiškos nuotraukas, detalius aprašymus ir kainas.</p></div>
         <div class="purchase-step"><i class="fas fa-hand-holding-heart"></i><h4>3. Užsisakykite Asmeniškai</h4><p>Patikusį akmenį rezervuokite parašydami asmeninę žinutę administratoriui Telegram platformoje. Visi klausimai atsakomi <strong>tiesiogiai</strong>.</p></div>
       </div>
       <div style="text-align:center;margin-top:3.5rem;">
-        <a href="https://t.me/ametistaslt" class="btn btn-primary" target="_blank" rel="noopener">
+        <a class="btn btn-primary btn-telegram" href="https://t.me/ametistaslt" target="_blank" rel="noopener">
           <i class="fab fa-telegram-plane"></i> PERŽIŪRĖTI KOLEKCIJĄ TELEGRAME
         </a>
-        <div style="background:var(--color-gold);color:#000;padding:0.35rem 0.75rem;border-radius:4px;font-size:0.8rem;font-weight:700;display:inline-block;margin-top:0.5rem;">NAUJA KOLEKCIJA! Tik 48 val.</div>
+        <div class="urgency-badge">NAUJA KOLEKCIJA! Tik 48 val.</div>
       </div>
     </div>
   </section>
@@ -270,36 +288,38 @@
   <section>
     <div class="container">
       <h2 class="section-title">KĄ SAKO MŪSŲ KLIENTAI</h2>
-      <div class="testimonial-grid">
-        <article class="testimonial-card">
+      <div class="testimonial-grid grid">
+        <div class="testimonial-card">
           <p>„Gavau ametistą su Reiki energija – jaučiu ramybę namuose. Ačiū!“</p>
           <cite>— Laura, Vilnius</cite>
-        </article>
-        <article class="testimonial-card">
+        </div>
+        <div class="testimonial-card">
           <p>„Konsultacija pagal gimimo datą – tiksliai atspindėjo mano iššūkius. Rekomenduoju!“</p>
           <cite>— Tomas, Kaunas</cite>
-        </article>
-        <article class="testimonial-card">
+        </div>
+        <div class="testimonial-card">
           <p>„Pakuotė prabangi, akmuo šviečia. Greitas pristatymas!“</p>
           <cite>— Rūta, Klaipėda</cite>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- APIE MUS -->
-  <section id="apie-mus" class="section-light">
-    <div class="container grid" style="align-items: center; gap: 3rem;">
-      <div>
-        <h2 class="section-title">APIE MUS IR MŪSŲ VIZIJA</h2>
-        <p class="text-lead" style="font-weight:600;">Ametistas.lt – tai aistra natūraliems akmenims ir mineralams, tiekianti tik aukščiausią kokybę ir autentiškumą.</p>
-        <div style="margin-top:1.5rem;color:#444;line-height:1.7">
-          <p>Mūsų principas: <strong>Kokybė, ne Kiekybė</strong>. Kiekvienas mineralas, kristalas ir papuošalas yra kruopščiai atrenkamas, bendradarbiaujant su patikimais Vakarų Europos tiekėjais. Mes garantuojame akmenų kilmę ir vengiam neaiškios, Azijietiškos kilmės prekių.</p>
-          <p style="margin-top:.75rem;color:#666;">Mes esame jauna bendraminčių komanda, kurios tikslas – tapti Jūsų asmeniniu mineralų šaltiniu. Prekes parduodame tokias, kokias norėtume patys gauti – t. y. kaip sau.</p>
-          <p class="reiki-note">✨ <strong>Visi akmenys paruošiami Jums.</strong> Kiekvienas mineralas yra energetiškai <strong>išvalomas ir pakraunamas Reiki</strong> energija, kad pasiektų Jus paruoštas Jūsų asmeninėms intencijoms.</p>
-        </div>
+  <section id="apie-mus" class="section-light about-grid grid">
+    <div class="container">
+      <h2 class="section-title">APIE MUS IR MŪSŲ VIZIJA</h2>
+      <p class="text-lead" style="font-weight:600;">Ametistas.lt – tai aistra natūraliems akmenims ir mineralams, tiekianti tik aukščiausią kokybę ir autentiškumą.</p>
+      <div style="margin-top:1.5rem;color:#444;line-height:1.7">
+        <p>Mūsų principas: <strong>Kokybė, ne Kiekybė</strong>. Kiekvienas mineralas, kristalas ir papuošalas yra kruopščiai atrenkamas, bendradarbiaujant su patikimais Vakarų Europos tiekėjais. Mes garantuojame akmenų kilmę ir vengiam neaiškios, Azijietiškos kilmės prekių.</p>
+        <p style="margin-top:.75rem;color:#666;">Mes esame jauna bendraminčių komanda, kurios tikslas – tapti Jūsų asmeniniu mineralų šaltiniu. Prekes parduodame tokias, kokias norėtume patys gauti – t. y. kaip sau.</p>
+        <p class="reiki-note">Visi akmenys paruošiami Jums. Kiekvienas mineralas yra energetiškai <strong>išvalomas ir pakraunamas Reiki</strong> energija, kad pasiektų Jus paruoštas Jūsų asmeninėms intencijoms.</p>
       </div>
-      <img src="/img/ametistas-kristalas.jpg" alt="Natūralus ametisto kristalas" loading="lazy" style="border-radius: var(--radius);">
+      <aside class="about-hero" style="margin-top:1rem;height:350px;">
+        <div style="padding:.75rem">
+          <img src="/img/ametistas-kristalas.jpg" alt="Natūralus ametisto kristalas, apšviestas šilta šviesa" loading="lazy">
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -308,30 +328,30 @@
     <div class="container">
       <h2 class="section-title">ASTROMINERALOGINĖS KONSULTACIJOS</h2>
       <p class="text-lead" style="margin-bottom:2rem;">Individuali konsultacija, padedanti atrasti Jūsų sielos akmenis. Tai ne tik parinkimas pagal horoskopą, bet ir gili energetinė diagnostika.</p>
-      <div class="purchase-steps-grid">
-        <div class="feature-card" style="background:white;padding:1.5rem;border-radius:var(--radius);box-shadow:var(--shadow-sm);border-left:3px solid var(--color-gold);"><h3>Individualus Akmenų Žemėlapis</h3><p>Sudarysime Jums unikalų akmenų žemėlapį pagal <strong>gimimo datą ir laiką</strong>.</p></div>
-        <div class="feature-card" style="background:white;padding:1.5rem;border-radius:var(--radius);box-shadow:var(--shadow-sm);border-left:3px solid var(--color-gold);"><h3>Energetinis Parinkimas (Aura)</h3><p>Atsižvelgiame į <strong>dabartinę auros būseną</strong> ir gyvenimo iššūkius.</p></div>
-        <div class="feature-card" style="background:white;padding:1.5rem;border-radius:var(--radius);box-shadow:var(--shadow-sm);border-left:3px solid var(--color-gold);"><h3>Pritaikymas ir Panaudojimas</h3><p>Išsamios gairės, kaip <strong>valyti, aktyvuoti ir naudoti</strong> akmenis.</p></div>
+      <div class="purchase-steps-grid grid">
+        <div class="feature-card"><h3>Individualus Akmenų Žemėlapis</h3><p>Sudarysime Jums unikalų akmenų žemėlapį pagal <strong>gimimo datą ir laiką</strong>. Tiksliai sužinosite, kokie mineralai stiprina Jūsų silpnąsias vietas ir skatina sėkmę.</p></div>
+        <div class="feature-card"><h3>Energetinis Parinkimas (Aura)</h3><p>Atsižvelgiame ne tik į Jūsų gimimo datą, bet ir į <strong>dabartinę auros būseną</strong> bei gyvenimo iššūkius. Akmenys parenkami tam, kad harmonizuotų Jūsų energijos lauką čia ir dabar.</p></div>
+        <div class="feature-card"><h3>Pritaikymas ir Panaudojimas</h3><p>Gausite išsamias gaires, kaip teisingai <strong>valyti, aktyvuoti ir naudoti</strong> pasirinktus akmenis (nešioti, medituoti, naudoti namų erdvėje), kad jie atskleistų visas savo galias.</p></div>
       </div>
       <div class="gift-box">
         <h4>GAUKITE NEMOKAMAI</h4>
         <p><strong>„Akmenų valymo ir aktyvavimo gidas“ (PDF)</strong> – užsisakę konsultaciją</p>
       </div>
-      <form class="form-consult" action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="text" name="vardas" placeholder="Jūsų vardas" required>
-        <input type="email" name="email" placeholder="El. paštas" required>
-        <input type="tel" name="telefonas" placeholder="Telefonas (nebūtina)">
-        <button type="submit" class="btn btn-primary">Užsisakyti konsultaciją</button>
+      <form class="form-consult">
+        <input type="text" placeholder="Jūsų vardas" required>
+        <input type="email" placeholder="El. paštas" required>
+        <input type="tel" placeholder="Telefonas (nebūtina)">
+        <button type="submit" class="btn btn-primary btn-telegram">Užsisakyti konsultaciją</button>
       </form>
-      <p style="text-align:center;margin-top:0.5rem;font-size:0.85rem;color:var(--color-muted);">Atsakysime per 24 val. Jūsų duomenys saugūs.</p>
+      <p class="form-note">Atsakysime per 24 val. Jūsų duomenys saugūs.</p>
     </div>
   </section>
 
   <!-- PRISTATYMAS -->
-  <section id="pristatymas" class="section-light">
+  <section id="pristatymas" class="section-light" style="padding: clamp(2rem, 6vw, 3rem) 0;">
     <div class="container">
       <h2 class="section-title">SAUGUS PRISTATYMAS</h2>
-      <div style="max-width:700px;margin:0 auto;background:white;padding:1.5rem;border-radius:var(--radius);box-shadow:var(--shadow-sm);border-left:3px solid var(--color-amethyst);">
+      <div class="feature-card" style="max-width:700px;margin:0 auto;">
         <h3>Pristatymo Būdai</h3>
         <p>Siunčiame per <strong>Kurjerius (DPD, Venipack)</strong>, pristatymas per 1-2 d.d., arba į <strong>Paštomatus (LP EXPRESS, Omniva)</strong>, pristatymas per 1-3 d.d. Kiekvienas akmuo pakuojamas su ypatingu dėmesiu saugumui.</p>
       </div>
@@ -342,7 +362,7 @@
   <section id="facebook-feed" class="fb-section">
     <div class="container fb-wrap">
       <h2 class="section-title">MŪSŲ FACEBOOK</h2>
-      <p style="color:#444;margin-bottom:1rem;">Sekite naujienas, atsiliepimus ir naujas kolekcijas tiesiog Facebook puslapyje.</p>
+      <p class="fb-note">Sekite naujienas, atsiliepimus ir naujas kolekcijas tiesiog Facebook puslapyje.</p>
       <div class="fb-page-responsive">
         <div class="fb-page" data-href="https://www.facebook.com/ametistaslt" data-tabs="timeline" data-width="450" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"></div>
       </div>
@@ -350,26 +370,33 @@
   </section>
 
   <!-- FOOTER -->
-  <footer id="kontaktai" role="contentinfo">
+  <footer id="kontaktai">
     <div class="container">
-      <h3 style="color:var(--color-gold);font-family:var(--font-primary);font-weight:700;font-size:1.5rem;letter-spacing:0.1em;margin-bottom:1rem;">KONTAKTAI</h3>
-      <div class="footer-links">
-        <a href="#apie-mus" style="font-size:0.85rem;">Apie mus</a>
-        <a href="#kolekcijos-perziura" style="font-size:0.85rem;">Kolekcijos peržiūra</a>
-        <a href="#astromineralogija" style="font-size:0.85rem;">Konsultacijos</a>
-        <a href="https://www.instagram.com/ametistaslt" target="_blank" style="font-size:0.85rem;">Instagram</a>
+      <h3>KONTAKTAI</h3>
+      <div class="footer-nav-links flex">
+        <a href="#apie-mus">Apie mus</a>
+        <a href="#kolekcijos-perziura">Kolekcijos peržiūra</a>
+        <a href="#astromineralogija">Konsultacijos</a>
+        <a href="https://www.instagram.com/ametistaslt" target="_blank">Instagram</a>
       </div>
-      <a href="mailto:info@ametistas.lt" style="color:rgba(255,255,255,.8);font-weight:600;">info@ametistas.lt</a>
-      <div class="social-links">
+      <div class="contact-row">
+        <a href="mailto:info@ametistas.lt">info@ametistas.lt</a>
+      </div>
+      <div class="social-inline flex">
         <a href="https://www.facebook.com/ametistaslt" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram" style="background:rgba(0,136,204,0.2);border:1px solid #0088CC;"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://t.me/ametistaslt" target="_blank" rel="noopener" aria-label="Telegram" class="telegram-icon"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://www.instagram.com/ametistaslt" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
-      <p style="margin-top:1.5rem;font-size:0.75rem;opacity:0.6;">© 2025 AMETISTAS.LT | Visos teisės saugomos.</p>
+      <div class="small">
+        © 2025 AMETISTAS.LT | Visos teisės saugomos.
+      </div>
     </div>
   </footer>
 
-  <button id="backToTop" aria-label="Grįžti į viršų"><i class="fas fa-arrow-up"></i></button>
+  <!-- BACK TO TOP -->
+  <button id="backToTop" aria-label="Grįžti į viršų">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v20.0"></script>
@@ -377,26 +404,36 @@
   <script>
     document.documentElement.classList.remove('no-js');
     const themeToggle = document.getElementById('themeToggle');
+    const darkToggleMobile = document.getElementById('darkToggleMobile');
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileClose = document.getElementById('mobileClose');
     const backToTop = document.getElementById('backToTop');
 
-    // Theme
+    // Theme Toggle
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     const setTheme = (dark) => {
       document.documentElement.classList.toggle('dark', dark);
-      themeToggle.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      const icon = dark ? 'fa-sun' : 'fa-moon';
+      themeToggle.querySelector('i').className = `fas ${icon}`;
+      darkToggleMobile.querySelector('i').className = `fas ${icon}`;
       localStorage.setItem('theme', dark ? 'dark' : 'light');
     };
     const saved = localStorage.getItem('theme');
     setTheme(saved ? saved === 'dark' : prefersDark.matches);
     themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+    darkToggleMobile.addEventListener('click', (e) => { e.preventDefault(); setTheme(!document.documentElement.classList.contains('dark')); });
 
-    // Mobile menu
+    // Mobile Menu
     const toggleMenu = () => mobileMenu.classList.toggle('open');
     mobileToggle.addEventListener('click', toggleMenu);
     mobileClose.addEventListener('click', toggleMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      if (link.id !== 'darkToggleMobile') link.addEventListener('click', toggleMenu);
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) toggleMenu();
+    });
 
     // Hero animation
     window.addEventListener('load', () => document.querySelector('.hero').classList.add('animate'));
